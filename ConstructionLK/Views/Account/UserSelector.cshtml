@@ -1,0 +1,74 @@
+﻿@using ConstructionLK.Models
+@using Microsoft.AspNet.Identity
+<br /><br />
+<div class="row aligncenter">
+    <div class="col-md-4">
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h2 class="panel-title">Customers</h2>
+            </div>
+            <div class="panel-body">
+                <p>
+                    Meet abundant service providers in diverse specializations in order to meet your building project task successfully.
+                </p>
+                <p>
+                    @if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
+                    {
+                    //no role
+                        @Html.ActionLink("Continue as a Customer", "Create", "Customers", null, new { @class = "btn btn-primary" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Register as a Customer", "Register", "Account", null, new {@class = "btn btn-primary"}) 
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-success">
+            <div class="panel-heading">
+                <h2 class="panel-title">Cooperate Service Providers</h2>
+            </div>
+            <div class="panel-body">
+                <p>For large and small organizations</p>
+                <p>
+                    A CSP can incorporate a company on behalf of its founding members and can also act as the Resident Agent for the company. Corporate services are activities that combine or consolidate certain enterprise-wide needed support services, provided based on specialized knowledge, best practices, and technology to serve internal (and sometimes external) customers and business partners.
+                </p>
+                <p>
+                    @if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
+                    {
+                        //no role
+                        @Html.ActionLink("Continue as a Cooperate Entity", "Create", "ServiceProvidersCooperate", null, new { @class = "btn btn-success" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Register as a Cooperate Entity", "RegisterServiceProviderCooperate", "Account", null, new {@class = "btn btn-success"})
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="panel panel-warning">
+            <div class="panel-heading">
+                <h2 class="panel-title">Individual Service Providers</h2>
+            </div>
+            <div class="panel-body">
+                <p>For individual personals</p>
+                <p>Individual personals who work as freelancers and provide their services in a minor scale</p>
+                <p>
+                    @if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
+                    {
+                        //no role
+                        @Html.ActionLink("Continue as an Individual Service Provider", "Create", "ServiceProvidersIndividual", null, new { @class = "btn btn-warning" })
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Register as an Individual Service Provider", "RegisterServiceProviderIndividual", "Account", null, new {@class = "btn btn-warning"})
+                    }
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

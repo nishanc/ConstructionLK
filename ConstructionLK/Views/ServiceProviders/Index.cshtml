@@ -1,0 +1,211 @@
+﻿@model IEnumerable<ConstructionLK.Models.ServiceProvider>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Service Providers</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+@if (!Model.Any())
+{
+    <p>We don't have any service providers yet.</p>
+}
+else
+{
+    <table id="sp" class="table table-bordered table-hover">
+        <thead>
+            <tr class="info">
+                <th>Service Provider</th>
+                <th>Started Date</th>
+                <th>Based City</th>
+                <th>Telephone</th>
+                <th>Membership Type</th>
+                <th>Account Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sp in Model)
+            {
+                <tr>
+                    <td>
+                        @(sp.FirstName == null ? Html.ActionLink(sp.CompanyName, "Details", "ServiceProviders", new {id = sp.Id}, null) : Html.ActionLink(sp.FirstName, "Details", "ServiceProviders", new {id = sp.Id}, null))
+
+                    </td>
+                    <td>@sp.StartedDate</td>
+                    <td>@sp.BasedCity</td>
+                    <td>@sp.Telephone</td>
+                    <td>@sp.MembershipType.Name</td>
+                    <td>@sp.ServiceProviderType.Type</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = sp.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                        @Html.ActionLink("Details", "Details", new { id = sp.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                        @Html.ActionLink("Review and Delete", "Delete", new { id = sp.Id }, new { @class = "btn btn-outline-warning btn-sm" }) |
+                        <button data-item-id="@sp.Id" class="btn btn-outline-warning btn-sm js-delete">Delete Now</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $("#sp").DataTable();
+            $("#sp").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure?", function(result)
+                {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/serviceproviders/" + button.attr("data-item-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+@*
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceProviderType.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BasedCity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MailingAddress)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Bio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateOfBirth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Telephone)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CompanyRegNo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StartedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Avatar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedBy)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ModifiedDate)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ServiceProviderType.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Username)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BasedCity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MailingAddress)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Bio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateOfBirth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Telephone)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CompanyRegNo)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StartedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Avatar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ModifiedDate)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
+*@

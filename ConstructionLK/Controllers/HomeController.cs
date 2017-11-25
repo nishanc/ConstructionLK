@@ -5,7 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 
 namespace ConstructionLK.Controllers
-{
+{   
+    [AllowAnonymous]
     public class HomeController : Controller
     {
         public ActionResult Index()
@@ -15,14 +16,14 @@ namespace ConstructionLK.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "We are..";
 
             return View();
         }
 
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.Message = "Get in touch!";
 
             return View();
         }

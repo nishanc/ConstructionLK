@@ -1,0 +1,158 @@
+﻿@model IEnumerable<ConstructionLK.Models.Item>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Items</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+@if (!Model.Any())
+{
+    <p>We don't have any items yet.</p>
+}
+else
+{
+    <table id="item" class="table table-bordered table-hover ">
+        <thead>
+            <tr class="success">
+                <th>Item Name</th>
+                <th>Description</th>
+                <th>Item Code</th>
+                <th>Sub Category</th>
+                <th>Main Category</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>@Html.ActionLink(item.ItemName, "Details", "Items", new { id = item.Id }, null)</td>
+                    <td>@item.Description</td>
+                    <td>@item.ItemCode</td>
+                    <td>@item.ItemSubCategory.Name</td>
+                    <td>@item.ItemSubCategory.ItemMainCategory.Name</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                        @Html.ActionLink("Review and Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-warning btn-sm" })|
+                        <button data-item-id="@item.Id" class="btn btn-outline-warning btn-sm js-delete">Delete Now</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $("#item").DataTable();
+            $("#item").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure?", function(result)
+                {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/Items/" + button.attr("data-item-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+@*
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemSubCategory.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemType.Type)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ServiceProvider.Username)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ItemCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Description)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CreatedDate)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ModifiedDate)
+            </th>
+            <th></th>
+        </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemSubCategory.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemType.Type)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceProvider.Username)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ItemCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CreatedDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedBy)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ModifiedDate)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+                @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            </td>
+        </tr>
+    }
+
+    </table>
+*@
