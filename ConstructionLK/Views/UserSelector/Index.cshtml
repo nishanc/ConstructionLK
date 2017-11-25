@@ -12,7 +12,7 @@
                     Meet abundant service providers in diverse specializations in order to meet your building project task successfully.
                 </p>
                 <p>
-                        @Html.ActionLink("Continue as a Customer", "Create", "Customers", null, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Continue as a Customer", "Create", "Customers", null, new { @class = "btn btn-primary" })
                 </p>
             </div>
         </div>
@@ -28,7 +28,7 @@
                     A CSP can incorporate a company on behalf of its founding members and can also act as the Resident Agent for the company. Corporate services are activities that combine or consolidate certain enterprise-wide needed support services, provided based on specialized knowledge, best practices, and technology to serve internal (and sometimes external) customers and business partners.
                 </p>
                 <p>
-                        @Html.ActionLink("Continue as a Cooperate Entity", "Create", "ServiceProvidersCooperate", null, new { @class = "btn btn-success" })
+                    @Html.ActionLink("Continue as a Cooperate Entity", "Create", "ServiceProvidersCooperate", null, new { @class = "btn btn-success" })
 
                 </p>
             </div>
@@ -43,10 +43,11 @@
                 <p>For individual personals</p>
                 <p>Individual personals who work as freelancers and provide their services in a minor scale</p>
                 <p>
-                        @Html.ActionLink("Continue as an Individual Service Provider", "Create", "ServiceProvidersIndividual", null, new { @class = "btn btn-warning" })
+                    @Html.ActionLink("Continue as an Individual Service Provider", "Create", "ServiceProvidersIndividual", null, new { @class = "btn btn-warning" })
 
                 </p>
             </div>
         </div>
     </div>
 </div>
+<p>After this point you cannot change your account type. See our <a href="@Url.Action("TermsOfService", "Manage")" class="">terms of service</a> for more information</p>

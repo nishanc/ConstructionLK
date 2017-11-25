@@ -664,6 +664,8 @@
     <Content Include="Views\ServiceProvidersCooperate\MyProfile.cshtml" />
     <Content Include="Views\ServiceProvidersIndividual\MyProfile.cshtml" />
     <Content Include="Views\UserSelector\IndexToNew.cshtml" />
+    <Content Include="Views\Manage\TermsOfService.cshtml" />
+    <Content Include="Views\Manage\PrivacyPolicy.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

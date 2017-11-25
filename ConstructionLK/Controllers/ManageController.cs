@@ -322,7 +322,16 @@ namespace ConstructionLK.Controllers
             var result = await UserManager.AddLoginAsync(User.Identity.GetUserId(), loginInfo.Login);
             return result.Succeeded ? RedirectToAction("ManageLogins") : RedirectToAction("ManageLogins", new { Message = ManageMessageId.Error });
         }
-
+        [AllowAnonymous]
+        public ActionResult TermsOfService()
+        {
+            return View("TermsOfService");
+        }
+        [AllowAnonymous]
+        public ActionResult PrivacyPolicy()
+        {
+            return View("PrivacyPolicy");
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing && _userManager != null)
