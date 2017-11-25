@@ -15,11 +15,12 @@
                     @if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
                     {
                     //no role
-                        @Html.ActionLink("Continue as a Customer", "Create", "Customers", null, new { @class = "btn btn-primary" })
+                        @Html.ActionLink("Register as a Customer", "Register", "Account", null, new {@class = "btn btn-primary"}) 
+
                     }
                     else
                     {
-                        @Html.ActionLink("Register as a Customer", "Register", "Account", null, new {@class = "btn btn-primary"}) 
+                        @Html.ActionLink("Continue as a Customer", "Create", "Customers", null, new { @class = "btn btn-primary" })
                     }
                 </p>
             </div>
@@ -39,11 +40,12 @@
                     @if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
                     {
                         //no role
-                        @Html.ActionLink("Continue as a Cooperate Entity", "Create", "ServiceProvidersCooperate", null, new { @class = "btn btn-success" })
+                        @Html.ActionLink("Register as a Cooperate Entity", "RegisterServiceProviderCooperate", "Account", null, new {@class = "btn btn-success"})
                     }
                     else
                     {
-                        @Html.ActionLink("Register as a Cooperate Entity", "RegisterServiceProviderCooperate", "Account", null, new {@class = "btn btn-success"})
+                        @Html.ActionLink("Continue as a Cooperate Entity", "Create", "ServiceProvidersCooperate", null, new { @class = "btn btn-success" })
+
                     }
                 </p>
             </div>
@@ -61,11 +63,13 @@
                     @if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
                     {
                         //no role
-                        @Html.ActionLink("Continue as an Individual Service Provider", "Create", "ServiceProvidersIndividual", null, new { @class = "btn btn-warning" })
+                        @Html.ActionLink("Register as an Individual Service Provider", "RegisterServiceProviderIndividual", "Account", null, new {@class = "btn btn-warning"})
+
                     }
                     else
                     {
-                        @Html.ActionLink("Register as an Individual Service Provider", "RegisterServiceProviderIndividual", "Account", null, new {@class = "btn btn-warning"})
+                        @Html.ActionLink("Continue as an Individual Service Provider", "Create", "ServiceProvidersIndividual", null, new { @class = "btn btn-warning" })
+
                     }
                 </p>
             </div>

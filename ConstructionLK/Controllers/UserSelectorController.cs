@@ -10,29 +10,49 @@ namespace ConstructionLK.Controllers
 {   [AllowAnonymous]
     public class UserSelectorController : Controller
     {
+        private ConstructionLKContext db = new ConstructionLKContext();
         // GET: UserSelector
         public ActionResult Index()
         {
-            return View();
+            if (!(User.IsInRole(RoleName.Customer) || User.IsInRole(RoleName.ServiceProvider)))
+            {
+
+                return View("IndexToNew");//register
+            }
+            return View("Index");//create
         }
 
         public ActionResult UserProfile()
         {
-            if(User.IsInRole(RoleName.Customer))
+            var userId = User.Identity.GetUserId();
+            //AspNetUser email = db.AspNetUsers.SingleOrDefault(a => a.Id == userId);
+            //if(email != null && !email.EmailConfirmed)
+            //{
+            //    return RedirectToAction("Index", "UserSelector");
+            //}
+            if (!(User.IsInRole(RoleName.Customer) || User.IsInRole(RoleName.ServiceProvider)))
+            {
+
+                return View("Index");//create
+            }
+            //var userId = User.Identity.GetUserId();
+            ServiceProvider type = db.ServiceProviders.SingleOrDefault(user => user.ApplicationUserId == userId);
+            //var type = db.ServiceProviders.Find(User.Identity.GetUserId());
+            if (User.IsInRole(RoleName.Customer))
             {
             
-                return RedirectToAction("MyProfile", "Customers", new { id = User.Identity.GetUserId() });
+                return RedirectToAction("MyProfile", "Customers", new { id = userId });
             }
 
-            if (User.IsInRole(RoleName.CanManageAll))
+            if (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpIndividual)
             {
 
-                return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { id = User.Identity.GetUserId() });
+                return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { id = userId });
             }
-            if (User.IsInRole(RoleName.ServiceProvider))
+            if (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpCooperate)
             {
 
-                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
+                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = userId });
             }
             return HttpNotFound();
         }

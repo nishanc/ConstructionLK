@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ConstructionLK.Controllers
 {
@@ -90,7 +91,8 @@ namespace ConstructionLK.Controllers
                     Console.WriteLine(e);
                     throw;
                 }
-                return RedirectToAction("Index");
+                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
+                //return RedirectToAction("Index");
             }
 
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name", serviceProvider.MembershipTypeId);

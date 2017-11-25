@@ -376,6 +376,7 @@
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\ServiceProviderType.cs" />
+    <Compile Include="Models\ServiceProviderTypeName.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -662,6 +663,7 @@
     <Content Include="Views\Account\UserSelector.cshtml" />
     <Content Include="Views\ServiceProvidersCooperate\MyProfile.cshtml" />
     <Content Include="Views\ServiceProvidersIndividual\MyProfile.cshtml" />
+    <Content Include="Views\UserSelector\IndexToNew.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

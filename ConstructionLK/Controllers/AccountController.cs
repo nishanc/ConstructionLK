@@ -14,9 +14,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace ConstructionLK.Controllers
 {
+
     [Authorize]
     public class AccountController : Controller
     {
+        //private ConstructionLKContext db = new ConstructionLKContext();
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
 
@@ -90,12 +92,32 @@ namespace ConstructionLK.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider)))
-                    {
-                        //no role
-                        return View("UserSelector");
-                    }
-                    return RedirectToLocal(returnUrl);
+                    //if (!(User.IsInRole(RoleName.Customer) || User.IsInRole(RoleName.CanManageAll) || User.IsInRole(RoleName.ServiceProvider)))
+                    //{
+                    //    //no role
+                    //    //var userId = UserManager.FindByEmail(model.Email).Id;
+                    //    //return HttpNotFound();
+                    ////if (UserManager.IsEmailConfirmed(userid))
+                    ////{
+                    ////    return RedirectToAction("Index", "UserSelector");
+                    ////}
+                    //    return View("UserSelector");
+                    //}
+                    //if (User.IsInRole(RoleName.Customer))
+                    //    return RedirectToAction("MyProfile", "Customers", new { id = User.Identity.GetUserId() });
+                    //if (User.IsInRole(RoleName.ServiceProvider))
+                    //{
+                    //    var type = db.ServiceProviders.Find(User.Identity.GetUserId());
+                    //    if(type.TypeId == ServiceProviderTypeName.SpIndividual)
+                    //        return RedirectToAction("MyProfile", "ServiceProvidersIndividual",new { id = User.Identity.GetUserId() });
+                    //    else if (type.TypeId == ServiceProviderTypeName.SpCooperate)
+                    //        return RedirectToAction("MyProfile", "ServiceProvidersCooperate",new {id = User.Identity.GetUserId()});
+                    //    else
+                    //        return HttpNotFound();
+                    //}
+                    //else
+                    return RedirectToAction("UserProfile", "UserSelector", new { id = User.Identity.GetUserId() });
+                //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
@@ -227,7 +249,9 @@ namespace ConstructionLK.Controllers
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //return RedirectToAction("Index", "Home");
-                    return RedirectToAction("Create", "ServiceProvidersCooperate");
+                    //return RedirectToAction("Create", "ServiceProvidersCooperate");
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                    return RedirectToAction("ConfirmEmailToContinue", "Account");
                 }
                 AddErrors(result);
             }
@@ -268,7 +292,9 @@ namespace ConstructionLK.Controllers
                     await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
                     //return RedirectToAction("Index", "Home");
-                    return RedirectToAction("Create", "ServiceProvidersIndividual");
+                    //return RedirectToAction("Create", "ServiceProvidersIndividual");
+                    AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                    return RedirectToAction("ConfirmEmailToContinue", "Account");
                 }
                 AddErrors(result);
             }

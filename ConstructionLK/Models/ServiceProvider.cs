@@ -67,6 +67,8 @@ namespace ConstructionLK.Models
         public string CompanyRegNo { get; set; }
 
         [Column(TypeName = "date")]
+        [DataType(DataType.Date)]
+        //[DisplayFormat(DataFormatString = "{0:y}")]
         [Display(Name = "Started Date of the Company")]
         public DateTime StartedDate { get; set; }
 
