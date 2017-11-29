@@ -23,9 +23,9 @@ namespace ConstructionLK.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
-            : base("ConstructionLKContext", throwIfV1Schema: false)
+          //  : base("ConstructionLKContext", throwIfV1Schema: false)
         //: base("name=Techwire")
-        //: base("name=Azure")
+        : base("name=Azure")
         {
         }
 
