@@ -1,33 +1,43 @@
 ﻿@{
     ViewBag.Title = "Home";
 }
+<link href="~/Content/Home/style.css" rel="stylesheet" />
 <link href="~/Content/Index.css" rel="stylesheet" />
-<div class="jumbotron2 jumbotron">
+<div class="jumbotron2 jumbotron"></div>
+<div class="background-wrap">
+    <video id="video-bg-elem" preload="auto" autoplay="auto" loop="loop" muted="muted">
+        @*<source src="video.mp4" type="video/mp4">
+            <video controls="controls">*@
+        <source src="~/Resources/background-header-v2.MP4" type="video/mp4" />
+        @*</video>*@
+        Video not supported
+    </video>
+    <div class="content"></div>
 </div>
-    <div class="jumbotron">
-        
-        <p class="lead">ConstructionLK is a free web platform for builders, constructors and customers to get together and help each other. And to find, evaluate and select the product/solutions or service providers for your all construction needs</p>
-        <p>
-            <a href="#" class="btn btn-primary btn-lg">Learn more &raquo;</a>
-        </p>
-    </div>
+<div class="jumbotron">
 
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Services</h2>
-            <p>
-                Meet abundant service providers in diverse specializations in order to meet your building project task successfully.
-            </p>
-            <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Building Materials</h2>
-            <p>Find your needy row material for your building project at ease considering the quality and volume</p>
-            <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
-        </div>
-        <div class="col-md-4">
-            <h2>Plants Machinery and Tools</h2>
-            <p>Source the best plant and machinery that delivery you project are successful and make you stay a head progress of your construction schedule</p>
-            <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
-        </div>
+    <p class="lead">ConstructionLK is a free web platform for builders, constructors and customers to get together and help each other. And to find, evaluate and select the product/solutions or service providers for your all construction needs</p>
+    <p>
+        <a href="#" class="btn btn-primary btn-lg">Learn more &raquo;</a>
+    </p>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Services</h2>
+        <p>
+            Meet abundant service providers in diverse specializations in order to meet your building project task successfully.
+        </p>
+        <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
     </div>
+    <div class="col-md-4">
+        <h2>Building Materials</h2>
+        <p>Find your needy row material for your building project at ease considering the quality and volume</p>
+        <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Plants Machinery and Tools</h2>
+        <p>Source the best plant and machinery that delivery you project are successful and make you stay a head progress of your construction schedule</p>
+        <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+    </div>
+</div>

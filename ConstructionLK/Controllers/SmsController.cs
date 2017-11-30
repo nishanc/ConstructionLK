@@ -9,6 +9,7 @@ using System.Net;
 
 namespace ConstructionLK.Controllers
 {
+    [AllowAnonymous]
     public class SmsController : Controller
     {
         public ActionResult SendSms()

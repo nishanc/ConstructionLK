@@ -241,12 +241,14 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\API\ItemsController.cs" />
     <Compile Include="Controllers\API\ServiceProvidersController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemRequestsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
@@ -494,14 +496,17 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Home\style.css" />
     <Content Include="Content\Index.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Resources\background-header-v1.MP4" />
     <Content Include="Resources\Banner.jpg" />
     <Content Include="Resources\index.jpg" />
     <Content Include="Resources\Logo.jpg" />
+    <Content Include="Resources\background-header-v2.mp4" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootbox.js" />
@@ -513,6 +518,7 @@
     </Content>
     <Content Include="Content\DataTables\css\mixins.scss" />
     <Content Include="Content\DataTables\css\common.scss" />
+    <Content Include="Areas\Admin\Views\web.config" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -666,9 +672,17 @@
     <Content Include="Views\UserSelector\IndexToNew.cshtml" />
     <Content Include="Views\Manage\TermsOfService.cshtml" />
     <Content Include="Views\Manage\PrivacyPolicy.cshtml" />
+    <Content Include="Views\ItemRequests\Create.cshtml" />
+    <Content Include="Views\ItemRequests\Delete.cshtml" />
+    <Content Include="Views\ItemRequests\Details.cshtml" />
+    <Content Include="Views\ItemRequests\Edit.cshtml" />
+    <Content Include="Views\ItemRequests\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Areas\Admin\Controllers\" />
+    <Folder Include="Areas\Admin\Models\" />
+    <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
