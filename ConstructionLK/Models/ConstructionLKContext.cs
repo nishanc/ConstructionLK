@@ -9,9 +9,9 @@ namespace ConstructionLK.Models
     public partial class ConstructionLKContext : DbContext 
     {
         public ConstructionLKContext()
-          //  : base("name=ConstructionLKContext")
+        : base("name=ConstructionLKContext")
         //: base("name=Techwire")
-        : base("name=Azure")
+        //: base("name=Azure")
         {
         }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
@@ -135,11 +135,11 @@ namespace ConstructionLK.Models
                 .HasForeignKey(e => e.RequestId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<ItemRequest>()
-                .HasMany(e => e.Locations)
-                .WithRequired(e => e.ItemRequest)
-                .HasForeignKey(e => e.RequestId)
-                .WillCascadeOnDelete(false);
+            //modelBuilder.Entity<ItemRequest>()
+            //    .HasMany(e => e.Locations)
+            //    .WithRequired(e => e.ItemRequest)
+            //    .HasForeignKey(e => e.RequestId)
+            //    .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ItemRequest>()
                 .HasMany(e => e.RatingsCustomers)

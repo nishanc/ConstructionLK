@@ -12,7 +12,7 @@ namespace ConstructionLK.Models
         public ItemRequest()
         {
             ItemPayments = new HashSet<ItemPayment>();
-            Locations = new HashSet<Location>();
+            //Locations = new HashSet<Location>();
             RatingsCustomers = new HashSet<RatingsCustomer>();
             RatingsServiceProviders = new HashSet<RatingsServiceProvider>();
             AdministrativeStaffs = new HashSet<AdministrativeStaff>();
@@ -52,8 +52,8 @@ namespace ConstructionLK.Models
 
         public virtual ServiceProvider ServiceProvider { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Location> Locations { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Location> Locations { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RatingsCustomer> RatingsCustomers { get; set; }

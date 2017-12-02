@@ -23,11 +23,11 @@ namespace ConstructionLK.Models
         [StringLength(10)]
         public string Type { get; set; }
 
-        public int RequestId { get; set; }
+        //public int RequestId { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<ItemRequest> ItemRequests { get; set; }
 
-        public virtual ItemRequest ItemRequest { get; set; }
+        //public virtual ItemRequest ItemRequest { get; set; }
     }
 }
