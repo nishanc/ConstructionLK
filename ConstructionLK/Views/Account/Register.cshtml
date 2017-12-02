@@ -33,6 +33,7 @@
             @Html.ValidationMessageFor(m => m.ConfirmPassword, "", new { @class = "text-danger" })
         </div>
     </div>
+    @Html.HiddenFor(model => model.UserSelection, new { @Value = 3 })
     <div class="form-group">
         By clicking on 'Register' you are agreeing to our <a href="@Url.Action("TermsOfService", "Manage")" class="text-danger">terms of service</a> and <a href="@Url.Action("PrivacyPolicy", "Manage")" class="text-danger">privacy policy</a>.
     </div>

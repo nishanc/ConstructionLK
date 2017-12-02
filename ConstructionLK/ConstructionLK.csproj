@@ -279,6 +279,10 @@
     <Compile Include="Migrations\ApplicationDbContext\201711130844261_ASPUsersForiegnKeyConfig.Designer.cs">
       <DependentUpon>201711130844261_ASPUsersForiegnKeyConfig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ApplicationDbContext\201712021811037_AddedUserSelectionToApplicationUsers.cs" />
+    <Compile Include="Migrations\ApplicationDbContext\201712021811037_AddedUserSelectionToApplicationUsers.Designer.cs">
+      <DependentUpon>201712021811037_AddedUserSelectionToApplicationUsers.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ApplicationDbContext\Configuration.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Migrations\ConstructionLKContext\201711051621417_InitialDatabaseCreation_AfterDualDbContexts.cs" />
@@ -352,6 +356,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201712021546201_AddedItemLocationsTable.cs" />
     <Compile Include="Migrations\ConstructionLKContext\201712021546201_AddedItemLocationsTable.Designer.cs">
       <DependentUpon>201712021546201_AddedItemLocationsTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712021853366_AddedUserSelectionToApplicationUsers.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712021853366_AddedUserSelectionToApplicationUsers.Designer.cs">
+      <DependentUpon>201712021853366_AddedUserSelectionToApplicationUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -716,6 +724,9 @@
     <EmbeddedResource Include="Migrations\ApplicationDbContext\201711130844261_ASPUsersForiegnKeyConfig.resx">
       <DependentUpon>201711130844261_ASPUsersForiegnKeyConfig.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ApplicationDbContext\201712021811037_AddedUserSelectionToApplicationUsers.resx">
+      <DependentUpon>201712021811037_AddedUserSelectionToApplicationUsers.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201711051621417_InitialDatabaseCreation_AfterDualDbContexts.resx">
       <DependentUpon>201711051621417_InitialDatabaseCreation_AfterDualDbContexts.cs</DependentUpon>
     </EmbeddedResource>
@@ -769,6 +780,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712021546201_AddedItemLocationsTable.resx">
       <DependentUpon>201712021546201_AddedItemLocationsTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712021853366_AddedUserSelectionToApplicationUsers.resx">
+      <DependentUpon>201712021853366_AddedUserSelectionToApplicationUsers.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

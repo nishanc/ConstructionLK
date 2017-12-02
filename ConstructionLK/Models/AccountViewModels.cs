@@ -64,6 +64,8 @@ namespace ConstructionLK.Models
 
     public class RegisterViewModel
     {
+        public int UserSelection { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]
