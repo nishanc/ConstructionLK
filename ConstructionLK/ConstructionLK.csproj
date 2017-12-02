@@ -403,6 +403,7 @@
     <Compile Include="ViewModels\RandomItemViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\Account\style.css" />
     <Content Include="Content\bootstrap-solar.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
