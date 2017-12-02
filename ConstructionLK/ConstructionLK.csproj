@@ -507,6 +507,7 @@
     <Content Include="Resources\index.jpg" />
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\background-header-v2.mp4" />
+    <Content Include="Resources\Nexus_5_Front_View.png" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootbox.js" />
