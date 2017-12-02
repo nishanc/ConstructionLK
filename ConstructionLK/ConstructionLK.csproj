@@ -349,6 +349,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201712021507185_RemovedRequestIdfromLocation.Designer.cs">
       <DependentUpon>201712021507185_RemovedRequestIdfromLocation.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712021546201_AddedItemLocationsTable.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712021546201_AddedItemLocationsTable.Designer.cs">
+      <DependentUpon>201712021546201_AddedItemLocationsTable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -366,6 +370,7 @@
     <Compile Include="Models\ItemCategoryIcon.cs" />
     <Compile Include="Models\ItemComment.cs" />
     <Compile Include="Models\ItemImage.cs" />
+    <Compile Include="Models\ItemLocations.cs" />
     <Compile Include="Models\ItemMainCategory.cs" />
     <Compile Include="Models\ItemPayment.cs" />
     <Compile Include="Models\ItemProperty.cs" />
@@ -761,6 +766,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712021507185_RemovedRequestIdfromLocation.resx">
       <DependentUpon>201712021507185_RemovedRequestIdfromLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712021546201_AddedItemLocationsTable.resx">
+      <DependentUpon>201712021546201_AddedItemLocationsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

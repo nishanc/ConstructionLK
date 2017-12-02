@@ -11,6 +11,7 @@ namespace ConstructionLK.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Item()
         {
+            ItemLocations = new HashSet<ItemLocations>();
             ItemComments = new HashSet<ItemComment>();
             ItemImages = new HashSet<ItemImage>();
             ItemProperties = new HashSet<ItemProperty>();
@@ -65,5 +66,7 @@ namespace ConstructionLK.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<PublishedItem> PublishedItems { get; set; }
+
+        public virtual ICollection<ItemLocations> ItemLocations { get; set; }
     }
 }

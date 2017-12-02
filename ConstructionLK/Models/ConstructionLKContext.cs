@@ -41,6 +41,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<ServiceProvider> ServiceProviders { get; set; }
         public virtual DbSet<ServiceProviderType> ServiceProviderTypes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
+        public virtual DbSet<ItemLocations> ItemLocations { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -175,6 +176,11 @@ namespace ConstructionLK.Models
 
             modelBuilder.Entity<Item>()
                 .HasMany(e => e.PublishedItems)
+                .WithRequired(e => e.Item)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Item>()
+                .HasMany(e => e.ItemLocations)
                 .WithRequired(e => e.Item)
                 .WillCascadeOnDelete(false);
 
