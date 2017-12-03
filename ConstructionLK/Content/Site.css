@@ -34,3 +34,6 @@ textarea {
 .aligncenter {
     align-content: center;
 }
+.text-danger {
+    color: rgb(181, 137, 0);
+}

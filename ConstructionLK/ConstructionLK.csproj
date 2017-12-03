@@ -522,10 +522,13 @@
     <Content Include="Content\Site.css" />
     <Content Include="Resources\background-header-v1.MP4" />
     <Content Include="Resources\Banner.jpg" />
+    <Content Include="Resources\customer-reg.jpg" />
     <Content Include="Resources\index.jpg" />
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\background-header-v2.mp4" />
     <Content Include="Resources\Nexus_5_Front_View.png" />
+    <Content Include="Resources\spc-reg.jpg" />
+    <Content Include="Resources\spi-reg.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bootbox.js" />
