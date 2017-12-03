@@ -77,13 +77,16 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Username,MembershipTypeId,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,ApplicationUserId")] ServiceProvider serviceProvider)
+        public ActionResult Create([Bind(Include = "Id,Username,MembershipTypeId,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,ApplicationUserId")] ServiceProvider serviceProvider)
         {
+            Console.WriteLine(">>>>>>>>>>>>>Create");
             if (ModelState.IsValid)
             {
+                Console.WriteLine(">>>>>>>>>>>>>Valid");
                 db.ServiceProviders.Add(serviceProvider);
                 try
                 {
+                    Console.WriteLine(">>>>>>>>>>>>>Save");
                     db.SaveChanges();
                 }
                 catch (Exception e)

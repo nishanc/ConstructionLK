@@ -36,15 +36,15 @@ namespace ConstructionLK.Controllers
                 var user = db.AspNetUsers.Find(userId);
                 if (user != null && user.UserSelection == ServiceProviderTypeName.SpIndividual)
                 {
-                    return RedirectToAction("Create", "ServiceProvidersIndividual", new { id = userId });
+                    return RedirectToAction("Create", "ServiceProvidersIndividual");
                 }
                 if (user != null && user.UserSelection == ServiceProviderTypeName.SpCooperate)
                 {
-                    return RedirectToAction("Create", "ServiceProvidersCooperate", new { id = userId });
+                    return RedirectToAction("Create", "ServiceProvidersCooperate");
                 }
                 if (user != null && user.UserSelection == 1)
                 {
-                    return RedirectToAction("Create", "Customers", new { id = userId });
+                    return RedirectToAction("Create", "Customers");
                 }
                 return View("Index");//create
             }
