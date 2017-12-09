@@ -244,6 +244,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdministrativeStaffController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\API\AdministrativeStaffController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\API\ItemsController.cs" />
     <Compile Include="Controllers\API\ServiceProvidersController.cs" />
@@ -257,6 +258,7 @@
     <Compile Include="Controllers\ServiceProvidersIndividualController.cs" />
     <Compile Include="Controllers\SmsController.cs" />
     <Compile Include="Controllers\UserSelectorController.cs" />
+    <Compile Include="DTOs\AdminDto.cs" />
     <Compile Include="DTOs\CustomerDto.cs" />
     <Compile Include="DTOs\ItemDto.cs" />
     <Compile Include="DTOs\ServiceProviderDto.cs" />
@@ -553,6 +555,7 @@
     <Content Include="Areas\Admin\Views\AdministrativeStaff\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdministrativeStaff\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdministrativeStaff\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdministrativeStaff\_Index.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />

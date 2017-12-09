@@ -18,12 +18,13 @@ namespace ConstructionLK.App_Start
             Mapper.CreateMap<ServiceProvider, ServiceProviderDto>();
             Mapper.CreateMap<Item, ItemDto>();
             Mapper.CreateMap<ServiceProviderType, ServiceProviderTypeDto>();
-
+            Mapper.CreateMap<AdministrativeStaff, AdminDto>();
             //Dto to domain
             Mapper.CreateMap<CustomerDto, Customer>()
                 .ForMember(c=>c.Id,opt=>opt.Ignore());
             Mapper.CreateMap<ServiceProviderDto,ServiceProvider>();
             Mapper.CreateMap<ItemDto,Item>();
+            Mapper.CreateMap<AdminDto,AdministrativeStaff>();
         }
     }
 }
