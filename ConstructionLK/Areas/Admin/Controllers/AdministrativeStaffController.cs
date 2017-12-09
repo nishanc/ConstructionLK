@@ -49,8 +49,8 @@ namespace ConstructionLK.Areas.Admin.Controllers
             ViewBag.CountCSP = countcsp.ToString();
             //var csi = db.ServiceProviders.Include(sp => sp.Id);
             //int countcsi = csi.Count();
-            var countcsi = db.ServiceProviders.Count(t => t.ServiceProviderType.Id == ServiceProviderTypeName.SpIndividual);
-            ViewBag.CountISP = countcsi.ToString();
+            var countisp = db.ServiceProviders.Count(t => t.ServiceProviderType.Id == ServiceProviderTypeName.SpIndividual);
+            ViewBag.CountISP = countisp.ToString();
 
 
             return View("AdminPanel", admin);

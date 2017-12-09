@@ -263,6 +263,13 @@
     <Compile Include="DTOs\ItemDto.cs" />
     <Compile Include="DTOs\ServiceProviderDto.cs" />
     <Compile Include="DTOs\ServiceProviderTypeDto.cs" />
+    <Compile Include="Error.aspx.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Error.aspx.designer.cs">
+      <DependentUpon>Error.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -525,8 +532,10 @@
     <Content Include="Content\DataTables\images\sort_desc.png" />
     <Content Include="Content\DataTables\images\sort_desc_disabled.png" />
     <Content Include="Content\DataTables\swf\flashExport.swf" />
+    <Content Include="Content\Error\style.css" />
     <Content Include="Content\Home\style.css" />
     <Content Include="Content\Index.css" />
+    <Content Include="Error.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -534,6 +543,7 @@
     <Content Include="Resources\background-header-v1.MP4" />
     <Content Include="Resources\Banner.jpg" />
     <Content Include="Resources\customer-reg.jpg" />
+    <Content Include="Resources\error.jpg" />
     <Content Include="Resources\Icons\pin.png" />
     <Content Include="Resources\Icons\pin_alt.png" />
     <Content Include="Resources\index.jpg" />
