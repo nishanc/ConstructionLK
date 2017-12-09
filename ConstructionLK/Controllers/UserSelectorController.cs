@@ -46,6 +46,11 @@ namespace ConstructionLK.Controllers
                 {
                     return RedirectToAction("Create", "Customers");
                 }
+                if (user != null && user.UserSelection == 4)
+                {
+                    return RedirectToAction("Create", "AdministrativeStaff", new { area = "Admin" });
+                    
+                }
                 return View("Index");//create
             }
             //var userId = User.Identity.GetUserId();

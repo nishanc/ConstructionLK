@@ -28,13 +28,6 @@ namespace ConstructionLK.Models
         [StringLength(50)]
         public string LastName { get; set; }
 
-        [Required]
-        public string Password { get; set; }
-
-        [Required]
-        [StringLength(50)]
-        public string Email { get; set; }
-
         public int? CreatedBy { get; set; }
 
         public DateTime? CreatedDate { get; set; }

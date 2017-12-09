@@ -37,7 +37,7 @@ namespace ConstructionLK.Controllers
         }
 
         // GET: ItemRequests/Create
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName");

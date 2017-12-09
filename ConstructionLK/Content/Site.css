@@ -37,3 +37,6 @@ textarea {
 .text-danger {
     color: rgb(181, 137, 0);
 }
+.form-control{
+    box-shadow: 2px 2px 5px rgb(181,137,0);
+}
