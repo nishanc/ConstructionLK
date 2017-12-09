@@ -15,31 +15,24 @@
 <!-- //web font -->
 </head>
 <body>
-	<!-- main -->
-	<div class="agileits-main"> 
-		<div class="agileinfo-row">
-				
-			<div class="w3layouts-errortext">
-				<h2>4<span>0</span>4</h2>
-				
-				<h1>Sorry! The page you were looking for could not be found </h1>
-				<p class="w3lstext">You have been tricked into click on a link that can not be found. Please check the url or go to <a href="#">main page</a> and see if you can locate what you are looking for </p>
-				<div class="agile-search"> 
-					<form action="#" method="post">
-						<input type="text" name="Search" placeholder="Enter your search term..." id="search" required="">
-						<input type="submit" value="Search">
-					</form> 
-				</div>
-				<div class="w3top-nav-right">	
-					<ul>
-						<li><a href="index.html">Home</a></li>
-						<li><a href="#">About</a></li>  
-						<li><a href="#">Blog</a></li> 
-						<li><a href="#">Contact</a></li>
-					</ul> 
-				</div>	
-			</div>	
-		</div>	
-	</div>	
+    <!-- main -->
+    <div class="agileits-main"> 
+        <div class="agileinfo-row">
+                
+            <div class="w3layouts-errortext">
+                <h2>4<span>0</span>4</h2>
+                
+                <h1>Sorry! The page you were looking for could not be found </h1>
+                <p class="w3lstext">You have been tricked into click on a link that can not be found. Please check the url or go to <a href="javascript:history.back()">Previous Page</a>and see if you can locate what you are looking for </p>
+                <div class="w3top-nav-right agile-search">	
+                    <ul>
+                        <li><a href="." class="">Home</a></li>
+                        <li><a href="./Home/About">About</a></li>  
+                        <li><a href="./Home/Contact">Contact</a></li>
+                    </ul> 
+                </div>	
+            </div>	
+        </div>	
+    </div>	
 </body>
 </html>

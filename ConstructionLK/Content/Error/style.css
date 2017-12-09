@@ -123,6 +123,26 @@ p.w3lstext a:hover{
 	color: #b58900;
 	background: transparent;
 }
+.w3top-nav-right a{
+	outline: none;
+	box-shadow: none;
+	background: #b58900;
+	border: 1px solid #b58900;
+	padding: .8em 3em;
+	color: #fff;
+	cursor: pointer;
+	border-radius: 50px;
+	font-size: 1em;
+	margin-left: 0.5em;
+	-webkit-transition: 0.5s all;
+	-moz-transition: 0.5s all;
+	transition: 0.5s all;
+
+}
+.w3top-nav-right :hover {
+	color: #b58900;
+	background: transparent;
+}
 ::-webkit-input-placeholder { 
 	color:#fff !important;
 }
