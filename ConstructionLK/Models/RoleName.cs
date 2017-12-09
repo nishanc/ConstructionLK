@@ -10,5 +10,6 @@ namespace ConstructionLK.Models
         public const string CanManageAll = "CanManageAll";
         public const string Customer = "Customer";
         public const string ServiceProvider = "ServiceProvider";
+        public const string AdministrativeStaff = "AdministrativeStaff";
     }
 }

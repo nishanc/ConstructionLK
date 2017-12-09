@@ -3,10 +3,38 @@
 @using Microsoft.AspNet.Identity
 @model ConstructionLK.Models.AdministrativeStaff
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<div class="well"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
 
+
+<span class="label label-success">Administrator</span>
+<span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
+<hr />
+
+@*@Html.Partial("_Index")*@
+<div class="col-md-3">
+    <ul class="list-group">
+
+        @Html.ActionLink("Edit Your Details", "Edit", new {id = Model.Id}, new {@class = "list-group-item"})
+        <li class="list-group-item">
+            <span class="badge">@ViewBag.CountA</span>
+            @Html.ActionLink("Administrators ", "Index")
+        </li>        <li class="list-group-item">
+            <span class="badge">@ViewBag.CountC</span>
+            @Html.ActionLink("Customers", "Index", "Customers", new {area = ""},null)
+        </li>        <li class="list-group-item">
+            <span class="badge">@ViewBag.CountCSP</span>
+            @Html.ActionLink("Cooperate Service Providers", "Index", "ServiceProvidersCooperate", new {area = ""}, null)
+
+        </li>        <li class="list-group-item">
+            <span class="badge">@ViewBag.CountISP</span>
+            @Html.ActionLink("Freelancer Service Providers", "Index", "ServiceProvidersIndividual", new {area = ""}, null)
+        </li>
+
+    </ul>
+</div>
 <div class="col-md-9">
     <dl class="dl-horizontal">
         <dt>

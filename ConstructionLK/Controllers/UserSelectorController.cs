@@ -26,6 +26,11 @@ namespace ConstructionLK.Controllers
         public ActionResult UserProfile()
         {
             var userId = User.Identity.GetUserId();
+            if (User.IsInRole(RoleName.CanManageAll)|| User.IsInRole(RoleName.AdministrativeStaff))
+            {
+                return RedirectToAction("AdminPanel", "AdministrativeStaff", new { area = "Admin" , id = userId });
+            }
+            
             //AspNetUser email = db.AspNetUsers.SingleOrDefault(a => a.Id == userId);
             //if(email != null && !email.EmailConfirmed)
             //{
@@ -72,6 +77,7 @@ namespace ConstructionLK.Controllers
 
                 return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = userId });
             }
+
             return HttpNotFound();
         }
 

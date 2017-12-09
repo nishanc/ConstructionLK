@@ -116,7 +116,7 @@ namespace ConstructionLK.Controllers
                     //        return HttpNotFound();
                     //}
                     //else
-                    return RedirectToAction("UserProfile", "UserSelector", new { id = User.Identity.GetUserId() });
+                    return RedirectToAction("UserProfile", "UserSelector");
                 //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -317,7 +317,7 @@ namespace ConstructionLK.Controllers
             // If we got this far, something failed, redisplay form
             return View(model);
         }
-        [AllowAnonymous]
+        [Authorize(Roles = "CanManageAll")]
         public ActionResult RegisterAdmin()
         {
             return View();
@@ -326,7 +326,7 @@ namespace ConstructionLK.Controllers
         //
         // POST: /Account/Register
         [HttpPost]
-        [AllowAnonymous]
+        [Authorize(Roles = "CanManageAll")]
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> RegisterAdmin(RegisterViewModel model)
         {
@@ -342,6 +342,12 @@ namespace ConstructionLK.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
+                    ////Temp code
+                    //var roleStore = new RoleStore<IdentityRole>(new ApplicationDbContext());
+                    //var roleManager = new RoleManager<IdentityRole>(roleStore);
+                    //await roleManager.CreateAsync(new IdentityRole("AdministrativeStaff"));
+                    //await UserManager.AddToRoleAsync(user.Id, "AdministrativeStaff");
+
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771

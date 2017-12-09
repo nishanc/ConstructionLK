@@ -368,6 +368,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201712091337145_AdminStaffRemovedPasswordEmail.Designer.cs">
       <DependentUpon>201712091337145_AdminStaffRemovedPasswordEmail.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712091648301_AdminCreatedDateModifiedDateNotNullable.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712091648301_AdminCreatedDateModifiedDateNotNullable.Designer.cs">
+      <DependentUpon>201712091648301_AdminCreatedDateModifiedDateNotNullable.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -556,6 +560,7 @@
     <Content Include="Areas\Admin\Views\AdministrativeStaff\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdministrativeStaff\Index.cshtml" />
     <Content Include="Areas\Admin\Views\AdministrativeStaff\_Index.cshtml" />
+    <Content Include="Areas\Admin\Views\AdministrativeStaff\AdminPanel.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -805,6 +810,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712091337145_AdminStaffRemovedPasswordEmail.resx">
       <DependentUpon>201712091337145_AdminStaffRemovedPasswordEmail.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712091648301_AdminCreatedDateModifiedDateNotNullable.resx">
+      <DependentUpon>201712091648301_AdminCreatedDateModifiedDateNotNullable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

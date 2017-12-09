@@ -13,12 +13,56 @@ namespace ConstructionLK.Areas.Admin.Controllers
     public class AdministrativeStaffController : Controller
     {
         private ConstructionLKContext db = new ConstructionLKContext();
+        public ActionResult AdminPanel(string id)
+        {
+            if (id == null)
+            {
+                //return RedirectToAction("MyProfile", "Customers", new { id = customer.Id });
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //Customer customer = db.Customers.Find(id);
+            AdministrativeStaff admin = db.AdministrativeStaffs.SingleOrDefault(a => a.ApplicationUserId == id);
+            if (admin == null)
+            {
+                return HttpNotFound();
+            }
+            if ((!User.IsInRole(RoleName.Customer) || !User.IsInRole(RoleName.CanManageAll) || !User.IsInRole(RoleName.ServiceProvider) || !User.IsInRole(RoleName.AdministrativeStaff)))
+            {
+                //no role
+                RedirectToAction("RegisterAdmin", "Account");
+            }
+            //var principal = (RolePrincipal)User;
+            //if (!principal.GetRoles().Any())
+            //{
+            //    //no role
+            //    RedirectToAction("Index", "UserSelector");
+            //}
+            var administrativeStaffs = db.AdministrativeStaffs.Include(a => a.AspNetUser);
+            int counta = administrativeStaffs.Count();
+            ViewBag.CountA = counta.ToString();
+            var customers = db.Customers.Include(c => c.Id);
+            int countc = customers.Count();
+            ViewBag.CountC = countc.ToString();
+            //var csp = db.ServiceProviders.Include(sp => sp.Id);
+            //int countcsp = csp.Count();
+            var countcsp = db.ServiceProviders.Count(t => t.ServiceProviderType.Id == ServiceProviderTypeName.SpCooperate);
+            ViewBag.CountCSP = countcsp.ToString();
+            //var csi = db.ServiceProviders.Include(sp => sp.Id);
+            //int countcsi = csi.Count();
+            var countcsi = db.ServiceProviders.Count(t => t.ServiceProviderType.Id == ServiceProviderTypeName.SpIndividual);
+            ViewBag.CountISP = countcsi.ToString();
 
+
+            return View("AdminPanel", admin);
+            //return View();
+        }
         // GET: Admin/AdministrativeStaff
         public ActionResult Index()
         {
             var administrativeStaffs = db.AdministrativeStaffs.Include(a => a.AspNetUser);
-            return View(administrativeStaffs.ToList());
+            int count = administrativeStaffs.Count();
+            
+            return View("_Index",administrativeStaffs.ToList());
         }
 
         // GET: Admin/AdministrativeStaff/Details/5

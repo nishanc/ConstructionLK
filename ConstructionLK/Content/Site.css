@@ -40,3 +40,11 @@ textarea {
 .form-control{
     box-shadow: 2px 2px 5px rgb(181,137,0);
 }
+li.list-group-item:hover,
+button.list-group-item:hover,
+li.list-group-item:focus,
+button.list-group-item:focus {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #073642;
+}
