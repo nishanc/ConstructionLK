@@ -17,7 +17,7 @@ namespace ConstructionLK.Controllers
         // GET: Items
         public ActionResult Index()
         {
-            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
+            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i=>i.Status);
 
             if (User.IsInRole(RoleName.CanManageAll))
                 return View(items.ToList());
@@ -43,6 +43,7 @@ namespace ConstructionLK.Controllers
         // GET: Items/Create
         public ActionResult Create()
         {
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name");
             ViewBag.SubCategoryId = new SelectList(db.ItemSubCategories, "Id", "Name");
             ViewBag.TypeId = new SelectList(db.ItemTypes, "Id", "Type");
             ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username");
@@ -54,7 +55,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ItemName,ItemCode,Description,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId")] Item item)
+        public ActionResult Create([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -62,7 +63,7 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name",item.StatusId);
             ViewBag.SubCategoryId = new SelectList(db.ItemSubCategories, "Id", "Name", item.SubCategoryId);
             ViewBag.TypeId = new SelectList(db.ItemTypes, "Id", "Type", item.TypeId);
             ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", item.UserId);
@@ -81,6 +82,7 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name", item.StatusId);
             ViewBag.SubCategoryId = new SelectList(db.ItemSubCategories, "Id", "Name", item.SubCategoryId);
             ViewBag.TypeId = new SelectList(db.ItemTypes, "Id", "Type", item.TypeId);
             ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", item.UserId);
@@ -92,7 +94,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ItemName,ItemCode,Description,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId")] Item item)
+        public ActionResult Edit([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -100,6 +102,7 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name", item.StatusId);
             ViewBag.SubCategoryId = new SelectList(db.ItemSubCategories, "Id", "Name", item.SubCategoryId);
             ViewBag.TypeId = new SelectList(db.ItemTypes, "Id", "Type", item.TypeId);
             ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", item.UserId);

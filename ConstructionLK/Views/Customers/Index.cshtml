@@ -59,6 +59,7 @@ else
                             method: "DELETE",
                             success: function () {
                                 table.row(button.parents("tr")).remove().draw();
+                                toastr.success("Successfully Deleted!")
                                 ;
                             }
                         });

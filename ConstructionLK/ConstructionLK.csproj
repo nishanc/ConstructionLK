@@ -400,6 +400,18 @@
     <Compile Include="Migrations\ConstructionLKContext\201712091648301_AdminCreatedDateModifiedDateNotNullable.Designer.cs">
       <DependentUpon>201712091648301_AdminCreatedDateModifiedDateNotNullable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712100857059_StatusReferenceTable.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712100857059_StatusReferenceTable.Designer.cs">
+      <DependentUpon>201712100857059_StatusReferenceTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712100911233_StatusReferenceTableNameMaxLength.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712100911233_StatusReferenceTableNameMaxLength.Designer.cs">
+      <DependentUpon>201712100911233_StatusReferenceTableNameMaxLength.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712100920362_StatusReferenceTableDependancies.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712100920362_StatusReferenceTableDependancies.Designer.cs">
+      <DependentUpon>201712100920362_StatusReferenceTableDependancies.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -435,6 +447,7 @@
     <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\ServiceProviderType.cs" />
     <Compile Include="Models\ServiceProviderTypeName.cs" />
+    <Compile Include="Models\Status.cs" />
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -850,6 +863,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712091648301_AdminCreatedDateModifiedDateNotNullable.resx">
       <DependentUpon>201712091648301_AdminCreatedDateModifiedDateNotNullable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712100857059_StatusReferenceTable.resx">
+      <DependentUpon>201712100857059_StatusReferenceTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712100911233_StatusReferenceTableNameMaxLength.resx">
+      <DependentUpon>201712100911233_StatusReferenceTableNameMaxLength.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712100920362_StatusReferenceTableDependancies.resx">
+      <DependentUpon>201712100920362_StatusReferenceTableDependancies.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

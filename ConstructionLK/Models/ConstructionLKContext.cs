@@ -42,7 +42,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<ServiceProviderType> ServiceProviderTypes { get; set; }
         public virtual DbSet<sysdiagram> sysdiagrams { get; set; }
         public virtual DbSet<ItemLocations> ItemLocations { get; set; }
-
+        public virtual DbSet<Status> Statuses { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdministrativeStaff>()
@@ -200,6 +200,8 @@ namespace ConstructionLK.Models
                 .HasForeignKey(e => e.TypeId)
                 .WillCascadeOnDelete(false);
 
+
+
             modelBuilder.Entity<Location>()
                 .Property(e => e.Type)
                 .IsFixedLength();
@@ -275,6 +277,24 @@ namespace ConstructionLK.Models
                 .HasMany(e => e.ServiceProviders)
                 .WithOptional(e => e.AspNetUser)
                 .HasForeignKey(e => e.ApplicationUserId);
+
+            modelBuilder.Entity<Status>()
+                .HasMany(e => e.Customers)
+                .WithRequired(e => e.Status)
+                .HasForeignKey(e => e.StatusId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Status>()
+                .HasMany(e => e.ServiceProviders)
+                .WithRequired(e => e.Status)
+                .HasForeignKey(e => e.StatusId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Status>()
+                .HasMany(e => e.Items)
+                .WithRequired(e => e.Status)
+                .HasForeignKey(e => e.StatusId)
+                .WillCascadeOnDelete(false);
         }
     }
 }

@@ -47,11 +47,12 @@ namespace ConstructionLK.Controllers
         // GET: Customers
         public ActionResult Index()
         {
-            
-            if (User.IsInRole(RoleName.CanManageAll))
-                return View(db.Customers.ToList());
+            var customers = db.Customers.Include(c => c.Status);
 
-            return View("ReadOnlyIndex",db.Customers.ToList());
+            if (User.IsInRole(RoleName.CanManageAll))
+                return View(customers.ToList());
+
+            return View("ReadOnlyIndex", customers.ToList());
         }
 
         // GET: Customers/Details/5
@@ -62,7 +63,7 @@ namespace ConstructionLK.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Customer customer = db.Customers.Find(id);
-            Customer customer = db.Customers.SingleOrDefault(c => c.Id == id);
+            Customer customer = db.Customers.Include(c=>c.Status).SingleOrDefault(c => c.Id == id);
             if (customer == null)
             {
                 return HttpNotFound();
@@ -76,6 +77,8 @@ namespace ConstructionLK.Controllers
         // GET: Customers/Create
         public ActionResult Create()
         {
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name");
+
             return View();
         }
 
@@ -84,7 +87,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Username,FirstName,LastName,DateOfBirth,Telephone,Gender,Address,Status,CreatedDate,ModifiedDate,IsSubscribedToNewsletter,ApplicationUserId")]Customer customer)
+        public ActionResult Create([Bind(Include = "Username,FirstName,LastName,DateOfBirth,Telephone,Gender,Address,StatusId,CreatedDate,ModifiedDate,IsSubscribedToNewsletter,ApplicationUserId")]Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -94,6 +97,8 @@ namespace ConstructionLK.Controllers
                 //return RedirectToAction("MyProfile","Customers", new { id = customer.Id });
                 return RedirectToAction("MyProfile", "Customers", new { id = User.Identity.GetUserId() });
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name", customer.StatusId);
+
             //ViewBag.ApplicationUserId = new SelectList(db.AspNetUsers, "Id", "Username");
             return View(customer);
         }
@@ -110,6 +115,8 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name", customer.StatusId);
+
             return View(customer);
         }
 
@@ -118,7 +125,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,Password,FirstName,LastName,DateOfBirth,Telephone,Gender,Address,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Username,Password,FirstName,LastName,DateOfBirth,Telephone,Gender,Address,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -126,6 +133,8 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name", customer.StatusId);
+
             return View(customer);
         }
 

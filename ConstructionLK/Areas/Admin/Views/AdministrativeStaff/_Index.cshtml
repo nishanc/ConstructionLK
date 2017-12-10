@@ -26,7 +26,7 @@ else
             @foreach (var admin in Model)
             {
                 <tr>
-                    <td>@Html.ActionLink(admin.FirstName +" "+ admin.LastName, "Details", "Customers", new { id = admin.Id }, null)</td>
+                    <td>@Html.ActionLink(admin.FirstName +" "+ admin.LastName, "Details", "AdministrativeStaff", new { id = admin.Id }, null)</td>
                     <td>@admin.AspNetUser.Email</td>
                     <td>
                         @Html.ActionLink("Edit", "Edit", new { id = admin.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |

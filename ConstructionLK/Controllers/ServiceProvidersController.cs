@@ -13,14 +13,14 @@ namespace ConstructionLK.Controllers
 {
     public class ServiceProvidersController : Controller
     {
-        private ConstructionLKContext db = new ConstructionLKContext();
+        private ConstructionLKContext db = new ConstructionLKContext(); 
 
         // GET: ServiceProviders
         public ActionResult Index()
         {
             //var serviceProviders = db.ServiceProviders.Include(s => s.ServiceProviderType);
             //var serviceProviders = db.ServiceProviders.Include(s => s.ServiceProviderType);
-            var serviceProviders = db.ServiceProviders.Include(s => s.MembershipType);
+            var serviceProviders = db.ServiceProviders.Include(s => s.MembershipType).Include(s => s.Status);
             return View(serviceProviders.ToList());
         }
 
@@ -32,7 +32,7 @@ namespace ConstructionLK.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //ServiceProvider serviceProvider = db.ServiceProviders.Find(id);
-            ServiceProvider serviceProvider = db.ServiceProviders.Include(c => c.MembershipType).SingleOrDefault(c => c.Id == id);
+            ServiceProvider serviceProvider = db.ServiceProviders.Include(c => c.MembershipType).Include(s => s.Status).SingleOrDefault(c => c.Id == id);
 
             if (serviceProvider == null)
             {
@@ -44,6 +44,7 @@ namespace ConstructionLK.Controllers
         // GET: ServiceProviders/Create
         public ActionResult Create()
         {
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name");
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type");
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name");
             //var membershipTypes = db.MembershipTypes.ToList();
@@ -59,7 +60,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Username,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,MembershipTypeId")] ServiceProvider serviceProvider)
+        public ActionResult Create([Bind(Include = "Id,Username,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,MembershipTypeId")] ServiceProvider serviceProvider)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +68,7 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name",serviceProvider.StatusId);
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
             return View(serviceProvider);
         }
@@ -84,6 +85,7 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name",serviceProvider.StatusId);
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name", serviceProvider.MembershipTypeId);
             return View(serviceProvider);
@@ -94,7 +96,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,MembershipTypeId")] ServiceProvider serviceProvider)
+        public ActionResult Edit([Bind(Include = "Id,Username,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,MembershipTypeId")] ServiceProvider serviceProvider)
         {
             if (ModelState.IsValid)
             {
@@ -102,6 +104,7 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name",serviceProvider.StatusId);
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name",serviceProvider.MembershipTypeId);
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
             return View(serviceProvider);

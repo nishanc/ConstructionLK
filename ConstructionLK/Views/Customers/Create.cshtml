@@ -94,7 +94,7 @@
             </div>
         </div>
 
-        @Html.HiddenFor(model => model.Status, new { @Value = 1 })
+        @Html.HiddenFor(model => model.StatusId, new { @Value = 1 })
         @Html.HiddenFor(model => model.ApplicationUserId, new { @Value = User.Identity.GetUserId() })
         @Html.HiddenFor(model => model.CreatedDate, new { @Value = System.DateTime.Now })
         @Html.HiddenFor(model => model.ModifiedDate, new { @Value = System.DateTime.Now })
