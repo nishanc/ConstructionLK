@@ -1,0 +1,91 @@
+﻿@{
+    ViewBag.Title = "Registration Summery";
+    Layout = "~/Views/Shared/_LayoutNoFooter.cshtml";
+}
+<div class="row">
+    <canvas id="CountChart" width="100"></canvas>   
+</div>
+
+@section scripts
+{
+    <script type="text/javascript">
+        $(function() {
+            $.ajax({
+                url: '/Admin/UserCountChart/UserCount',
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                processData: false,
+                cache: false,
+                delay: 15,
+                success: function(data) {
+                    toastr.success("Successfully Loaded!");
+                    var labels = [], points = [], coloR = [];
+                    var dynamicColors = function() {
+                        var r = Math.floor(Math.random() * 255);
+                        var g = Math.floor(Math.random() * 255);
+                        var b = Math.floor(Math.random() * 255);
+                        return "rgb(" + r + "," + g + "," + b + ")";
+                    };
+                    for (var i = 0; i < data.length; i++) {
+                        labels.push(data[i].Item);
+                        points.push(data[i].Value);
+                        coloR.push(dynamicColors());
+                        console.log("result");
+                    }
+
+                    var ctx = document.getElementById("CountChart").getContext("2d");
+                    var myChart = new Chart(ctx,
+                        {
+                            type: 'horizontalBar',
+                            data: {
+                                labels: labels,
+                                datasets: [
+                                    {
+                                        label:'# of Users',
+                                        backgroundColor: coloR,
+                                        data: points
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+
+                                scales: {
+                                    xAxes:[
+                                        {
+                                            gridLines: {
+                                                display: true,
+                                                color: "#ffffff"
+                                            },
+                                            ticks: {
+                                                beginAtZero:true
+                                            }
+                                        }],
+                                    yAxes: [
+                                        {
+                                            gridLines: {
+                                                display: true,
+                                                color: "#ffffff"
+                                            }
+                                        }]
+                                },
+                                legend: {
+                                    display: true,
+                                    labels: {
+                                        fontColor: 'rgb(255, 255, 255)'
+                                    }
+                                }
+                            }
+                        });
+                    $(myChart).attr("height", dataSet.length * 20);
+                },
+                error: function(xhr) {
+                    alert('error');
+                }
+            });
+        });
+    </script>
+}

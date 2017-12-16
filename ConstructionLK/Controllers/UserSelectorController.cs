@@ -47,7 +47,7 @@ namespace ConstructionLK.Controllers
                 {
                     return RedirectToAction("Create", "ServiceProvidersCooperate");
                 }
-                if (user != null && user.UserSelection == 1)
+                if (user != null && user.UserSelection == 3)
                 {
                     return RedirectToAction("Create", "Customers");
                 }

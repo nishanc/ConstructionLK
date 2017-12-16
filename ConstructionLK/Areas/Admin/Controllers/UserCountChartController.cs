@@ -5,20 +5,18 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 using ConstructionLK.Areas.Admin.Models;
-using ConstructionLK.Models;
 
 namespace ConstructionLK.Areas.Admin.Controllers
 {
-    public class CustomerChartController : Controller
+    public class UserCountChartController : Controller
     {
-        public static DataTable GetCustomerSummary()
+        public static DataTable GetUserCount()
         {
 
-            DataTable dt = new DataTable("Customers");
+            DataTable dt = new DataTable();
             string query =
-                "SELECT count(*) AS Number, MONTH(CreatedDate) Month FROM Customers GROUP BY MONTH(CreatedDate)";
+                "SELECT 'Customers' AS Users, Count(*) AS Val FROM Customers UNION SELECT 'Service Providers' AS Users, Count(*) AS Val FROM ServiceProviders";
             SqlConnection con = new SqlConnection();
             con.ConnectionString = System.Configuration.ConfigurationManager
                 .ConnectionStrings["ConstructionLKContext"].ConnectionString;
@@ -33,21 +31,26 @@ namespace ConstructionLK.Areas.Admin.Controllers
 
         }
         [HttpGet]
-        public JsonResult CustomerSummary()
+        public JsonResult UserCount()
         {
-            List<RegChart> lstSummary = new List<RegChart>();
+            List<UserCount> lstSummary = new List<UserCount>();
 
-            foreach (DataRow dr in GetCustomerSummary().Rows)
+            foreach (DataRow dr in GetUserCount().Rows)
             {
-                RegChart summary = new RegChart();
+                UserCount summary = new UserCount();
                 //summary.Item = dr[0].ToString().Trim();
                 //summary.Value = Convert.ToInt32(dr[1]);
-                summary.Item = dr["Month"].ToString();
-                summary.Value = Convert.ToInt32(dr["Number"]);
+                summary.Item = dr[0].ToString();
+                summary.Value = Convert.ToInt32(dr[1]);
                 lstSummary.Add(summary);
 
             }
             return Json(lstSummary.ToList(), JsonRequestBehavior.AllowGet);
+        }
+        // GET: Admin/UserCountChart
+        public ActionResult Index()
+        {
+            return PartialView("UserCountChart");
         }
     }
 }

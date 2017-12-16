@@ -11,7 +11,7 @@ namespace ConstructionLK.Areas.Admin.Controllers
         // GET: Admin/Chart
         public ActionResult Index()
         {
-            return View("RegCharts");
+            return PartialView("RegCharts");
         }
     }
 }

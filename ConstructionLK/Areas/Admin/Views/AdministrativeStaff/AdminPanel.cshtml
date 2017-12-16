@@ -37,9 +37,26 @@
 
     </ul>
 </div>
+<div class="well well-sm col-md-9" align="center">
+        <h3>Registration Status</h3>
+</div>
 @Html.Partial("RegCharts")
-<div class="col-md-9">
-    <dl class="dl-horizontal">
+<div class="well well-sm col-md-12" align="center">
+        <h3>User Status</h3>
+</div>
+@Html.Partial("UserCountChart")
+<div class ="row">
+    <div class="col-md-12">
+        <div class="well well-sm aligncenter">
+            <b>@Html.DisplayNameFor(model => model.Username)</b> | @Html.DisplayFor(model => model.Username)
+            &nbsp;&nbsp;
+            Last Modified On | @Html.Label(Model.ModifiedDate.ToString("Y"))
+            &nbsp;&nbsp;
+            @Html.ActionLink("Add New Administrator", "Create", "AdministrativeStaff", new { @class = "btn btn-outline-primary btn-sm"})
+
+        </div>
+        @*<dl class="dl-horizontal">
+
         <dt>
             @Html.DisplayNameFor(model => model.AspNetUser.Email)
         </dt>
@@ -104,9 +121,13 @@
             @Html.DisplayFor(model => model.ModifiedDate)
         </dd>
 
-    </dl>
+    </dl>*@
+    </div>
+
+
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+<div class="row"><p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+    @*@Html.ActionLink("Back to List", "Index")*@
+
+</p></div>

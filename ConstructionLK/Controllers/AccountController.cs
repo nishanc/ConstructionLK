@@ -1,10 +1,13 @@
 ﻿using System;
 using System.Globalization;
 using System.Linq;
+using System.Runtime.Remoting.Contexts;
 using System.Security.Claims;
+using System.Security.Principal;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Script.Serialization;
 using System.Web.Security;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
@@ -77,14 +80,7 @@ namespace ConstructionLK.Controllers
                 return View(model);
             }
 
-            var userid = UserManager.FindByEmail(model.Email).Id;
-            if (!UserManager.IsEmailConfirmed(userid))
-            {
-                return View("ConfirmEmailToContinue");
-            }
-
             //var principal = (RolePrincipal)User;
-
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
@@ -92,30 +88,23 @@ namespace ConstructionLK.Controllers
             switch (result)
             {
                 case SignInStatus.Success:
-                    //if (!(User.IsInRole(RoleName.Customer) || User.IsInRole(RoleName.CanManageAll) || User.IsInRole(RoleName.ServiceProvider)))
-                    //{
-                    //    //no role
-                    //    //var userId = UserManager.FindByEmail(model.Email).Id;
-                    //    //return HttpNotFound();
-                    ////if (UserManager.IsEmailConfirmed(userid))
-                    ////{
-                    ////    return RedirectToAction("Index", "UserSelector");
-                    ////}
-                    //    return View("UserSelector");
-                    //}
-                    //if (User.IsInRole(RoleName.Customer))
-                    //    return RedirectToAction("MyProfile", "Customers", new { id = User.Identity.GetUserId() });
-                    //if (User.IsInRole(RoleName.ServiceProvider))
-                    //{
-                    //    var type = db.ServiceProviders.Find(User.Identity.GetUserId());
-                    //    if(type.TypeId == ServiceProviderTypeName.SpIndividual)
-                    //        return RedirectToAction("MyProfile", "ServiceProvidersIndividual",new { id = User.Identity.GetUserId() });
-                    //    else if (type.TypeId == ServiceProviderTypeName.SpCooperate)
-                    //        return RedirectToAction("MyProfile", "ServiceProvidersCooperate",new {id = User.Identity.GetUserId()});
-                    //    else
-                    //        return HttpNotFound();
-                    //}
-                    //else
+                    var userid = UserManager.FindByEmail(model.Email).Id;
+                    if (!UserManager.IsEmailConfirmed(userid))
+                    {
+                        AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+                        return View("ConfirmEmailToContinue");
+                    }
+                    if (model.RememberMe)
+                    {
+                        var cookie = FormsAuthentication.GetAuthCookie(model.Email, model.RememberMe);
+                        cookie.Expires = DateTime.Now.AddDays(30);
+                        Response.Cookies.Add(cookie);
+                    }
+                    else
+                    {
+                        // Otherwise set the cookie as normal
+                        FormsAuthentication.SetAuthCookie(model.Email, model.RememberMe);
+                    }
                     return RedirectToAction("UserProfile", "UserSelector");
                 //return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
