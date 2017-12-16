@@ -266,8 +266,10 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdministrativeStaffController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerChartController.cs" />
-    <Compile Include="Areas\Admin\Models\CustomerChart.cs" />
+    <Compile Include="Areas\Admin\Controllers\ServiceProviderChartController.cs" />
+    <Compile Include="Areas\Admin\Models\RegChart.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\AdministrativeStaffController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
@@ -616,6 +618,8 @@
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
     <Content Include="Areas\Admin\Views\CustomerChart\CustomerSummery.cshtml" />
+    <Content Include="Areas\Admin\Views\Chart\RegCharts.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\RegCharts.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
@@ -783,7 +787,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\Shared\" />
+    <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>

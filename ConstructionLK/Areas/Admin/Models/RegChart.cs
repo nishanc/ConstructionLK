@@ -7,7 +7,7 @@ using System.Web;
 
 namespace ConstructionLK.Areas.Admin.Models
 {
-    public class CustomerChart
+    public class RegChart
     {
  
         public string Item { get; set; }

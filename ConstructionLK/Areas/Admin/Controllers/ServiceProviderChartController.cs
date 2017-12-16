@@ -5,20 +5,19 @@ using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using System.Web.Services;
 using ConstructionLK.Areas.Admin.Models;
-using ConstructionLK.Models;
 
 namespace ConstructionLK.Areas.Admin.Controllers
 {
-    public class CustomerChartController : Controller
+    public class ServiceProviderChartController : Controller
     {
-        public static DataTable GetVehicleSummary()
+        // GET: Admin/ServiceProviderChart
+        public static DataTable GetSPSummary()
         {
 
-            DataTable dt = new DataTable("Customers");
+            DataTable dt = new DataTable("ServiceProviders");
             string query =
-                "SELECT count(*) AS Number, MONTH(CreatedDate) Month FROM Customers GROUP BY MONTH(CreatedDate)";
+                "SELECT count(*) AS Number, MONTH(CreatedDate) Month FROM ServiceProviders GROUP BY MONTH(CreatedDate)";
             SqlConnection con = new SqlConnection();
             con.ConnectionString = System.Configuration.ConfigurationManager
                 .ConnectionStrings["ConstructionLKContext"].ConnectionString;
@@ -33,11 +32,11 @@ namespace ConstructionLK.Areas.Admin.Controllers
 
         }
         [HttpGet]
-        public JsonResult VehicleSummary()
+        public JsonResult SPSummary()
         {
             List<RegChart> lstSummary = new List<RegChart>();
 
-            foreach (DataRow dr in GetVehicleSummary().Rows)
+            foreach (DataRow dr in GetSPSummary().Rows)
             {
                 RegChart summary = new RegChart();
                 //summary.Item = dr[0].ToString().Trim();
@@ -49,5 +48,6 @@ namespace ConstructionLK.Areas.Admin.Controllers
             }
             return Json(lstSummary.ToList(), JsonRequestBehavior.AllowGet);
         }
+        // GET: Admin/CustomerChart
     }
 }

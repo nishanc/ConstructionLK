@@ -91,7 +91,7 @@
             });
         });
     </script>
-<script type="text/javascript">
+    <script type="text/javascript">
         $(function () {
             $.ajax({
                 url: '/Admin/ServiceProviderChart/SPSummary',
@@ -152,54 +152,54 @@
                 }
             });
         });
-</script>
+    </script>
 }
 @*@section scripts
-{
-    <script>
-        window.onload = function () {
-    
-        };
-    </script>
-    <script type="text/javascript">
-        $(function () {
-            $.ajax({
-                url: '/Admin/CustomerChart/VehicleSummary',
-                dataType: "json",
-                type: "GET",
-                contentType: 'application/json; charset=utf-8',
-                async: false,
-                processData: false,
-                cache: false,
-                delay: 15,
-                success: function (data) {
-                    toastr.success("Successfully Loaded!");
-                    var dataPoints = new Array();
-                    for (var i in data) {
-                        dataPoints.push({ label: data[i].Item, y: data[i].Value });
+    {
+        <script>
+            window.onload = function () {
+
+            };
+        </script>
+        <script type="text/javascript">
+            $(function () {
+                $.ajax({
+                    url: '/Admin/CustomerChart/VehicleSummary',
+                    dataType: "json",
+                    type: "GET",
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    processData: false,
+                    cache: false,
+                    delay: 15,
+                    success: function (data) {
+                        toastr.success("Successfully Loaded!");
+                        var dataPoints = new Array();
+                        for (var i in data) {
+                            dataPoints.push({ label: data[i].Item, y: data[i].Value });
+                        }
+                        var chart = new CanvasJS.Chart("chartContainer", {
+                            theme: "theme2",
+                            animationEnabled: true,
+                            title: {
+                                text: "Simple Column Chart in ASP.NET MVC"
+                            },
+                            subtitles: [
+                                { text: "Try Resizing the Browser" }
+                            ],
+                            data: [
+                                {
+                                    type: "bar", //change type to bar, line, area, pie, etc
+                                    dataPoints: dataPoints
+                                }
+                            ]
+                        });
+                        chart.render();
+                    },
+                    error: function (xhr) {
+                        alert('error');
                     }
-                    var chart = new CanvasJS.Chart("chartContainer", {
-                        theme: "theme2",
-                        animationEnabled: true,
-                        title: {
-                            text: "Simple Column Chart in ASP.NET MVC"
-                        },
-                        subtitles: [
-                            { text: "Try Resizing the Browser" }
-                        ],
-                        data: [
-                            {
-                                type: "bar", //change type to bar, line, area, pie, etc
-                                dataPoints: dataPoints
-                            }
-                        ]
-                    });
-                    chart.render();
-                },
-                error: function (xhr) {
-                    alert('error');
-                }
+                });
             });
-        });
-    </script>
-}*@
+        </script>
+    }*@
