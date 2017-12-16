@@ -48,6 +48,9 @@
       <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>C:\Users\Nishan Chathuranga\Downloads\Compressed\DotNet.Highcharts.4.0\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
       <Private>True</Private>
@@ -263,6 +266,8 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdministrativeStaffController.cs" />
+    <Compile Include="Areas\Admin\Controllers\CustomerChartController.cs" />
+    <Compile Include="Areas\Admin\Models\CustomerChart.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\AdministrativeStaffController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
@@ -420,6 +425,7 @@
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\BlogPostComment.cs" />
     <Compile Include="Models\BlogPostImage.cs" />
+    <Compile Include="ViewModels\ChartsModel.cs" />
     <Compile Include="Models\ConstructionLKContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />
@@ -609,9 +615,12 @@
     <Content Include="Areas\Admin\Views\AdministrativeStaff\AdminPanel.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
+    <Content Include="Areas\Admin\Views\CustomerChart\CustomerSummery.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="Scripts\Chart.js" />
+    <Content Include="Scripts\Chart.min.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.js" />
     <Content Include="Scripts\DataTables\autoFill.bootstrap.min.js" />
     <Content Include="Scripts\DataTables\autoFill.foundation.js" />
@@ -679,6 +688,7 @@
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-3.2.1.min.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -773,7 +783,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Models\" />
     <Folder Include="Areas\Admin\Views\Shared\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>

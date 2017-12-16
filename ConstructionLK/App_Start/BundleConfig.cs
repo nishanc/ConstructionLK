@@ -15,7 +15,8 @@ namespace ConstructionLK
                         "~/Scripts/respond.js",
                         "~/Scripts/datatables/jquery.datatables.js",
                         "~/Scripts/datatables/datatables.bootstrap.js",
-                        "~/Scripts/toastr.js"
+                        "~/Scripts/toastr.js",
+                        "~/Scripts/Chart.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(

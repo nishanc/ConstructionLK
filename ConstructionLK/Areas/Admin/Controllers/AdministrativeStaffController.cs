@@ -1,12 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
+using ConstructionLK.ViewModels;
+using DotNet.Highcharts;
+using DotNet.Highcharts.Helpers;
+using DotNet.Highcharts.Options;
 
 namespace ConstructionLK.Areas.Admin.Controllers
 {
@@ -31,12 +37,7 @@ namespace ConstructionLK.Areas.Admin.Controllers
                 //no role
                 RedirectToAction("RegisterAdmin", "Account");
             }
-            //var principal = (RolePrincipal)User;
-            //if (!principal.GetRoles().Any())
-            //{
-            //    //no role
-            //    RedirectToAction("Index", "UserSelector");
-            //}
+
             var administrativeStaffs = db.AdministrativeStaffs.Include(a => a.AspNetUser);
             int counta = administrativeStaffs.Count();
             ViewBag.CountA = counta.ToString();
@@ -56,9 +57,13 @@ namespace ConstructionLK.Areas.Admin.Controllers
             return View("AdminPanel", admin);
             //return View();
         }
+
+
+
         // GET: Admin/AdministrativeStaff
         public ActionResult Index()
         {
+
             var administrativeStaffs = db.AdministrativeStaffs.Include(a => a.AspNetUser);
             int count = administrativeStaffs.Count();
             

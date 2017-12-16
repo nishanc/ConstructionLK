@@ -140,5 +140,11 @@ namespace ConstructionLK.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public JsonResult GetLocation()
+        {
+            var data = db.Locations.ToList();
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }
