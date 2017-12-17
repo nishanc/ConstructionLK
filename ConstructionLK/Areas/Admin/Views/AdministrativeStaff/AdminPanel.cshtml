@@ -8,13 +8,17 @@
     ViewBag.Title = "Profile";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+
 <div class="well"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
 
 
 <span class="label label-success">Administrator</span>
-<span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
+@*<span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>*@
 <hr />
-
+<div class="alert alert-dismissible alert-success">
+    <button type="button" class="close" data-dismiss="alert">&times;</button>
+    <h4>New Requests!</h4><strong>Access them now. Click </strong> <a href="#" class="alert-link">here</a>
+</div>
 @*@Html.Partial("_Index")*@
 <div class="col-md-3">
     <ul class="list-group">
@@ -38,11 +42,11 @@
     </ul>
 </div>
 <div class="well well-sm col-md-9" align="center">
-        <h3>Registration Status</h3>
+        <h4>Registration Status</h4>
 </div>
 @Html.Partial("RegCharts")
 <div class="well well-sm col-md-12" align="center">
-        <h3>User Status</h3>
+        <h4>User Status</h4>
 </div>
 @Html.Partial("UserCountChart")
 <div class ="row">
@@ -50,7 +54,7 @@
         <div class="well well-sm aligncenter">
             <b>@Html.DisplayNameFor(model => model.Username)</b> | @Html.DisplayFor(model => model.Username)
             &nbsp;&nbsp;
-            Last Modified On | @Html.Label(Model.ModifiedDate.ToString("Y"))
+            @*Last Modified On | @Html.Label(Model.ModifiedDate.ToString("Y"))*@
             &nbsp;&nbsp;
             @Html.ActionLink("Add New Administrator", "Create", "AdministrativeStaff", new { @class = "btn btn-outline-primary btn-sm"})
 

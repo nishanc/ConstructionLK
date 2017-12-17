@@ -48,9 +48,10 @@ namespace ConstructionLK.Models
         public string LastName { get; set; }
 
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:y}")]
+        //[DisplayFormat(DataFormatString = "{0:y}")]
         [Column(TypeName = "date")]
         [Display(Name = "Date of Birth")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Min18YearsIfAMember]
         public DateTime? DateOfBirth { get; set; }
 

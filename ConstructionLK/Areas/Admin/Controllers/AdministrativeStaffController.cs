@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Configuration;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Net;
@@ -131,10 +132,11 @@ namespace ConstructionLK.Areas.Admin.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,FirstName,LastName,Password,Email,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,ApplicationUserId")] AdministrativeStaff administrativeStaff)
+        public ActionResult Edit([Bind(Include = "Id,Username,FirstName,LastName,CreatedBy,CreatedDate,ModifiedDate,ApplicationUserId")] AdministrativeStaff administrativeStaff)
         {
             if (ModelState.IsValid)
             {
+
                 db.Entry(administrativeStaff).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

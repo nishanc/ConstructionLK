@@ -30,6 +30,12 @@
                     <li>@Html.ActionLink("Pricing", "Contact", "Home", new { area = "" },null)</li>
                     <li>@Html.ActionLink("Services", "Index", "Items", new { area = "" },null)</li>
                 </ul>
+                <form class="navbar-form navbar-left" role="search">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-warning">Submit</button>
+                </form>
                 @Html.Partial("_LoginPartial")
             </div>
         </div>

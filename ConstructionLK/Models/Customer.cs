@@ -37,6 +37,7 @@ namespace ConstructionLK.Models
         //[DisplayFormat(DataFormatString = "{0:y}")]
         [Display(Name = "Date of Birth")]
         [Column(TypeName = "date")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
         [Required]

@@ -34,6 +34,8 @@ namespace ConstructionLK.Models
         public DateTime CreatedDate { get; set; }
 
         public int? ModifiedBy { get; set; }
+
+
         [Column(TypeName = "DateTime")]
         public DateTime ModifiedDate { get; set; }
 

@@ -421,6 +421,14 @@
     <Compile Include="Migrations\ConstructionLKContext\201712100920362_StatusReferenceTableDependancies.Designer.cs">
       <DependentUpon>201712100920362_StatusReferenceTableDependancies.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712161817311_NullableDateTimeAdminStaff.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712161817311_NullableDateTimeAdminStaff.Designer.cs">
+      <DependentUpon>201712161817311_NullableDateTimeAdminStaff.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712161913084_NonNullableDateTimeAdminStaff.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712161913084_NonNullableDateTimeAdminStaff.Designer.cs">
+      <DependentUpon>201712161913084_NonNullableDateTimeAdminStaff.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -890,6 +898,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712100920362_StatusReferenceTableDependancies.resx">
       <DependentUpon>201712100920362_StatusReferenceTableDependancies.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712161817311_NullableDateTimeAdminStaff.resx">
+      <DependentUpon>201712161817311_NullableDateTimeAdminStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712161913084_NonNullableDateTimeAdminStaff.resx">
+      <DependentUpon>201712161913084_NonNullableDateTimeAdminStaff.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
