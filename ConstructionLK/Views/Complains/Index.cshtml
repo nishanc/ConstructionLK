@@ -24,6 +24,9 @@
         <th>
             @Html.DisplayNameFor(model => model.ComplainedBy)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ComplainBody)
+        </th>
         <th></th>
     </tr>
 
@@ -40,6 +43,9 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ComplainedBy)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ComplainBody)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |

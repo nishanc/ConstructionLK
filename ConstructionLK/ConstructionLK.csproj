@@ -436,6 +436,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201712200953363_ComplainsAndComplainAction.Designer.cs">
       <DependentUpon>201712200953363_ComplainsAndComplainAction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712201520573_ComplainBodyToComplains.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712201520573_ComplainBodyToComplains.Designer.cs">
+      <DependentUpon>201712201520573_ComplainBodyToComplains.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -931,6 +935,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712200953363_ComplainsAndComplainAction.resx">
       <DependentUpon>201712200953363_ComplainsAndComplainAction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712201520573_ComplainBodyToComplains.resx">
+      <DependentUpon>201712201520573_ComplainBodyToComplains.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
