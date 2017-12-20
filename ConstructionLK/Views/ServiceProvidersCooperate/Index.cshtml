@@ -4,8 +4,77 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<h2>Service Providers > Cooperate</h2>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+@if (!Model.Any())
+{
+    <p>We don't have any service providers yet.</p>
+}
+else
+{
+    <table id="sp" class="table table-bordered table-hover">
+        <thead>
+            <tr class="info">
+                <th>Service Provider</th>
+                <th>Started Date</th>
+                <th>Based City</th>
+                <th>Telephone</th>
+                <th>Membership Type</th>
+                <th>Account Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var sp in Model)
+            {
+                <tr>
+                    <td>
+                        @(sp.FirstName == null ? Html.ActionLink(sp.CompanyName, "Details", "ServiceProviders", new { id = sp.Id }, null) : Html.ActionLink(sp.FirstName, "Details", "ServiceProviders", new { id = sp.Id }, null))
 
-<h2>Index</h2>
+                    </td>
+                    <td>@sp.StartedDate</td>
+                    <td>@sp.BasedCity</td>
+                    <td>@sp.Telephone</td>
+                    <td>@sp.MembershipType.Name</td>
+                    <td>@sp.ServiceProviderType.Type</td>
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = sp.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                        @Html.ActionLink("Details", "Details", new { id = sp.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
+                        @Html.ActionLink("Review and Delete", "Delete", new { id = sp.Id }, new { @class = "btn btn-outline-warning btn-sm" }) |
+                        <button data-item-id="@sp.Id" class="btn btn-outline-warning btn-sm js-delete">Delete Now</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            var table = $("#sp").DataTable();
+            $("#sp").on("click", ".js-delete", function () {
+                var button = $(this);
+
+                bootbox.confirm("Are you sure?", function(result)
+                {
+                    if (result) {
+                        $.ajax({
+                            url: "/api/serviceproviders/" + button.attr("data-item-id"),
+                            method: "DELETE",
+                            success: function () {
+                                table.row(button.parents("tr")).remove().draw();
+                                toastr.success("Successfully Deleted!");
+                            }
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+}
+@*<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -138,5 +207,4 @@
         </td>
     </tr>
 }
-
-</table>
+</table>*@

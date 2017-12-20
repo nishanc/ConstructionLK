@@ -1,9 +1,35 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
+<script>
+    (function() {
+        var cx = '018043595113494896742:yzyxtpobkpm';
+        var gcse = document.createElement('script');
+        gcse.type = 'text/javascript';
+        gcse.async = true;
+        gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+        var s = document.getElementsByTagName('script')[0];
+        s.parentNode.insertBefore(gcse, s);
+    })();
+</script>
+
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 400px;
+        width: 1000px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+</style>
 <h2>@ViewBag.Title.</h2>
 <h3>@ViewBag.Message</h3>
-
+<gcse:search></gcse:search>
 <address>
     Techwire Lanka (Pvt) Ltd<br />
     270/A/2 Hapugoda Kandana<br />
@@ -15,3 +41,24 @@
     <strong>Support:</strong>   <a href="mailto:pahanimg10@gmail.com">support@constructionlk.com</a><br />
     <strong>Marketing:</strong> <a href="mailto:pahan@techwirelanka.com">marketing@techwirelanka.com</a>
 </address>
+<div id="map"></div>
+<script>
+    function initMap() {
+        var myLatLng = {lat: 6.860310, lng: 79.906528};
+        var icon = "../Resources/Icons/pin.png";
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: myLatLng
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'ConstructionLK Head Quaters',
+            icon: icon
+        });
+    }
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNAhDrUVY2eAjlZHN_P1C1msEA_45v-XY&callback=initMap">
+</script>

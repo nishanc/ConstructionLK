@@ -7,7 +7,6 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="well"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
-
 <div>
     <span class="label label-warning">Customer</span>
     <span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>

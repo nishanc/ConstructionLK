@@ -9,11 +9,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<div class="well"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
+<div class="well well-sm" align="center"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
 
 
 <span class="label label-success">Administrator</span>
-@*<span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>*@
+<span class="label label-info" >Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
 <hr />
 <div class="alert alert-dismissible alert-success">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
@@ -24,7 +24,7 @@
     <ul class="list-group">
 
         @Html.ActionLink("Edit Your Details", "Edit", new {id = Model.Id}, new {@class = "list-group-item"})
-        <li class="list-group-item">
+        <li class="list-group-item" >
             <span class="badge">@ViewBag.CountA</span>
             @Html.ActionLink("Administrators ", "Index")
         </li>        <li class="list-group-item">
@@ -38,11 +38,36 @@
             <span class="badge">@ViewBag.CountISP</span>
             @Html.ActionLink("Freelancer Service Providers", "Index", "ServiceProvidersIndividual", new {area = ""}, null)
         </li>
-
+        <li class="list-group-item">
+            @*<span class="badge">@ViewBag.CountISP</span>*@
+            @Html.ActionLink("Monitor Ongoing Jobs", "Index", "ServiceProvidersIndividual", new { area = "" }, null)
+        </li>
+        <li class="list-group-item">
+            @*<span class="badge">@ViewBag.CountISP</span>*@
+            @Html.ActionLink("All Jobs", "Index", "ServiceProvidersIndividual", new { area = "" }, null)
+        </li>
+    </ul>       
+    <ul class="nav nav-pills nav-stacked">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="dropdown">
+            <a class="dropdown-toggle list-group-item" data-toggle="dropdown" href="#" aria-expanded="false">
+                External <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li><a href="./">Server Login</a></li>
+                <li><a href="#">Play Store</a></li>
+                <li><a href="#">App Store</a></li>
+                <li class="divider"></li>
+                <li><a href="#">Separated link</a></li>
+            </ul>
+        </li>
     </ul>
 </div>
 <div class="well well-sm col-md-9" align="center">
-        <h4>Registration Status</h4>
+    <h4>
+        Registration Status
+        
+    </h4>
 </div>
 @Html.Partial("RegCharts")
 <div class="well well-sm col-md-12" align="center">
@@ -54,7 +79,7 @@
         <div class="well well-sm aligncenter">
             <b>@Html.DisplayNameFor(model => model.Username)</b> | @Html.DisplayFor(model => model.Username)
             &nbsp;&nbsp;
-            @*Last Modified On | @Html.Label(Model.ModifiedDate.ToString("Y"))*@
+            Last Modified On | @Html.Label(Model.ModifiedDate.ToString("Y"))
             &nbsp;&nbsp;
             @Html.ActionLink("Add New Administrator", "Create", "AdministrativeStaff", new { @class = "btn btn-outline-primary btn-sm"})
 
