@@ -431,6 +431,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201712161913084_NonNullableDateTimeAdminStaff.Designer.cs">
       <DependentUpon>201712161913084_NonNullableDateTimeAdminStaff.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712200953363_ComplainsAndComplainAction.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712200953363_ComplainsAndComplainAction.Designer.cs">
+      <DependentUpon>201712200953363_ComplainsAndComplainAction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -439,6 +443,8 @@
     <Compile Include="Models\BlogPost.cs" />
     <Compile Include="Models\BlogPostComment.cs" />
     <Compile Include="Models\BlogPostImage.cs" />
+    <Compile Include="Models\Complain.cs" />
+    <Compile Include="Models\ComplainAction.cs" />
     <Compile Include="ViewModels\ChartsModel.cs" />
     <Compile Include="Models\ConstructionLKContext.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -916,6 +922,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712161913084_NonNullableDateTimeAdminStaff.resx">
       <DependentUpon>201712161913084_NonNullableDateTimeAdminStaff.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712200953363_ComplainsAndComplainAction.resx">
+      <DependentUpon>201712200953363_ComplainsAndComplainAction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
