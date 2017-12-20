@@ -278,6 +278,7 @@
     <Compile Include="Controllers\API\ItemsController.cs" />
     <Compile Include="Controllers\API\ServiceProvidersController.cs" />
     <Compile Include="Controllers\BlogPostsController.cs" />
+    <Compile Include="Controllers\ComplainsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemRequestsController.cs" />
@@ -812,6 +813,11 @@
     <Content Include="Views\BlogPosts\Details.cshtml" />
     <Content Include="Views\BlogPosts\Edit.cshtml" />
     <Content Include="Views\BlogPosts\Index.cshtml" />
+    <Content Include="Views\Complains\Create.cshtml" />
+    <Content Include="Views\Complains\Delete.cshtml" />
+    <Content Include="Views\Complains\Details.cshtml" />
+    <Content Include="Views\Complains\Edit.cshtml" />
+    <Content Include="Views\Complains\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

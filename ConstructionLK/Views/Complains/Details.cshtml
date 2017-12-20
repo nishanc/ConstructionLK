@@ -1,0 +1,51 @@
+﻿@model ConstructionLK.Models.Complain
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Complain</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.AspNetUser.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AspNetUser.Email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplainAction.Action)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplainAction.Action)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplainedDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplainedDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ComplainedBy)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ComplainedBy)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
