@@ -94,6 +94,13 @@
     <div id="map" class="col-md-12"></div>
 </div>
 <script>
+    $(document).ready(function () {
+        $("#Latitudes").change(function () {
+            alert("Value: " + $("#Latitude").text);
+        });
+    });
+</script>
+<script>
       // This example adds a search box to a map, using the Google Place Autocomplete
       // feature. People can enter geographical searches. The search box will return a
       // pick list containing a mix of places and predicted search terms.
@@ -104,7 +111,7 @@
 
       function initAutocomplete() {
         var map = new google.maps.Map(document.getElementById('map'), {
-          center: {lat: -33.8688, lng: 151.2195},
+            center: { lat: 6.927079, lng: 79.861243 },
           zoom: 13,
           mapTypeId: 'roadmap'
         });
@@ -142,52 +149,68 @@
               console.log("Returned place contains no geometry");
               return;
             }
-              var icon = {
-                  url: place.icon,
-                  size: new google.maps.Size(71, 71),
-                  origin: new google.maps.Point(0, 0),
-                  anchor: new google.maps.Point(19, 50),
-                  scaledSize: new google.maps.Size(25, 25)
-              };
-              markers.push(new google.maps.Marker({
-                  map: map,
-                  icon: icon,
-                  title: place.name,
-                  position: place.geometry.location,
-                  draggable: true
-              }));
-
-            if (place.geometry.viewport) {
-              // Only geocodes have viewport.
-              bounds.union(place.geometry.viewport);
-            } else {
-              bounds.extend(place.geometry.location);
-            }
-          });
-            google.maps.event.addListener(map, "click", function (event) {
-                //console.log(event.latLng.toString());
-
-                placeMarker(map, event.latLng);
-            });
-            function placeMarker(map, location) {
                 var icon = {
-                    url: "../Resources/Icons/pin.png",
+                    url: place.icon,
                     size: new google.maps.Size(71, 71),
                     origin: new google.maps.Point(0, 0),
-                    anchor: new google.maps.Point(23, 50),
-                    scaledSize: new google.maps.Size(40, 49)
+                    anchor: new google.maps.Point(19, 50),
+                    scaledSize: new google.maps.Size(25, 25)
                 };
+                markers.push(new google.maps.Marker({
+                    map: map,
+                    icon: icon,
+                    title: place.name,
+                    position: place.geometry.location,
+                    draggable: true
+                }));
+                map.addListener('click', function (event) {
+                    deleteMarkers();
+                    addMarker(event.latLng);
+                    document.getElementById('Latitudes').innerHTML = event.latLng.lat().toFixed(6);
+                    document.getElementById('Longitudes').innerHTML = event.latLng.lng().toFixed(6);
+
+                    //document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + event.latLng.lat().toFixed(6) + ' Current Lng: ' + event.latLng.lng().toFixed(6) + '</p>';
+                });
+                if (place.geometry.viewport) {
+                    // Only geocodes have viewport.
+                    bounds.union(place.geometry.viewport);
+                } else {
+                    bounds.extend(place.geometry.location);
+                }
+            });
+            function addMarker(location) {
                 var marker = new google.maps.Marker({
                     position: location,
                     map: map,
-                    icon: icon,
-                    draggable: true
+                    draggable: true,
+                    icon: "../Resources/Icons/pin.png"
                 });
-
-                google.maps.event.addListener(marker, 'dragend', function (evt) {
-                    document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt.latLng.lat().toFixed(3) + ' Current Lng: ' + evt.latLng.lng().toFixed(3) + '</p>';
+                //google.maps.event.addListener(marker, 'dragend', function (evt1) {
+                //    document.getElementById('current').innerHTML = '<p>Marker dropped: Current Lat: ' + evt1.latLng.lat().toFixed(6) + ' Current Lng: ' + evt1.latLng.lng().toFixed(6) + '</p>';
+                //});
+                google.maps.event.addListener(marker, 'dragend', function (evt1) {
+                    document.getElementById('Latitudes').innerHTML = evt1.latLng.lat().toFixed(6);
+                    document.getElementById('Longitudes').innerHTML = evt1.latLng.lng().toFixed(6);
                 });
+                markers.push(marker);
+            }
 
+            // Sets the map on all markers in the array.
+            function setMapOnAll(map) {
+                for (var i = 0; i < markers.length; i++) {
+                    markers[i].setMap(map);
+                }
+            }
+
+            // Removes the markers from the map, but keeps them in the array.
+            function clearMarkers() {
+                setMapOnAll(null);
+            }
+
+            // Deletes all markers in the array by removing references to them.
+            function deleteMarkers() {
+                clearMarkers();
+                markers = [];
             }
           map.fitBounds(bounds);
         });
@@ -196,8 +219,9 @@
 </script>
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNAhDrUVY2eAjlZHN_P1C1msEA_45v-XY&libraries=places&callback=initAutocomplete"
         async defer></script>
-
-<div id="current">Nothing yet...</div>
+&nbsp;&nbsp;&nbsp;&nbsp;
+<span class="label label-success" id="Latitudes">Latitude</span>
+<span class="label label-warning" id="Longitudes">Latitude</span>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
@@ -209,7 +233,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Latitude, new { htmlAttributes = new { @class = "form-control"} })
                 @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -217,7 +241,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.TextBoxFor(model => model.Longitude, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
             </div>
         </div>

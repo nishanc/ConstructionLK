@@ -276,6 +276,7 @@
     <Compile Include="Controllers\API\AdministrativeStaffController.cs" />
     <Compile Include="Controllers\API\CustomersController.cs" />
     <Compile Include="Controllers\API\ItemsController.cs" />
+    <Compile Include="Controllers\API\LocationsController.cs" />
     <Compile Include="Controllers\API\ServiceProvidersController.cs" />
     <Compile Include="Controllers\BlogPostsController.cs" />
     <Compile Include="Controllers\ComplainsController.cs" />
@@ -450,7 +451,6 @@
     <Compile Include="Models\BlogPostImage.cs" />
     <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\ComplainAction.cs" />
-    <Compile Include="ViewModels\ChartsModel.cs" />
     <Compile Include="Models\ConstructionLKContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />

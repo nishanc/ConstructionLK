@@ -11,9 +11,6 @@ using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
 using ConstructionLK.ViewModels;
-using DotNet.Highcharts;
-using DotNet.Highcharts.Helpers;
-using DotNet.Highcharts.Options;
 
 namespace ConstructionLK.Areas.Admin.Controllers
 {

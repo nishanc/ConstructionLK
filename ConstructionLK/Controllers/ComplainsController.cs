@@ -39,6 +39,8 @@ namespace ConstructionLK.Controllers
         // GET: Complains/Create
         public ActionResult Create()
         {
+            ViewBag.ComplainedBy = new SelectList(db.AspNetUsers, "Id", "Email");
+
             ViewBag.ComplainedAbout = new SelectList(db.AspNetUsers, "Id", "Email");
             ViewBag.ActionId = new SelectList(db.ComplainActions, "Id", "Action");
             return View();
