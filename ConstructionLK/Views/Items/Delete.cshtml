@@ -96,10 +96,24 @@
             @Html.DisplayNameFor(model => model.ModifiedDate)
         </dt>
 
+
+
         <dd>
             @Html.DisplayFor(model => model.ModifiedDate)
         </dd>
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
 
+        <dd>
+            @Html.DisplayFor(model => model.Tax)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Tax)
+        </dt>
     </dl>
 
     @using (Html.BeginForm()) {

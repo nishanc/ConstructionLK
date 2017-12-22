@@ -56,7 +56,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId")] Item item)
+        public ActionResult Create([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId,Price,Tax")] Item item)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +95,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId")] Item item)
+        public ActionResult Edit([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId,Price,Tax")] Item item)
         {
             if (ModelState.IsValid)
             {

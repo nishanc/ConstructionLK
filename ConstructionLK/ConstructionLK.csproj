@@ -449,6 +449,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201712220446555_ItemStatusTableAndKeys.Designer.cs">
       <DependentUpon>201712220446555_ItemStatusTableAndKeys.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712220501541_ItemPriceAndTax.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712220501541_ItemPriceAndTax.Designer.cs">
+      <DependentUpon>201712220501541_ItemPriceAndTax.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -953,6 +957,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712220446555_ItemStatusTableAndKeys.resx">
       <DependentUpon>201712220446555_ItemStatusTableAndKeys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712220501541_ItemPriceAndTax.resx">
+      <DependentUpon>201712220501541_ItemPriceAndTax.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
