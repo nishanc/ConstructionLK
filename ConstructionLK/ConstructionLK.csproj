@@ -441,6 +441,14 @@
     <Compile Include="Migrations\ConstructionLKContext\201712201520573_ComplainBodyToComplains.Designer.cs">
       <DependentUpon>201712201520573_ComplainBodyToComplains.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712220440586_StatusRemovedFromItems.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712220440586_StatusRemovedFromItems.Designer.cs">
+      <DependentUpon>201712220440586_StatusRemovedFromItems.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712220446555_ItemStatusTableAndKeys.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712220446555_ItemStatusTableAndKeys.Designer.cs">
+      <DependentUpon>201712220446555_ItemStatusTableAndKeys.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -465,6 +473,7 @@
     <Compile Include="Models\ItemPayment.cs" />
     <Compile Include="Models\ItemProperty.cs" />
     <Compile Include="Models\ItemRequest.cs" />
+    <Compile Include="Models\ItemStatus.cs" />
     <Compile Include="Models\ItemSubCategory.cs" />
     <Compile Include="Models\ItemType.cs" />
     <Compile Include="Models\Location.cs" />
@@ -938,6 +947,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712201520573_ComplainBodyToComplains.resx">
       <DependentUpon>201712201520573_ComplainBodyToComplains.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712220440586_StatusRemovedFromItems.resx">
+      <DependentUpon>201712220440586_StatusRemovedFromItems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712220446555_ItemStatusTableAndKeys.resx">
+      <DependentUpon>201712220446555_ItemStatusTableAndKeys.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

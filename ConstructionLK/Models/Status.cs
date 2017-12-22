@@ -13,7 +13,7 @@
         {
             ServiceProviders = new HashSet<ServiceProvider>();
             Customers = new HashSet<Customer>();
-            Items = new HashSet<Item>();
+            //Items = new HashSet<Item>();
         }
 
         public int Id { get; set; }
@@ -28,7 +28,7 @@
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Customer> Customers { get; set; }
 
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Item> Items { get; set; }
+        //[System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        //public virtual ICollection<Item> Items { get; set; }
     }
 }
