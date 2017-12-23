@@ -657,6 +657,7 @@
     <Content Include="Areas\Admin\Views\Shared\UserCountChart.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
+    <None Include="Properties\PublishProfiles\VirtualMachine.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Chart.js" />
     <Content Include="Scripts\Chart.min.js" />
