@@ -626,6 +626,7 @@
     <Content Include="Resources\error.jpg" />
     <Content Include="Resources\Icons\pin.png" />
     <Content Include="Resources\Icons\pin_alt.png" />
+    <Content Include="Resources\Icons\profile.png" />
     <Content Include="Resources\index.jpg" />
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\background-header-v2.mp4" />
