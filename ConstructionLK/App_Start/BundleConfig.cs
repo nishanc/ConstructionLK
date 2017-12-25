@@ -16,7 +16,8 @@ namespace ConstructionLK
                         "~/Scripts/datatables/jquery.datatables.js",
                         "~/Scripts/datatables/datatables.bootstrap.js",
                         "~/Scripts/toastr.js",
-                        "~/Scripts/Chart.js"
+                        "~/Scripts/Chart.js",
+                        "~/Scripts/typeahead.bundle.js"
                         ));
 
             bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
@@ -31,6 +32,7 @@ namespace ConstructionLK
                       "~/Content/bootstrap-solar.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/toastr.css",
+                      "~/Content/typeahead.css",
                       "~/Content/site.css"));
         }
     }

@@ -287,14 +287,6 @@
             </div>
         </div>
 
-        @*<div class="form-group">
-            @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
-            </div>
-        </div>*@
-
         <div class="form-group">
             @Html.LabelFor(model => model.AcceptedDate, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
@@ -319,13 +311,13 @@
             </div>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.StatusId, "StatusId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("StatusId", null, new { @class = "form-control"  })
-                @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        @*<div class="form-group">
+                @Html.LabelFor(model => model.StatusId, "StatusId", htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.DropDownList("StatusId", null, new { @class = "form-control"  })
+                    @Html.ValidationMessageFor(model => model.StatusId, "", new { @class = "text-danger" })
+                </div>
+            </div>*@
 
         <div class="form-group">
             @Html.LabelFor(model => model.LocationId, "LocationId", htmlAttributes: new { @class = "control-label col-md-2" })
@@ -336,17 +328,28 @@
         </div>
 
         <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <input id="typeval" class="form-control" type="text" placeholder="Search Customers">
+            </div>
+        </div>
+        <div class="form-group">
             @Html.LabelFor(model => model.CustomerId, "CustomerId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("CustomerId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("CustomerId", null, htmlAttributes: new { id = "typetext", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.CustomerId, "", new { @class = "text-danger" })
             </div>
         </div>
-
+        <div class="form-group">
+            <div class="col-md-2"></div>
+            <div class="col-md-10">
+                <input id="typeval2" class="form-control" type="text" placeholder="Search Service Providers">
+            </div>
+        </div>
         <div class="form-group">
             @Html.LabelFor(model => model.ServiceProviderId, "ServiceProviderId", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("ServiceProviderId", null, htmlAttributes: new { @class = "form-control" })
+                @Html.DropDownList("ServiceProviderId", null, htmlAttributes: new { id = "typetext2", @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.ServiceProviderId, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -360,7 +363,7 @@
         </div>
 
         @Html.HiddenFor(model => model.CreatedDate, new { @Value = System.DateTime.Now })
-
+        @Html.HiddenFor(model => model.StatusId, new { @Value = 1 })
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
@@ -376,4 +379,58 @@
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $(document).ready(function() {
+            var id = "";
+            var vm = {};
+            var customers = new Bloodhound({
+                datumTokenizer: Bloodhound.tokenizers.obj.whitespace('firstName'),
+                queryTokenizer: Bloodhound.tokenizers.whitespace,
+                remote: {
+                    url: '/api/customersapi?query=%QUERY',
+                    wildcard: '%QUERY'
+                }
+            });
+
+            $('#typeval').typeahead({
+                    highlight: true
+                },
+                {
+                    name: 'customers',
+                    display: 'firstName',
+                    source: customers
+                }).on("typeahead:select",
+                function(e, customer) {
+                    vm.customerId = customer.id;
+                    document.getElementById('typetext').value = customer.id;
+                });
+        });
+    </script>
+    <script>
+            $(document).ready(function() {
+                var id = "";
+                var vm = {};
+                var sps = new Bloodhound({
+                    datumTokenizer: Bloodhound.tokenizers.obj.whitespace('userName'),
+                    queryTokenizer: Bloodhound.tokenizers.whitespace,
+                    remote: {
+                        url: '/api/serviceprovidersapi?query=%QUERY',
+                        wildcard: '%QUERY'
+                    }
+                });
+
+                $('#typeval2').typeahead({
+                        highlight: true
+                    },
+                    {
+                        name: 'serviceproviders',
+                        display: 'companyName',
+                        source: sps
+                    }).on("typeahead:select",
+                    function(e, sp) {
+                        vm.spId = sp.id;
+                        document.getElementById('typetext2').value = sp.id;
+                    });
+            });
+    </script>
 }
