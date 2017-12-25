@@ -453,6 +453,14 @@
     <Compile Include="Migrations\ConstructionLKContext\201712220501541_ItemPriceAndTax.Designer.cs">
       <DependentUpon>201712220501541_ItemPriceAndTax.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712241805178_LatLongToItemRequests.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712241805178_LatLongToItemRequests.Designer.cs">
+      <DependentUpon>201712241805178_LatLongToItemRequests.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201712250434387_ItemRequestStatus.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201712250434387_ItemRequestStatus.Designer.cs">
+      <DependentUpon>201712250434387_ItemRequestStatus.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -477,6 +485,7 @@
     <Compile Include="Models\ItemPayment.cs" />
     <Compile Include="Models\ItemProperty.cs" />
     <Compile Include="Models\ItemRequest.cs" />
+    <Compile Include="Models\ItemRequestStatus.cs" />
     <Compile Include="Models\ItemStatus.cs" />
     <Compile Include="Models\ItemSubCategory.cs" />
     <Compile Include="Models\ItemType.cs" />
@@ -837,6 +846,7 @@
     <Content Include="Views\Complains\Details.cshtml" />
     <Content Include="Views\Complains\Edit.cshtml" />
     <Content Include="Views\Complains\Index.cshtml" />
+    <Content Include="Views\Shared\_Location.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -962,6 +972,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712220501541_ItemPriceAndTax.resx">
       <DependentUpon>201712220501541_ItemPriceAndTax.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712241805178_LatLongToItemRequests.resx">
+      <DependentUpon>201712241805178_LatLongToItemRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201712250434387_ItemRequestStatus.resx">
+      <DependentUpon>201712250434387_ItemRequestStatus.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

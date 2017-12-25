@@ -47,6 +47,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<Complain> Complains { get; set; }
         public virtual DbSet<ComplainAction> ComplainActions { get; set; }
         public virtual DbSet<ItemStatus> ItemStatus { get; set; }
+        public virtual DbSet<ItemRequestStatus> ItemRequestStatuses { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdministrativeStaff>()
@@ -310,6 +311,12 @@ namespace ConstructionLK.Models
             modelBuilder.Entity<ItemStatus>()
                 .HasMany(e => e.Items)
                 .WithRequired(e => e.ItemStatus)
+                .HasForeignKey(e => e.StatusId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ItemRequestStatus>()
+                .HasMany(e => e.ItemRequests)
+                .WithRequired(e => e.ItemRequestStatus)
                 .HasForeignKey(e => e.StatusId)
                 .WillCascadeOnDelete(false);
         }

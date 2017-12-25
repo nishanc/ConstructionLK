@@ -31,7 +31,8 @@ namespace ConstructionLK.Models
 
         public DateTime? CompletedDate { get; set; }
 
-        public int Status { get; set; }
+        public int? StatusId { get; set; }
+        public virtual ItemRequestStatus ItemRequestStatus { get; set; }
 
         public int LocationId { get; set; }
 
@@ -63,5 +64,8 @@ namespace ConstructionLK.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<AdministrativeStaff> AdministrativeStaffs { get; set; }
+
+        public float? Latitude { get; set; }
+        public float? Longitude { get; set; }
     }
 }

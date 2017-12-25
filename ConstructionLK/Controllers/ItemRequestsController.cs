@@ -17,7 +17,7 @@ namespace ConstructionLK.Controllers
         // GET: ItemRequests
         public ActionResult Index()
         {
-            var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Include(i => i.ServiceProvider);
+            var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Include(i => i.ServiceProvider).Include(i => i.ItemRequestStatus);
             return View(itemRequests.ToList());
         }
 
@@ -37,8 +37,10 @@ namespace ConstructionLK.Controllers
         }
 
         // GET: ItemRequests/Create
-        public ActionResult Create(string id)
+        public ActionResult Create()
         {
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name");
+
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName");
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type");
@@ -51,7 +53,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,Status,LocationId,CustomerId,ServiceProviderId,ItemId")] ItemRequest itemRequest)
+        public ActionResult Create([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,Status,LocationId,CustomerId,ServiceProviderId,ItemId,Latitude,Longitude")] ItemRequest itemRequest)
         {
             if (ModelState.IsValid)
             {
@@ -59,7 +61,7 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name",itemRequest.StatusId);
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
@@ -79,6 +81,8 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
+
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
@@ -91,7 +95,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,Status,LocationId,CustomerId,ServiceProviderId,ItemId")] ItemRequest itemRequest)
+        public ActionResult Edit([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,Status,LocationId,CustomerId,ServiceProviderId,ItemId,Latitude,Longitude")] ItemRequest itemRequest)
         {
             if (ModelState.IsValid)
             {
@@ -99,6 +103,8 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
+
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
@@ -139,12 +145,6 @@ namespace ConstructionLK.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public JsonResult GetLocation()
-        {
-            var data = db.Locations.ToList();
-            return Json(data, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -1,11 +1,11 @@
 ﻿@model ConstructionLK.Models.Location
 @{
     ViewBag.Title = "Create";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Views/Shared/_LayoutNoFooter.cshtml";
 
 }
 <div class="modal fade in" id="myModal">
-    <div class="modal-dialog" >
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
@@ -24,20 +24,21 @@
 </div>
 <style>
     .body-content {
-        padding-top: 70px;
+        padding-top: 40px;
     }
-      /* Always set the map height explicitly to define the size of the div
+    /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
-     #map {
-         height: 400px;
-         width: 1110px;
-     }
+    #map {
+        height: 400px;
+        width: 1110px;
+    }
     /* Optional: Makes the sample page fill the window. */
     html, body {
         height: 100%;
         margin: 0;
         padding: 0;
     }
+
     #description {
         font-family: Roboto;
         font-size: 15px;
@@ -77,11 +78,11 @@
         padding: 5px 11px;
     }
 
-    .pac-controls label {
-        font-family: Roboto;
-        font-size: 13px;
-        font-weight: 300;
-    }
+        .pac-controls label {
+            font-family: Roboto;
+            font-size: 13px;
+            font-weight: 300;
+        }
 
     #pac-input {
         background-color: #fff;
@@ -94,9 +95,9 @@
         width: 400px;
     }
 
-    #pac-input:focus {
-        border-color: #4d90fe;
-    }
+        #pac-input:focus {
+            border-color: #4d90fe;
+        }
 
     #title {
         color: #fff;
@@ -105,6 +106,7 @@
         font-weight: 500;
         padding: 6px 12px;
     }
+
     #target {
         width: 345px;
     }
@@ -121,13 +123,6 @@
     <div id="map" class="col-md-12"></div>
 </div>
 
-@*<script>
-    $(document).ready(function () {
-        $("#Latitudes").change(function () {
-            alert("Value: " + $("#Latitude").text);
-        });
-    });
-</script>*@
 <script>
     $(document).ready(function () {
 
@@ -260,17 +255,17 @@
 <span class="label label-success" id="Latitudes">Latitude</span>
 <span class="label label-warning" id="Longitudes">Latitude</span>
 <a class="btn" data-toggle="modal" href="#myModal">Need help?</a>
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal col-md-12">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group hidden">
             @Html.LabelFor(model => model.Latitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.Latitude, new { id = "lat" , @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Latitude, "", new {@class = "text-danger"})
+                @Html.TextBoxFor(model => model.Latitude, new { id = "lat", @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Latitude, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -278,7 +273,7 @@
             @Html.LabelFor(model => model.Longitude, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Longitude, new { id = "lng", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Longitude, "", new {@class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.Longitude, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -286,7 +281,7 @@
             @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextBoxFor(model => model.Type, new { id = "type", @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Type, "", new {@class = "text-danger"})
+                @Html.ValidationMessageFor(model => model.Type, "", new { @class = "text-danger" })
             </div>
         </div>
 
@@ -298,9 +293,6 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
 
 @section Scripts {
 
