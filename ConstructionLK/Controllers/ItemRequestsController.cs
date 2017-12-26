@@ -17,7 +17,7 @@ namespace ConstructionLK.Controllers
         // GET: ItemRequests
         public ActionResult Index()
         {
-            var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Include(i => i.ServiceProvider);
+            var itemRequests = db.ItemRequests.Include(i => i.CustomerId).Include(i => i.ItemId).Include(i => i.LocationId).Include(i => i.ServiceProviderId);
             return View(itemRequests.ToList());
         }
 

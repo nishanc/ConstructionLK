@@ -13,7 +13,19 @@
     <span class="label label-warning">Service Provider</span>
     <span class="label label-primary">Individual</span>
     <span class="label label-info">Member since @Html.Label(Model.CreatedDate.Value.ToString("y"))</span>
+    <div class="btn-group open">
+        <a class="btn btn-default" href="~/Views/ServiceProvidersIndividual/Edit.cshtml">@*Edit Profile*@</a>
+        <a class="btn btn-default dropdown-toggle" aria-expanded="true" data-toggle="dropdown"><span class="caret"></span></a>
+        <ul class="dropdown-menu">
+            <li>@Html.ActionLink("View Your Items", "Index", "Items", new { id = Model.ApplicationUserId }, null)</li>
+            <li>@Html.ActionLink("Create New Item", "Create", "Items", new { id = Model.ApplicationUserId }, null)</li>
+            <li>@Html.ActionLink("View Your Requests", "Index", "ItemRequests", new { id = Model.ApplicationUserId }, null)</a></li>
+            <li class="divider"></li>
+            <li>@Html.ActionLink("Home", "Index", "Home", new { id = Model.ApplicationUserId }, null)</li>
+        </ul>
+    </div>
     <hr />
+    
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.MembershipType.Name)
