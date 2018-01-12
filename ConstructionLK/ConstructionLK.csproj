@@ -48,9 +48,6 @@
       <HintPath>..\packages\AutoMapper.4.1.0\lib\net45\AutoMapper.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="DotNet.Highcharts">
-      <HintPath>C:\Users\Nishan Chathuranga\Downloads\Compressed\DotNet.Highcharts.4.0\DotNet.Highcharts.dll</HintPath>
-    </Reference>
     <Reference Include="Glimpse.Ado, Version=1.7.3.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\Glimpse.Ado.1.7.3\lib\net45\Glimpse.Ado.dll</HintPath>
       <Private>True</Private>
