@@ -24,7 +24,15 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ComplainAction.Action)
+            @*@Html.DisplayFor(model => model.ComplainAction.Action)*@
+            @if (Model.ActionId == 2)
+            {
+               <P>Not Handled</P>
+            }
+            else {
+                <P> Handled </P>
+            }
+
         </dd>
 
         <dt>
