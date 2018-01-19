@@ -17,11 +17,20 @@ namespace ConstructionLK.Controllers.API
         private ConstructionLKContext db = new ConstructionLKContext();
 
         // GET: api/ServiceProvidersAPI
-        public IQueryable<ServiceProvider> GetServiceProviders()
+        //public IQueryable<ServiceProvider> GetServiceProviders()
+        //{
+        //    return db.ServiceProviders;
+        //}
+        public IHttpActionResult GetServiceProviders(string query = null)
         {
-            return db.ServiceProviders;
+            var serviceprovidersQuery = db.ServiceProviders
+                .Include(s => s.MembershipType);
+            if (!String.IsNullOrWhiteSpace(query))
+                serviceprovidersQuery = serviceprovidersQuery.Where(c => c.CompanyName.Contains(query));
+            var serviceproviderDtos = serviceprovidersQuery
+                .ToList();
+            return Ok(serviceproviderDtos);
         }
-
         // GET: api/ServiceProvidersAPI/5
         [ResponseType(typeof(ServiceProvider))]
         public IHttpActionResult GetServiceProvider(int id)

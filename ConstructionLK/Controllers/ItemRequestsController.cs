@@ -35,14 +35,26 @@ namespace ConstructionLK.Controllers
             }
             return View(itemRequest);
         }
-
+        public ActionResult MyRequests(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ItemRequest itemRequests = db.ItemRequests.FirstOrDefault(i=>i.ServiceProviderId == id);
+            if (itemRequests == null)
+            {
+                return HttpNotFound();
+            }
+            return View();
+        }
         // GET: ItemRequests/Create
-        public ActionResult Create()
+        public ActionResult Create(int? id)
         {
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name");
 
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
-            ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName");
+            ViewBag.ItemId = id;
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type");
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username");
             return View();
@@ -53,7 +65,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,Status,LocationId,CustomerId,ServiceProviderId,ItemId,Latitude,Longitude")] ItemRequest itemRequest)
+        public ActionResult Create([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,StatusId,LocationId,CustomerId,ServiceProviderId,ItemId,Latitude,Longitude")] ItemRequest itemRequest)
         {
             if (ModelState.IsValid)
             {
@@ -95,7 +107,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,Status,LocationId,CustomerId,ServiceProviderId,ItemId,Latitude,Longitude")] ItemRequest itemRequest)
+        public ActionResult Edit([Bind(Include = "Id,Message,CreatedDate,AcceptedDate,ExpDate,CompletedDate,StatusId,LocationId,CustomerId,ServiceProviderId,ItemId,Latitude,Longitude")] ItemRequest itemRequest)
         {
             if (ModelState.IsValid)
             {

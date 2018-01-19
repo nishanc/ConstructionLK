@@ -8,6 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
+using AutoMapper;
+using ConstructionLK.DTOs;
 using ConstructionLK.Models;
 
 namespace ConstructionLK.Controllers.API
@@ -17,11 +19,21 @@ namespace ConstructionLK.Controllers.API
         private ConstructionLKContext db = new ConstructionLKContext();
 
         // GET: api/CustomersAPI
-        public IEnumerable<Customer> GetCustomers()
-        {
-            return db.Customers.ToList();
-        }
+        //public IEnumerable<Customer> GetCustomers()
+        //{
+        //    return db.Customers.ToList();
+        //}
 
+        public IHttpActionResult GetCustomers(string query = null)
+        {
+            var customersQuery = db.Customers
+                .Include(c => c.ItemRequests);
+            if (!String.IsNullOrWhiteSpace(query))
+                customersQuery = customersQuery.Where(c => c.FirstName.Contains(query));
+            var customerDtos = customersQuery
+                .ToList();
+            return Ok(customerDtos);
+        }
         // GET: api/CustomersAPI/5
         [ResponseType(typeof(Customer))]
         public IHttpActionResult GetCustomer(int id)

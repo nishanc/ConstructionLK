@@ -14,7 +14,7 @@
     <span class="label label-primary">Individual</span>
     <span class="label label-info">Member since @Html.Label(Model.CreatedDate.Value.ToString("y"))</span>
     <div class="btn-group open">
-        <a class="btn btn-default" @Html.ActionLink("Edit", "Edit", new { id = Model.Id })<span></span> </a>
+        <a class="btn btn-default" @Html.ActionLink("Edit", "Edit", new { id = Model.Id })><span></span> </a>
         <a class="btn btn-default dropdown-toggle" aria-expanded="true" data-toggle="dropdown"><span class="caret"></span></a>
         <ul class="dropdown-menu">
             <li>@Html.ActionLink("View Your Items", "Index", "Items", new { id = Model.Id }, null)</li>
