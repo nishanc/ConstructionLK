@@ -853,6 +853,7 @@
     <Content Include="Views\Complains\Edit.cshtml" />
     <Content Include="Views\Complains\Index.cshtml" />
     <Content Include="Views\Shared\_Location.cshtml" />
+    <Content Include="Views\ItemRequests\MyRequests.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
