@@ -40,8 +40,11 @@ namespace ConstructionLK.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}",ApplyFormatInEditMode = true)]
         public DateTime DateOfBirth { get; set; }
 
-        [Required]
         [StringLength(50)]
+        [Required(ErrorMessage = "Your must provide a Phone Number")]
+        [Display(Name = "Home Phone")]
+        [DataType(DataType.PhoneNumber)]
+        [RegularExpression(@"^\(?([0-9]{3})\)?[-. ]?([0-9]{3})[-. ]?([0-9]{4})$", ErrorMessage = "Not a valid Phone number")]
         public string Telephone { get; set; }
 
         [Required]
