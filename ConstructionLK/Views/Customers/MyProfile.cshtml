@@ -10,7 +10,7 @@
 <div>
     <span class="label label-warning">Customer</span>
     <span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
-    <hr/>
+    <hr />
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Username)
@@ -18,7 +18,7 @@
         <dd>
             @Html.DisplayFor(model => model.Username)
         </dd>
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.FirstName)
         </dt>
         <dd>
@@ -31,7 +31,7 @@
 
         <dd>
             @Html.DisplayFor(model => model.LastName)
-        </dd>
+        </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.DateOfBirth)
@@ -48,13 +48,13 @@
             @Html.DisplayFor(model => model.Telephone)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Gender)
-        </dt>
+        @* <dt>
+                @Html.DisplayNameFor(model => model.Gender)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Gender)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Gender)
+            </dd>*@
 
         <dt>
             @Html.DisplayNameFor(model => model.Address)
@@ -64,40 +64,42 @@
             @Html.DisplayFor(model => model.Address)
         </dd>
 
+        @*  <dt>
+                @Html.DisplayNameFor(model => model.Status)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Status.Name)
+            </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </dd>*@
+
         <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+            @* @Html.DisplayNameFor(model => model.CreatedDate)*@
+            <p>Joined On</p>
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.CreatedDate)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
+        @*   <dt>
+                @Html.DisplayNameFor(model => model.ModifiedBy)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ModifiedBy)
+            </dd>*@
 
         <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
+            @*X @Html.DisplayNameFor(model => model.ModifiedDate)*@
+            <p>Last Modified Date </p>
         </dt>
 
         <dd>
