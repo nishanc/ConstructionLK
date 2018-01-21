@@ -15,11 +15,11 @@ namespace ConstructionLK.Controllers
         private ConstructionLKContext db = new ConstructionLKContext();
         [AllowAnonymous]
         // GET: Items
-        public ActionResult Index()
+        public ActionResult Index(int id)
         {
             //var items = db.Items.Include(i => i.ItemStatus).Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
 
-            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i=>i.ItemStatus);
+            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i=>i.ItemStatus).Where(i=>i.TypeId==id);
             //var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
 
             if (User.IsInRole(RoleName.CanManageAll))
