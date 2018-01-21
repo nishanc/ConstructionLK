@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<ConstructionLK.Models.Item>
-
+@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -60,7 +61,7 @@ else
                         @Html.ActionLink("Details", "Details", new { id = item.Id }, new { @class = "btn btn-outline-primary btn-sm" }) |
                         @Html.ActionLink("Review and Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-outline-warning btn-sm" })|
                         <button data-item-id="@item.Id" class="btn btn-outline-warning btn-sm js-delete">Delete Now</button>|
-                        @Html.ActionLink("Buy this", "Create","ItemRequests", new { id = item.Id }, new { @class = "btn btn-outline-warning btn-sm" })
+                        @Html.ActionLink("Buy this", "Create","ItemRequests", new { id = item.Id, user = User.Identity.GetUserId(),provider=item.UserId }, new { @class = "btn btn-outline-warning btn-sm" })
                         
                     </td>
                 </tr>

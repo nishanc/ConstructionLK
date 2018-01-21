@@ -49,12 +49,15 @@ namespace ConstructionLK.Controllers
             return View();
         }
         // GET: ItemRequests/Create
-        public ActionResult Create(int? id)
+        public ActionResult Create(int? id,string user,int? provider)
         {
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name");
 
-            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
+            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
+            var Customer = db.Customers.SingleOrDefault(c => c.ApplicationUserId == user);
+            ViewBag.cid = Customer.Id;
             ViewBag.ItemId = id;
+            ViewBag.pid = provider;
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type");
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username");
             return View();
