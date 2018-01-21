@@ -263,6 +263,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\AdministrativeStaffController.cs" />
+    <Compile Include="Areas\Admin\Controllers\AdminItemRequestsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServiceProviderChartController.cs" />
@@ -509,6 +510,7 @@
   <ItemGroup>
     <Content Include="Content\Account\style.css" />
     <Content Include="Content\bootstrap-solar.css" />
+    <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\DataTables\css\autoFill.bootstrap.css" />
@@ -667,6 +669,11 @@
     <Content Include="Content\toastr.less" />
     <Content Include="Areas\Admin\Views\Shared\RegCharts.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\UserCountChart.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItemRequests\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItemRequests\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItemRequests\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItemRequests\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\AdminItemRequests\Index.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\VirtualMachine.pubxml" />

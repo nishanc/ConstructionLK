@@ -14,9 +14,10 @@
 <span class="label label-success">Administrator</span>
 <span class="label label-info" >Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
 <hr />
-<div class="alert alert-dismissible alert-success">
+<div class="alert alert-dismissible alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4>New Requests!</h4><strong>Access them now. <a href="#" class="alert-link">Click here</a></strong>
+    <h4>New Requests!</h4><strong>Access them now. @Html.ActionLink("Click here", "Index", "AdminItemRequests", new { area = "Admin", id = 1 }, null)
+</strong>
 </div>
 @*@Html.Partial("_Index")*@
 <div class="col-md-3">
@@ -41,23 +42,47 @@
             @*<span class="badge">@ViewBag.CountISP</span>*@
             @Html.ActionLink("Monitor Ongoing Jobs", "Index", "ServiceProvidersIndividual", new { area = "" }, null)
         </li>
-        <li class="list-group-item">
-            @*<span class="badge">@ViewBag.CountISP</span>*@
-            @Html.ActionLink("All Jobs", "Index", "ServiceProvidersIndividual", new { area = "" }, null)
-        </li>
+
+        <ul class="nav nav-pills nav-stacked">
+            <li class="dropdown">
+                <a class="dropdown-toggle list-group-item" data-toggle="dropdown" href="#" aria-expanded="false">
+                    Service Requests <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu">
+                    <li class="list-group-item">
+                        @*<span class="badge">@ViewBag.CountISP</span>*@
+                        @Html.ActionLink("All Jobs", "Index", "ItemRequests", new { area = "" }, null)
+                    </li>
+                    <li class="divider"></li>
+                    <li class="list-group-item">
+                        @*<span class="badge">@ViewBag.CountISP</span>*@
+                        @Html.ActionLink("Pending", "Index", "AdminItemRequests", new { area = "Admin", id = 1 }, null)
+                    </li>
+                    <li class="divider"></li>
+                    <li class="list-group-item">
+                        @*<span class="badge">@ViewBag.CountISP</span>*@
+                        @Html.ActionLink("Completed", "Index", "AdminItemRequests", new { area = "Admin", id = 3 }, null)
+                    </li>
+                    <li class="divider"></li>
+                    <li class="list-group-item">
+                        @*<span class="badge">@ViewBag.CountISP</span>*@
+                        @Html.ActionLink("Accepted", "Index", "AdminItemRequests", new { area = "Admin", id = 2}, null)
+                    </li>
+                </ul>
+            </li>
+        </ul>
     </ul>       
     <ul class="nav nav-pills nav-stacked">
-        <li class="active"><a href="#">Home</a></li>
+        <li class="active">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
         <li class="dropdown">
             <a class="dropdown-toggle list-group-item" data-toggle="dropdown" href="#" aria-expanded="false">
                 External <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-                <li><a href="./">Server Login</a></li>
-                <li><a href="#">Play Store</a></li>
+                <li><a href="./">Server Login</a></li><li class="divider"></li>
+                <li><a href="#">Play Store</a></li><li class="divider"></li>
                 <li><a href="#">App Store</a></li>
-                <li class="divider"></li>
-                <li><a href="#">Separated link</a></li>
+
             </ul>
         </li>
     </ul>

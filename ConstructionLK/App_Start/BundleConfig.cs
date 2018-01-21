@@ -30,6 +30,7 @@ namespace ConstructionLK
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap-solar.css",
+                      "~/Content/bootstrap-theme.css",
                       "~/Content/datatables/css/datatables.bootstrap.css",
                       "~/Content/toastr.css",
                       "~/Content/typeahead.css",
