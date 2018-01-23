@@ -461,6 +461,14 @@
     <Compile Include="Migrations\ConstructionLKContext\201712250434387_ItemRequestStatus.Designer.cs">
       <DependentUpon>201712250434387_ItemRequestStatus.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.Designer.cs">
+      <DependentUpon>201801230652353_RequestProgressTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.Designer.cs">
+      <DependentUpon>201801230728177_Price&amp;TaxRemovedFromItem.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -496,6 +504,7 @@
     <Compile Include="Models\PublishedItem.cs" />
     <Compile Include="Models\RatingsCustomer.cs" />
     <Compile Include="Models\RatingsServiceProvider.cs" />
+    <Compile Include="Models\RequestProgress.cs" />
     <Compile Include="Models\RoleName.cs" />
     <Compile Include="Models\ServiceProvider.cs" />
     <Compile Include="Models\ServiceProviderType.cs" />
@@ -992,6 +1001,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201712250434387_ItemRequestStatus.resx">
       <DependentUpon>201712250434387_ItemRequestStatus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.resx">
+      <DependentUpon>201801230652353_RequestProgressTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.resx">
+      <DependentUpon>201801230728177_Price&amp;TaxRemovedFromItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
