@@ -69,8 +69,8 @@ namespace ConstructionLK.Models
         public virtual ICollection<PublishedItem> PublishedItems { get; set; }
 
         public virtual ICollection<ItemLocations> ItemLocations { get; set; }
-        [Required]
-        public float Price { get; set; }
-        public float? Tax { get; set; }
+        //[Required]
+        //public float Price { get; set; }
+        //public float? Tax { get; set; }
     }
 }

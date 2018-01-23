@@ -9,9 +9,9 @@ namespace ConstructionLK.Models
     public partial class ConstructionLKContext : DbContext 
     {
         public ConstructionLKContext()
-        //: base("name=ConstructionLKContext")
+        : base("name=ConstructionLKContext")
         //: base("name=Techwire")
-        : base("name=Azure")
+        //: base("name=Azure")
         //: base("name=MRTVS")
         {
         }
@@ -48,6 +48,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<ComplainAction> ComplainActions { get; set; }
         public virtual DbSet<ItemStatus> ItemStatus { get; set; }
         public virtual DbSet<ItemRequestStatus> ItemRequestStatuses { get; set; }
+        public virtual DbSet<RequestProgress> RequestProgreses { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdministrativeStaff>()
@@ -151,6 +152,12 @@ namespace ConstructionLK.Models
                 .HasMany(e => e.RatingsCustomers)
                 .WithRequired(e => e.ItemRequest)
                 .HasForeignKey(e => e.RequestId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ItemRequest>()
+                .HasMany(e => e.RequestProgreses)
+                .WithRequired(e => e.ItemRequest)
+                .HasForeignKey(e => e.ReqId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<ItemRequest>()

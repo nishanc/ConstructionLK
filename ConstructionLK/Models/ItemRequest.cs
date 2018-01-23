@@ -16,6 +16,7 @@ namespace ConstructionLK.Models
             RatingsCustomers = new HashSet<RatingsCustomer>();
             RatingsServiceProviders = new HashSet<RatingsServiceProvider>();
             AdministrativeStaffs = new HashSet<AdministrativeStaff>();
+            RequestProgreses = new HashSet<RequestProgress>();
         }
 
         public int Id { get; set; }
@@ -68,5 +69,7 @@ namespace ConstructionLK.Models
         
         public float? Latitude { get; set; }
         public float? Longitude { get; set; }
+
+        public virtual ICollection<RequestProgress> RequestProgreses { get; set; }
     }
 }
