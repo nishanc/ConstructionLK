@@ -8,20 +8,22 @@ using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
 
-namespace ConstructionLK.Controllers
+namespace ConstructionLK.Areas.Admin.Controllers
 {
-    public class ItemRequestsController : Controller
+    public class AdminItemRequestsController : Controller
     {
         private ConstructionLKContext db = new ConstructionLKContext();
 
-        // GET: ItemRequests
-        public ActionResult Index()
+        // GET: Admin/AdminItemRequests
+        public ActionResult Index(int? id)
         {
-            var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Include(i => i.ServiceProvider).Include(i => i.ItemRequestStatus);
-            return View(itemRequests.ToList());
+
+                var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.ItemRequestStatus).Include(i => i.Location).Include(i => i.ServiceProvider).Where(i=>i.StatusId==id);
+                return View(itemRequests.ToList());
+
         }
 
-        // GET: ItemRequests/Details/5
+        // GET: Admin/AdminItemRequests/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -35,35 +37,19 @@ namespace ConstructionLK.Controllers
             }
             return View(itemRequest);
         }
-        public ActionResult MyRequests(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ItemRequest itemRequests = db.ItemRequests.FirstOrDefault(i=>i.ServiceProviderId == id);
-            if (itemRequests == null)
-            {
-                return HttpNotFound();
-            }
-            return View();
-        }
-        // GET: ItemRequests/Create
-        public ActionResult Create(int? id,string user,int? provider)
-        {
-            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name");
 
-            //ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
-            var Customer = db.Customers.SingleOrDefault(c => c.ApplicationUserId == user);
-            ViewBag.cid = Customer.Id;
-            ViewBag.ItemId = id;
-            ViewBag.pid = provider;
+        // GET: Admin/AdminItemRequests/Create
+        public ActionResult Create()
+        {
+            ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username");
+            ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName");
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name");
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type");
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username");
             return View();
         }
 
-        // POST: ItemRequests/Create
+        // POST: Admin/AdminItemRequests/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -76,15 +62,16 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name",itemRequest.StatusId);
+
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
             return View(itemRequest);
         }
 
-        // GET: ItemRequests/Edit/5
+        // GET: Admin/AdminItemRequests/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -96,16 +83,15 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
-
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
             return View(itemRequest);
         }
 
-        // POST: ItemRequests/Edit/5
+        // POST: Admin/AdminItemRequests/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -118,16 +104,15 @@ namespace ConstructionLK.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
-
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
             ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
             return View(itemRequest);
         }
 
-        // GET: ItemRequests/Delete/5
+        // GET: Admin/AdminItemRequests/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -142,7 +127,7 @@ namespace ConstructionLK.Controllers
             return View(itemRequest);
         }
 
-        // POST: ItemRequests/Delete/5
+        // POST: Admin/AdminItemRequests/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

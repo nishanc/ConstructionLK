@@ -21,6 +21,7 @@ namespace ConstructionLK.Models
         public int Id { get; set; }
 
         [StringLength(250)]
+        [Display(Name = "Message(Optional, Maximum 250 Characters)")]
         public string Message { get; set; }
 
         public DateTime CreatedDate { get; set; }
