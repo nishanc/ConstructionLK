@@ -161,5 +161,10 @@ namespace ConstructionLK.Controllers
             }
             base.Dispose(disposing);
         }
+        public JsonResult GetLocation(int? id)
+        {
+            var data = db.ItemRequests.Where(i=>i.Id==id);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
     }
 }

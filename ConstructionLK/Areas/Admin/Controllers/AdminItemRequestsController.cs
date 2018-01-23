@@ -35,6 +35,9 @@ namespace ConstructionLK.Areas.Admin.Controllers
             {
                 return HttpNotFound();
             }
+            //var req = db.ItemRequests.SingleOrDefault(i => i.Id == id);
+            ViewBag.latitude = itemRequest.Latitude;
+            ViewBag.longitude = itemRequest.Longitude;
             return View(itemRequest);
         }
 

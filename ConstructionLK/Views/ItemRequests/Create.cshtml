@@ -279,7 +279,7 @@
                     addMarker(event.latLng);
                     document.getElementById('Latitudes').innerHTML = event.latLng.lat().toFixed(6);
                     document.getElementById('Longitudes').innerHTML = event.latLng.lng().toFixed(6);
-                    document.getElementById('lat').value = event.latLng.lng().toFixed(6);
+                    document.getElementById('lat').value = event.latLng.lat().toFixed(6);
                     document.getElementById('lng').value = event.latLng.lng().toFixed(6);
                 });
                 if (place.geometry.viewport) {
@@ -294,13 +294,13 @@
                     position: location,
                     map: map,
                     animation: google.maps.Animation.DROP,
-                    draggable: true
-                    //icon: "Resources\Icons\pin.png"
+                    draggable: true,
+                    icon: "/Resources/Icons/pin.png"
                 });
                 google.maps.event.addListener(marker, 'dragend', function (evt1) {
                     document.getElementById('Latitudes').innerHTML = evt1.latLng.lat().toFixed(6);
                     document.getElementById('Longitudes').innerHTML = evt1.latLng.lng().toFixed(6);
-                    document.getElementById('lat').value = evt1.latLng.lng().toFixed(6);
+                    document.getElementById('lat').value = evt1.latLng.lat().toFixed(6);
                     document.getElementById('lng').value = evt1.latLng.lng().toFixed(6);
                 });
                 markers.push(marker);
