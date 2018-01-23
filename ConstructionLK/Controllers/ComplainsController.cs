@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -37,8 +38,9 @@ namespace ConstructionLK.Controllers
         }
 
         // GET: Complains/Create
-        public ActionResult Create()
+        public ActionResult Create(string id)
         {
+            ViewBag.providerid = id;
             ViewBag.ComplainedBy = new SelectList(db.AspNetUsers, "Id", "Email");
 
             ViewBag.ComplainedAbout = new SelectList(db.AspNetUsers, "Id", "Email");
@@ -56,7 +58,15 @@ namespace ConstructionLK.Controllers
             if (ModelState.IsValid)
             {
                 db.Complains.Add(complain);
-                db.SaveChanges();
+                try
+                {
+                    db.SaveChanges();
+                }
+                catch (DbEntityValidationException e)
+                {
+                    throw e;
+                }
+                
                 return RedirectToAction("Index");
             }
 
