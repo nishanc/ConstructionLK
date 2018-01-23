@@ -18,6 +18,7 @@ namespace ConstructionLK.Models
         public string ComplainedBy { get; set; }
         [StringLength(128)]
         public string ComplainedAbout { get; set; }
+        [Display(Name ="My complain is..")]
         [StringLength(1000)]
         public string ComplainBody { get; set; }
     }

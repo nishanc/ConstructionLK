@@ -40,7 +40,21 @@ namespace ConstructionLK.Controllers
             }
             return View(serviceProvider);
         }
+        public ActionResult DetailsById(string user)
+        {
+            if (user == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            //ServiceProvider serviceProvider = db.ServiceProviders.Find(id);
+            ServiceProvider serviceProvider = db.ServiceProviders.Include(c => c.MembershipType).Include(s => s.Status).SingleOrDefault(c => c.ApplicationUserId == user);
 
+            if (serviceProvider == null)
+            {
+                return HttpNotFound();
+            }
+            return View(serviceProvider);
+        }
         // GET: ServiceProviders/Create
         public ActionResult Create()
         {

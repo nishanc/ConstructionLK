@@ -6,70 +6,46 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Create</h2>
+<h2>Feedback</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Complain About </h4>
-        <h5>Please feel free to make your complaints.</h5>
-        <h5>We value your coorporation.</h5>
+        <h4>
+            We value your feedback and welcome any comments you may have to help improve our programs and services.<br /><br />Please offer your feedback to our staff through our Answer-line service at +94 XXX XXX XXX.<br /> Branch or Answer-line staff will try to meet your needs as quickly as possible.
+        </h4>
         <hr />
-        @Html.Raw(ViewBag.providerid);<br/>
-        @Html.Raw(User.Identity.GetUserId());
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-       @* <div class="form-group">
-            @Html.LabelFor(model => model.ComplainedDate, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ComplainedDate, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ComplainedDate, "", new { @class = "text-danger" })
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.ComplainBody, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.TextAreaFor(model => model.ComplainBody, new { @class = "form-control", rows = "10" })
+                        @Html.ValidationMessageFor(model => model.ComplainBody, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+                @Html.HiddenFor(model => model.ComplainedAbout, new { @Value = ViewBag.providerid })
+                @Html.HiddenFor(model => model.ActionId, new { @Value = 2 })
+                @Html.HiddenFor(model => model.ComplainedBy, new { @Value = User.Identity.GetUserId() })
+                @Html.HiddenFor(model => model.ComplainedDate, new { @Value = System.DateTime.Now })
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Send complain" class="btn btn-info" />
+                    </div>
+                </div>
+                </div>
             </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.ActionId, "ActionId", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ActionId", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.ActionId, "", new { @class = "text-danger" })
             </div>
-        </div>
+            }
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.ComplainedBy, "ComplainedBy", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("ComplainedBy", null,htmlAttributes : new { @class = "form-control"  })
-                @Html.ValidationMessageFor(model => model.ComplainedBy, "", new { @class = "text-danger" })
+            <div>
+                @Html.ActionLink("Back to List", "Index")
             </div>
-        </div>
-        *@
-        <div class="form-group">
-            @Html.LabelFor(model => model.ComplainBody, null, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.ComplainBody, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.ComplainBody, "", new { @class = "text-danger" })
-            </div>
-        </div>
 
-        
-        @Html.HiddenFor(model => model.ComplainedAbout, new { @Value = ViewBag.providerid }) 
-        @Html.HiddenFor(model => model.ActionId, new { @Value = 2 })
-        @Html.HiddenFor(model => model.ComplainedBy, new { @Value = User.Identity.GetUserId() })
-        @Html.HiddenFor(model => model.ComplainedDate, new { @Value = System.DateTime.Now })
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
-    </div>
-}
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }

@@ -465,10 +465,6 @@
     <Compile Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.Designer.cs">
       <DependentUpon>201801230652353_RequestProgressTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.cs" />
-    <Compile Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.Designer.cs">
-      <DependentUpon>201801230728177_Price&amp;TaxRemovedFromItem.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -645,7 +641,6 @@
     <Content Include="Resources\customer-reg.jpg" />
     <Content Include="Resources\error.jpg" />
     <Content Include="Resources\Icons\pin.png" />
-    <Content Include="Resources\Icons\pin_alt.png" />
     <Content Include="Resources\Icons\profile.png" />
     <Content Include="Resources\index.jpg" />
     <Content Include="Resources\Logo.jpg" />
@@ -864,12 +859,13 @@
     <Content Include="Views\BlogPosts\Edit.cshtml" />
     <Content Include="Views\BlogPosts\Index.cshtml" />
     <Content Include="Views\Complains\Create.cshtml" />
-    <Content Include="Views\Complains\Delete.cshtml" />
-    <Content Include="Views\Complains\Details.cshtml" />
-    <Content Include="Views\Complains\Edit.cshtml" />
-    <Content Include="Views\Complains\Index.cshtml" />
     <Content Include="Views\Shared\_Location.cshtml" />
     <Content Include="Views\ItemRequests\MyRequests.cshtml" />
+    <Content Include="Views\Complains\Index.cshtml" />
+    <Content Include="Views\Complains\Edit.cshtml" />
+    <Content Include="Views\Complains\Delete.cshtml" />
+    <Content Include="Views\Complains\ThankYou.cshtml" />
+    <Content Include="Views\ServiceProviders\DetailsById.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1004,9 +1000,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.resx">
       <DependentUpon>201801230652353_RequestProgressTable.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.resx">
-      <DependentUpon>201801230728177_Price&amp;TaxRemovedFromItem.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
