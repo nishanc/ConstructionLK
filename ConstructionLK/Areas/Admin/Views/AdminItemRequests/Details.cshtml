@@ -4,15 +4,28 @@
     ViewBag.Title = "Details";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
+<style>
+    /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+    #map {
+        height: 600px;
+        width: 520px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    html, body {
+        height: 100%;
+        margin: 0;
+        padding-top:10px;
+    }
+</style>
 <h2>Details</h2>
 
-<div>
-    <h4>ItemRequest</h4>
+<div class="col-md-7">
+    <h4>Service Request</h4>
     <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal ">
         <dt>
-            @Html.DisplayNameFor(model => model.Customer.Username)
+            @Html.Label("Customer Username")
         </dt>
 
         <dd>
@@ -20,7 +33,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Item.ItemName)
+            @Html.Label("Item Name")
         </dt>
 
         <dd>
@@ -36,15 +49,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Location.Type)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Location.Type)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ServiceProvider.Username)
+            @Html.Label("Service Provider")
         </dt>
 
         <dd>
@@ -52,7 +57,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Message)
+            @Html.Label("Message")
         </dt>
 
         <dd>
@@ -60,7 +65,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
+            @Html.Label("Created Date")
         </dt>
 
         <dd>
@@ -68,7 +73,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.AcceptedDate)
+            @Html.Label("Accepted Date")
         </dt>
 
         <dd>
@@ -76,7 +81,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.ExpDate)
+            @Html.Label("Expiaration Date")
         </dt>
 
         <dd>
@@ -84,7 +89,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.CompletedDate)
+            @Html.Label("Completed Date")
         </dt>
 
         <dd>
@@ -106,9 +111,120 @@
         <dd>
             @Html.DisplayFor(model => model.Longitude)
         </dd>
-
     </dl>
+    <span class="label label-primary">Progress</span>
+    <div class="progress progress-striped active">
+        <div class="progress-bar" style="width: 45%"></div>
+    </div>
 </div>
+<div class="col-md-5">
+    <div id="map"></div>
+    <script>
+        function initMap() {
+
+        var latitude = @Html.Raw(Json.Encode(ViewBag.latitude));
+        var longitude = @Html.Raw(Json.Encode(ViewBag.longitude));
+        var myLatLng = {"lat": latitude, "lng": longitude};
+        var icon = "/Resources/Icons/pin.png";
+        var map = new google.maps.Map(document.getElementById('map'), {
+            zoom: 15,
+            center: myLatLng,
+            styles: [
+        { elementType: 'geometry', stylers: [{ color: '#242f3e' }] },
+        { elementType: 'labels.text.stroke', stylers: [{ color: '#242f3e' }] },
+        { elementType: 'labels.text.fill', stylers: [{ color: '#746855' }] },
+        {
+            featureType: 'administrative.locality',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#d59563' }]
+        },
+        {
+            featureType: 'poi',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#d59563' }]
+        },
+        {
+            featureType: 'poi.park',
+            elementType: 'geometry',
+            stylers: [{ color: '#263c3f' }]
+        },
+        {
+            featureType: 'poi.park',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#6b9a76' }]
+        },
+        {
+            featureType: 'road',
+            elementType: 'geometry',
+            stylers: [{ color: '#38414e' }]
+        },
+        {
+            featureType: 'road',
+            elementType: 'geometry.stroke',
+            stylers: [{ color: '#212a37' }]
+        },
+        {
+            featureType: 'road',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#9ca5b3' }]
+        },
+        {
+            featureType: 'road.highway',
+            elementType: 'geometry',
+            stylers: [{ color: '#746855' }]
+        },
+        {
+            featureType: 'road.highway',
+            elementType: 'geometry.stroke',
+            stylers: [{ color: '#1f2835' }]
+        },
+        {
+            featureType: 'road.highway',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#f3d19c' }]
+        },
+        {
+            featureType: 'transit',
+            elementType: 'geometry',
+            stylers: [{ color: '#2f3948' }]
+        },
+        {
+            featureType: 'transit.station',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#d59563' }]
+        },
+        {
+            featureType: 'water',
+            elementType: 'geometry',
+            stylers: [{ color: '#17263c' }]
+        },
+        {
+            featureType: 'water',
+            elementType: 'labels.text.fill',
+            stylers: [{ color: '#515c6d' }]
+        },
+        {
+            featureType: 'water',
+            elementType: 'labels.text.stroke',
+            stylers: [{ color: '#17263c' }]
+        }
+            ]
+
+        });
+
+        var marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Service Location',
+            icon : icon
+        });
+    }
+    </script>
+    <script async defer
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNAhDrUVY2eAjlZHN_P1C1msEA_45v-XY&callback=initMap">
+    </script>
+</div>
+
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
