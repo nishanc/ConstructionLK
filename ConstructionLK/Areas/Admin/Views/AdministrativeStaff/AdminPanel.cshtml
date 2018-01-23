@@ -39,10 +39,9 @@
             @Html.ActionLink("Freelancer Service Providers", "Index", "ServiceProvidersIndividual", new {area = ""}, null)
         </li>
         <li class="list-group-item">
-            @*<span class="badge">@ViewBag.CountISP</span>*@
-            @Html.ActionLink("Monitor Ongoing Jobs", "Index", "ServiceProvidersIndividual", new { area = "" }, null)
+            <span class="badge">@ViewBag.countcomplains</span>
+            @Html.ActionLink("View Complains", "Index", "Complains", new { area = "" }, null)
         </li>
-
         <ul class="nav nav-pills nav-stacked">
             <li class="dropdown">
                 <a class="dropdown-toggle list-group-item" data-toggle="dropdown" href="#" aria-expanded="false">

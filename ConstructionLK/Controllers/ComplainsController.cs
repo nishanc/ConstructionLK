@@ -17,7 +17,7 @@ namespace ConstructionLK.Controllers
         // GET: ComplainsTest
         public ActionResult Index()
         {
-            var complains = db.Complains.Include(c => c.AspNetUser).Include(c => c.ComplainAction);
+            var complains = db.Complains.Include(c => c.AspNetUser).Include(c => c.ComplainAction).Where(c=>c.ActionId==ComplainActionName.NotHandled);
             return View(complains.ToList());
         }
 

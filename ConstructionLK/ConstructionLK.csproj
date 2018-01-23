@@ -475,6 +475,7 @@
     <Compile Include="Models\BlogPostImage.cs" />
     <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\ComplainAction.cs" />
+    <Compile Include="Models\ComplainActionName.cs" />
     <Compile Include="Models\ConstructionLKContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />
