@@ -287,6 +287,8 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\ServiceProvidersCooperateController.cs" />
@@ -888,6 +890,7 @@
     <Content Include="Views\PublishedItems\Details.cshtml" />
     <Content Include="Views\PublishedItems\Edit.cshtml" />
     <Content Include="Views\PublishedItems\Index.cshtml" />
+    <Content Include="Views\Items\BuyProduct.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
