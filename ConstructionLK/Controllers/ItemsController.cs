@@ -138,6 +138,14 @@ namespace ConstructionLK.Controllers
             return RedirectToAction("Index");
         }
 
+
+        // buy method 
+        public ActionResult Buy(int id)
+        {
+            Item item = db.Items.Find(id);
+            return View("BuyProduct", item);// sent to add the quntity 
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

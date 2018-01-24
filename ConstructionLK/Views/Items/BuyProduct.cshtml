@@ -1,0 +1,50 @@
+﻿@model ConstructionLK.Models.Item
+@{
+    ViewBag.Title = "BuyProduct";
+}
+
+<h2>BuyProduct</h2>
+
+<div class="panel panel-success">
+    <div class="panel-heading">
+        <h3 class="panel-title">@Html.DisplayFor(model => model.ItemName)</h3>
+    </div>
+    <div class="panel-body">
+
+        <table style="margin-left:500px">
+            @*<tr>
+                <td>Product Name</td>
+                <td style="padding-left:70px;">@Html.DisplayFor(model => model.ItemName)</td>
+            </tr>*@
+            <tr>
+                <td>Product code</td>
+                <td style="padding-left:70px;">@Html.DisplayFor(model => model.ItemCode)</td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td style="padding-left:70px;">@Html.DisplayFor(model => model.Description)</td>
+            </tr>
+            <tr>
+                <td>Status</td>
+                <td style="padding-left:70px;">@Html.DisplayFor(model => model.ItemStatus.Name)</td>
+            </tr>
+
+            <tr>
+                <td>Quantity</td>
+                <td style="padding-left:70px;">
+                    @using (Html.BeginForm("order", "Order", FormMethod.Get))
+            {
+                        <input type="hidden" class="form-control" id="id" name="id" value="@Html.DisplayFor(model => model.Id)">
+                        @*<input type="hidden" class="form-control" id="Price" value=100.00 >*@
+                        <br/>
+                        <input type="text" class="form-control input-sm" id="Qnt" name="Qnt">
+                        <br />
+                        <input type="submit" value="Order now" class="btn btn-warning" />
+                    }
+
+                </td>
+            </tr>
+
+        </table>
+    </div>
+</div>

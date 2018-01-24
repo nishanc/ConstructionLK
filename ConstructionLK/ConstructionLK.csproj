@@ -286,6 +286,8 @@
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
+    <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\ServiceProvidersCooperateController.cs" />
     <Compile Include="Controllers\ServiceProvidersIndividualController.cs" />
@@ -870,6 +872,9 @@
     <Content Include="Views\Complains\Index.cshtml" />
     <Content Include="Views\Shared\_Location.cshtml" />
     <Content Include="Views\ItemRequests\MyRequests.cshtml" />
+    <Content Include="Views\ServiceProvidersCooperate\ProfileOut.cshtml" />
+    <Content Include="Views\Items\BuyProduct.cshtml" />
+    <Content Include="Views\Order\cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -877,6 +882,7 @@
     <Folder Include="Areas\Admin\Views\CustomerChart\" />
     <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Areas\Admin\Views\UserCountChart\" />
+    <Folder Include="Views\Product\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>

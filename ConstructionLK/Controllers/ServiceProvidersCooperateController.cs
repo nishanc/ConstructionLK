@@ -64,8 +64,8 @@ namespace ConstructionLK.Controllers
             return View(serviceProvider);
         }
 
-        // GET: ServiceProvidersCooperate/Create
-        public ActionResult Create()
+    // GET: ServiceProvidersCooperate/Create
+    public ActionResult Create()
         {
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name");
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type");

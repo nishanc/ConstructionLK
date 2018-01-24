@@ -138,6 +138,8 @@ namespace ConstructionLK.Controllers
             return View(customer);
         }
 
+       
+
         // GET: Customers/Delete/5
         public ActionResult Delete(int? id)
         {
