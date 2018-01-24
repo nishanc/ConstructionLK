@@ -1,0 +1,53 @@
+﻿@using ConstructionLK.Controllers;
+@using Microsoft.Ajax.Utilities
+@using Microsoft.AspNet.Identity
+@model ConstructionLK.Models.Customer
+@{
+    ViewBag.Title = "cart";
+}
+
+<h2>cart</h2>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>ConfirmOrder1</title>
+</head>
+<body>
+    
+
+            <table class="table table-bordered table-hover ">
+                <tr class="success">
+                    <th>Product</th>
+                    <th>unit Price</th>
+                    <th>Quantity</th>
+                    <th>Sub total</th>
+                </tr>
+
+                @*@{
+                        double s = 0;
+                    }
+
+                    @foreach (Product pro in (List<Product>)Session["cart"])
+                    {
+                        s = s +Price
+
+                    }*@
+                @foreach (Product product in (List<Product>)Session["cart"])
+                {
+                    <tr>
+                        <td>@product.It.ItemName</td>
+                        <td></td>
+                        <td>@product.Quantity</td>
+                        <td></td>
+                        <td> @Html.ActionLink("Cancel order", "cancelOrder", "Order", new { id = @product.It.Id }, new { @class = "btn btn-outline-warning btn-sm" })</td>
+                    </tr>
+                }
+
+            </table>
+
+            <br/>
+            @Html.ActionLink("Continue Shopping", "Index", "Items", new { id = 1 }, new { @class = "btn btn-warning" }) @Html.ActionLink("Confirm Order", "", "Items", new {  }, new { @class = "btn btn-success" })
+      
+</body>
+</html>
+
