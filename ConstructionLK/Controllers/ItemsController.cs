@@ -150,5 +150,18 @@ namespace ConstructionLK.Controllers
             }
             base.Dispose(disposing);
         }
+        
+        public ActionResult MyProducts(string user)
+        {
+            //var items = db.Items.Include(i => i.ItemStatus).Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
+            var appuser = db.ServiceProviders.SingleOrDefault(u => u.ApplicationUserId == user);
+            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i => i.ItemStatus).Include(i => i.PublishedItems).Where(i => i.UserId == appuser.Id);
+            //var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
+
+            if (User.IsInRole(RoleName.CanManageAll))
+                return View(items.ToList());
+
+            return View("Index", items.ToList());
+        }
     }
 }
