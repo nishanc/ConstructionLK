@@ -7,13 +7,13 @@ namespace ConstructionLK.Migrations.ConstructionLKContext
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.1.3-40302")]
-    public sealed partial class PriceTaxRemovedFromItem : IMigrationMetadata
+    public sealed partial class IdRemovedFromPublishedItems : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PriceTaxRemovedFromItem));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(IdRemovedFromPublishedItems));
         
         string IMigrationMetadata.Id
         {
-            get { return "201801230728177_Price&TaxRemovedFromItem"; }
+            get { return "201801240635130_IdRemovedFromPublishedItems"; }
         }
         
         string IMigrationMetadata.Source

@@ -282,12 +282,12 @@
     <Compile Include="Controllers\ComplainsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemPropertiesController.cs" />
     <Compile Include="Controllers\ItemRequestsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Controllers\OrderController.cs" />
-    <Compile Include="Controllers\ProductController.cs" />
+    <Compile Include="Controllers\PublishedItemsController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\ServiceProvidersCooperateController.cs" />
     <Compile Include="Controllers\ServiceProvidersIndividualController.cs" />
@@ -467,9 +467,13 @@
     <Compile Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.Designer.cs">
       <DependentUpon>201801230652353_RequestProgressTable.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.cs" />
-    <Compile Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.Designer.cs">
-      <DependentUpon>201801230728177_Price&amp;TaxRemovedFromItem.cs</DependentUpon>
+    <Compile Include="Migrations\ConstructionLKContext\201801240604361_MetaDataTable.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801240604361_MetaDataTable.Designer.cs">
+      <DependentUpon>201801240604361_MetaDataTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801240635130_IdRemovedFromPublishedItems.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801240635130_IdRemovedFromPublishedItems.Designer.cs">
+      <DependentUpon>201801240635130_IdRemovedFromPublishedItems.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -481,6 +485,7 @@
     <Compile Include="Models\BlogPostImage.cs" />
     <Compile Include="Models\Complain.cs" />
     <Compile Include="Models\ComplainAction.cs" />
+    <Compile Include="Models\ComplainActionName.cs" />
     <Compile Include="Models\ConstructionLKContext.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />
@@ -502,6 +507,7 @@
     <Compile Include="Models\Location.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MembershipType.cs" />
+    <Compile Include="Models\MetaData.cs" />
     <Compile Include="Models\Min18YearsIfAMember.cs" />
     <Compile Include="Models\PublishedItem.cs" />
     <Compile Include="Models\RatingsCustomer.cs" />
@@ -647,7 +653,6 @@
     <Content Include="Resources\customer-reg.jpg" />
     <Content Include="Resources\error.jpg" />
     <Content Include="Resources\Icons\pin.png" />
-    <Content Include="Resources\Icons\pin_alt.png" />
     <Content Include="Resources\Icons\profile.png" />
     <Content Include="Resources\index.jpg" />
     <Content Include="Resources\Logo.jpg" />
@@ -866,15 +871,23 @@
     <Content Include="Views\BlogPosts\Edit.cshtml" />
     <Content Include="Views\BlogPosts\Index.cshtml" />
     <Content Include="Views\Complains\Create.cshtml" />
-    <Content Include="Views\Complains\Delete.cshtml" />
-    <Content Include="Views\Complains\Details.cshtml" />
-    <Content Include="Views\Complains\Edit.cshtml" />
-    <Content Include="Views\Complains\Index.cshtml" />
     <Content Include="Views\Shared\_Location.cshtml" />
     <Content Include="Views\ItemRequests\MyRequests.cshtml" />
-    <Content Include="Views\ServiceProvidersCooperate\ProfileOut.cshtml" />
-    <Content Include="Views\Items\BuyProduct.cshtml" />
-    <Content Include="Views\Order\cart.cshtml" />
+    <Content Include="Views\Complains\Index.cshtml" />
+    <Content Include="Views\Complains\Edit.cshtml" />
+    <Content Include="Views\Complains\Delete.cshtml" />
+    <Content Include="Views\Complains\ThankYou.cshtml" />
+    <Content Include="Views\ServiceProviders\DetailsById.cshtml" />
+    <Content Include="Views\ItemProperties\Create.cshtml" />
+    <Content Include="Views\ItemProperties\Delete.cshtml" />
+    <Content Include="Views\ItemProperties\Details.cshtml" />
+    <Content Include="Views\ItemProperties\Edit.cshtml" />
+    <Content Include="Views\ItemProperties\Index.cshtml" />
+    <Content Include="Views\PublishedItems\Create.cshtml" />
+    <Content Include="Views\PublishedItems\Delete.cshtml" />
+    <Content Include="Views\PublishedItems\Details.cshtml" />
+    <Content Include="Views\PublishedItems\Edit.cshtml" />
+    <Content Include="Views\PublishedItems\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -882,7 +895,6 @@
     <Folder Include="Areas\Admin\Views\CustomerChart\" />
     <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Areas\Admin\Views\UserCountChart\" />
-    <Folder Include="Views\Product\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
@@ -1011,8 +1023,11 @@
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201801230652353_RequestProgressTable.resx">
       <DependentUpon>201801230652353_RequestProgressTable.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801230728177_Price&amp;TaxRemovedFromItem.resx">
-      <DependentUpon>201801230728177_Price&amp;TaxRemovedFromItem.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801240604361_MetaDataTable.resx">
+      <DependentUpon>201801240604361_MetaDataTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801240635130_IdRemovedFromPublishedItems.resx">
+      <DependentUpon>201801240635130_IdRemovedFromPublishedItems.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

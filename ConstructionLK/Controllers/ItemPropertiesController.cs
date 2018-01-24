@@ -10,121 +10,112 @@ using ConstructionLK.Models;
 
 namespace ConstructionLK.Controllers
 {
-    public class ComplainsController : Controller
+    public class ItemPropertiesController : Controller
     {
         private ConstructionLKContext db = new ConstructionLKContext();
 
-        // GET: ComplainsTest
+        // GET: ItemProperties
         public ActionResult Index()
         {
-            var complains = db.Complains.Include(c => c.AspNetUser).Include(c => c.ComplainAction).Where(c=>c.ActionId==ComplainActionName.NotHandled);
-            return View(complains.ToList());
+            var itemProperties = db.ItemProperties.Include(i => i.Item);
+            return View(itemProperties.ToList());
         }
 
-        // GET: ComplainsTest/Details/5
+        // GET: ItemProperties/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Complain complain = db.Complains.Find(id);
-            if (complain == null)
+            ItemProperty itemProperty = db.ItemProperties.Find(id);
+            if (itemProperty == null)
             {
                 return HttpNotFound();
             }
-            return View(complain);
+            return View(itemProperty);
         }
 
-        // GET: ComplainsTest/Create
-        public ActionResult Create(string user)
+        // GET: ItemProperties/Create
+        public ActionResult Create()
         {
+            ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName");
+            return View();
+        }
 
-            ViewBag.providerid = user;
-            return View();
-        }
-        public ActionResult ThankYou()
-        {
-            return View();
-        }
-        // POST: ComplainsTest/Create
+        // POST: ItemProperties/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(Complain complain)
+        public ActionResult Create([Bind(Include = "Id,ItemId,PropertyName,Value")] ItemProperty itemProperty)
         {
             if (ModelState.IsValid)
             {
-                db.Complains.Add(complain);
+                db.ItemProperties.Add(itemProperty);
                 db.SaveChanges();
-                return RedirectToAction("ThankYou");
+                return RedirectToAction("Index");
             }
-            //ViewBag.ComplainedBy = new SelectList(db.AspNetUsers, "Id", "Email");
 
-            //ViewBag.ComplainedAbout = new SelectList(db.AspNetUsers, "Id", "Email", complain.ComplainedAbout);
-            //ViewBag.ActionId = new SelectList(db.ComplainActions, "Id", "Action", complain.ActionId);
-
-            return View(complain);
+            ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemProperty.ItemId);
+            return View(itemProperty);
         }
 
-        // GET: ComplainsTest/Edit/5
+        // GET: ItemProperties/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Complain complain = db.Complains.Find(id);
-            if (complain == null)
+            ItemProperty itemProperty = db.ItemProperties.Find(id);
+            if (itemProperty == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.ComplainedAbout = new SelectList(db.AspNetUsers, "Id", "Email", complain.ComplainedAbout);
-            ViewBag.ActionId = new SelectList(db.ComplainActions, "Id", "Action", complain.ActionId);
-            return View(complain);
+            ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemProperty.ItemId);
+            return View(itemProperty);
         }
 
-        // POST: ComplainsTest/Edit/5
+        // POST: ItemProperties/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,ComplainedDate,ActionId,ComplainedBy,ComplainedAbout,ComplainBody")] Complain complain)
+        public ActionResult Edit([Bind(Include = "Id,ItemId,PropertyName,Value")] ItemProperty itemProperty)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(complain).State = EntityState.Modified;
+                db.Entry(itemProperty).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.ComplainedAbout = new SelectList(db.AspNetUsers, "Id", "Email", complain.ComplainedAbout);
-            ViewBag.ActionId = new SelectList(db.ComplainActions, "Id", "Action", complain.ActionId);
-            return View(complain);
+            ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemProperty.ItemId);
+            return View(itemProperty);
         }
 
-        // GET: ComplainsTest/Delete/5
+        // GET: ItemProperties/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Complain complain = db.Complains.Find(id);
-            if (complain == null)
+            ItemProperty itemProperty = db.ItemProperties.Find(id);
+            if (itemProperty == null)
             {
                 return HttpNotFound();
             }
-            return View(complain);
+            return View(itemProperty);
         }
 
-        // POST: ComplainsTest/Delete/5
+        // POST: ItemProperties/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Complain complain = db.Complains.Find(id);
-            db.Complains.Remove(complain);
+            ItemProperty itemProperty = db.ItemProperties.Find(id);
+            db.ItemProperties.Remove(itemProperty);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

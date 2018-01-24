@@ -42,14 +42,12 @@ namespace ConstructionLK.Areas.Admin.Controllers
             var customers = db.Customers.Include(c => c.Id);
             int countc = customers.Count();
             ViewBag.CountC = countc.ToString();
-            //var csp = db.ServiceProviders.Include(sp => sp.Id);
-            //int countcsp = csp.Count();
             var countcsp = db.ServiceProviders.Count(t => t.ServiceProviderType.Id == ServiceProviderTypeName.SpCooperate);
             ViewBag.CountCSP = countcsp.ToString();
-            //var csi = db.ServiceProviders.Include(sp => sp.Id);
-            //int countcsi = csi.Count();
             var countisp = db.ServiceProviders.Count(t => t.ServiceProviderType.Id == ServiceProviderTypeName.SpIndividual);
             ViewBag.CountISP = countisp.ToString();
+            var CountComplains = db.Complains.Count(c => c.ActionId == ComplainActionName.NotHandled);
+            ViewBag.countcomplains = CountComplains;
 
 
             return View("AdminPanel", admin);
