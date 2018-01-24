@@ -18,8 +18,8 @@ namespace ConstructionLK.Controllers
         public ActionResult Index(int id)
         {
             //var items = db.Items.Include(i => i.ItemStatus).Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
-
-            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i=>i.ItemStatus).Where(i=>i.TypeId==id);
+            
+            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i=>i.ItemStatus).Include(i=>i.PublishedItems).Where(i=>i.TypeId==id);
             //var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
 
             if (User.IsInRole(RoleName.CanManageAll))
@@ -44,8 +44,10 @@ namespace ConstructionLK.Controllers
         }
 
         // GET: Items/Create
-        public ActionResult Create()
+        public ActionResult Create(string user)
         {
+            ViewBag.puserid = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user).Id;
+
             ViewBag.StatusId = new SelectList(db.ItemStatus, "Id", "Name");
             ViewBag.SubCategoryId = new SelectList(db.ItemSubCategories, "Id", "Name");
             ViewBag.TypeId = new SelectList(db.ItemTypes, "Id", "Type");
@@ -58,18 +60,20 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,ItemName,ItemCode,Description,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,SubCategoryId,TypeId,UserId,Price,Tax")] Item item)
+        public ActionResult Create(Item item)
         {
             if (ModelState.IsValid)
             {
                 db.Items.Add(item);
+                
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Create", "PublishedItems",new { id = item.Id,user = item.UserId});
             }
             ViewBag.StatusId = new SelectList(db.ItemStatus, "Id", "Name",item.StatusId);
             ViewBag.SubCategoryId = new SelectList(db.ItemSubCategories, "Id", "Name", item.SubCategoryId);
             ViewBag.TypeId = new SelectList(db.ItemTypes, "Id", "Type", item.TypeId);
             ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", item.UserId);
+
             return View(item);
         }
 

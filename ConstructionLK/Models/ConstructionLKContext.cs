@@ -49,6 +49,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<ItemStatus> ItemStatus { get; set; }
         public virtual DbSet<ItemRequestStatus> ItemRequestStatuses { get; set; }
         public virtual DbSet<RequestProgress> RequestProgreses { get; set; }
+        public virtual DbSet<MetaData>  MetaData { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdministrativeStaff>()
