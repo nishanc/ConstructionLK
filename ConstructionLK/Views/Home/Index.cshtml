@@ -4,6 +4,47 @@
 <link href="~/Content/Home/style.css" rel="stylesheet" />
 <link href="~/Content/Index.css" rel="stylesheet" />
 <div class="jumbotron2 jumbotron"></div>
+@*<div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="my-slider" class="carousel slide" data-ride="carousel" style="margin-top:-15px">
+                    <ol class="carousel-indicators">
+                        <li data-target="#my-slider" data-slide-to="0" class="active"></li>
+                        <li data-target="#my-slider" data-slide-to="1"></li>
+                        <li data-target="#my-slider" data-slide-to="2"></li>
+                    </ol>
+                    <div class="carousel-inner" role="listbox">
+                        <div class="item active">
+                            <img src="~/Resources/index.jpg" alt="" style=""/>
+                            <div class="carousel-caption">
+                                <h1>Caption one</h1>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Resources/index2.jpg" alt="" />
+                            <div class="carousel-caption">
+                                <h1>Caption two</h1>
+                            </div>
+                        </div>
+                        <div class="item">
+                            <img src="~/Resources/index3.jpg" alt="" />
+                            <div class="carousel-caption">
+                                <h1>Caption three</h1>
+                            </div>
+                        </div>
+                    </div>
+
+                    <a class="left carousel-control" href="#my-slider" role="button" data-slide="prev">
+                        <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                    </a>
+                    <a class="right carousel-control" href="#my-slider" role="button" data-slide="next">
+                        <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>*@
+
 <div class="background-wrap">
     <video id="video-bg-elem" preload="auto" autoplay="auto" loop="loop" muted="muted">
         <source src="~/Resources/background-header-v2.MP4" type="video/mp4" />
@@ -18,35 +59,186 @@
         <a href="#" class="btn btn-primary btn-lg">Learn more &raquo;</a>
     </p>
 </div>
-<div class="container2">
-    <img src="~/Resources/Nexus_5_Front_View.png" alt="MobileApp" class="image" style="width:100%">
-    <div class="mobile-card">
-        <div class="alert alert-dismissible alert-warning">
-            
-            <h1>It's here!</h1>
-            <p><h3>Get our comprehensive mobile applications to stay updated. It's simple, fast, and easy to manage your account as well as make your payments. Available on Google Play and the App Store.</h3></p>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div id="testimonial-slider" class="owl-carousel">
+                <div class="testimonial">
+                    <div class="pic">
+                        <img src="images/img-1.jpg">
+                    </div>
+                    <div class="testimonial-profile">
+                        <h3 class="title">williamson</h3>
+                        <span class="post">Web Developer</span>
+                    </div>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius eros consequat auctor gravida. Fusce tristique lacus at urna sollicitudin pulvinar. Suspendisse hendrerit ultrices mauris.
+                    </p>
+                </div>
+                <div class="testimonial">
+                    <div class="pic">
+                        <img src="images/img-2.jpg">
+                    </div>
+                    <div class="testimonial-profile">
+                        <h3 class="title">Kristina</h3>
+                        <span class="post">Web Designer</span>
+                    </div>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius eros consequat auctor gravida. Fusce tristique lacus at urna sollicitudin pulvinar. Suspendisse hendrerit ultrices mauris.
+                    </p>
+                </div>
+                <div class="testimonial">
+                    <div class="pic">
+                        <img src="images/img-3.jpg">
+                    </div>
+                    <div class="testimonial-profile">
+                        <h3 class="title">Steve Thomas</h3>
+                        <span class="post">Web Developer</span>
+                    </div>
+                    <p class="description">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam varius eros consequat auctor gravida. Fusce tristique lacus at urna sollicitudin pulvinar. Suspendisse hendrerit ultrices mauris.
+                    </p>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="middle">
-        <div class=""><a class="btn btn-warning btn-lg btn-block" href="#">Get it here &raquo;</a></div>
     </div>
-</div>
-<div class="row">
-    <div class="col-md-4">
-        <h2>Services</h2>
-        <p>
-            Meet abundant service providers in diverse specializations in order to meet your building project task successfully.
-        </p>
-        <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+    
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.css" > <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.theme.min.css" > 
+
+<style>
+        .testimonial {
+            margin: 0 20px 50px;
+        }
+    .testimonial .pic {
+        display: inline-block;
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+        margin: 0 15px 15px 0;
+    }
+
+        .testimonial .pic img {
+            width: 100%;
+            height: auto;
+            border-radius: 50%;
+        }
+
+    .testimonial .testimonial-profile {
+        display: inline-block;
+        position: relative;
+        top: 15px;
+    }
+
+    .testimonial .title {
+        display: block;
+        font-size: 20px;
+        font-weight: 600;
+        color: #2f2f2f;
+        text-transform: capitalize;
+        margin: 0 0 7px 0;
+    }
+
+    .testimonial .post {
+        display: block;
+        font-size: 14px;
+        color: #5d7aa7;
+    }
+
+    .testimonial .description {
+        padding: 20px 22px;
+        background: #1f487e;
+        font-size: 15px;
+        color: #fff;
+        line-height: 25px;
+        margin: 0;
+        position: relative;
+    }
+
+        .testimonial .description:before,
+        .testimonial .description:after {
+            content: "";
+            border-width: 18px 0 0 18px;
+            border-style: solid;
+            border-color: #5d7aa7 transparent transparent;
+            position: absolute;
+            bottom: -18px;
+            left: 0;
+        }
+
+        .testimonial .description:after {
+            border-width: 18px 18px 0 0;
+            left: auto;
+            right: 0;
+        }
+
+    .owl-theme .owl-controls {
+        margin-top: 10px;
+        margin-left: 30px;
+    }
+
+        .owl-theme .owl-controls .owl-buttons div {
+            opacity: 0.8;
+            background: #fff;
+        }
+
+    .owl-prev:before,
+    .owl-next:before {
+        content: "\f053";
+        font-family: 'FontAwesome';
+        font-size: 20px;
+        color: #1f487e;
+    }
+</style>
+
+    <div class="container2">
+        <img src="~/Resources/Nexus_5_Front_View.png" alt="MobileApp" class="image" style="width:100%">
+        <div class="mobile-card">
+            <div class="alert alert-dismissible alert-warning">
+
+                <h1>It's here!</h1>
+                <p><h3>Get our comprehensive mobile applications to stay updated. It's simple, fast, and easy to manage your account as well as make your payments. Available on Google Play and the App Store.</h3></p>
+            </div>
+        </div>
+        <div class="middle">
+            <div class=""><a class="btn btn-warning btn-lg btn-block" href="#">Get it here &raquo;</a></div>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Building Materials</h2>
-        <p>Find your needy row material for your building project at ease considering the quality and volume</p>
-        <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+    <div class="row">
+        <div class="col-md-4">
+            <h2>Services</h2>
+            <p>
+                Meet abundant service providers in diverse specializations in order to meet your building project task successfully.
+            </p>
+            <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Building Materials</h2>
+            <p>Find your needy row material for your building project at ease considering the quality and volume</p>
+            <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+        </div>
+        <div class="col-md-4">
+            <h2>Plants Machinery and Tools</h2>
+            <p>Source the best plant and machinery that delivery you project are successful and make you stay a head progress of your construction schedule</p>
+            <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
+        </div>
     </div>
-    <div class="col-md-4">
-        <h2>Plants Machinery and Tools</h2>
-        <p>Source the best plant and machinery that delivery you project are successful and make you stay a head progress of your construction schedule</p>
-        <p><a class="btn btn-info" href="#">Learn more &raquo;</a></p>
-    </div>
-</div>
+    @section Scripts{
+    <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
+<script>
+    $(document).ready(function () {
+        $("#testimonial-slider").owlCarousel({
+            items: 2,
+            itemsDesktop: [1000, 2],
+            itemsDesktopSmall: [979, 2],
+            itemsTablet: [768, 1],
+            pagination: false,
+            navigation: true,
+            navigationText: ["", ""],
+            autoPlay: true
+        });
+    });
+        </script>
+   
+    }

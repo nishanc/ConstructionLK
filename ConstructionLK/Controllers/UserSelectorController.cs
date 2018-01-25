@@ -81,5 +81,37 @@ namespace ConstructionLK.Controllers
             return HttpNotFound();
         }
 
+        public ActionResult Edit(string user)
+        {
+
+            if (User.IsInRole(RoleName.CanManageAll) || User.IsInRole(RoleName.AdministrativeStaff))
+            {
+                var admin = db.AdministrativeStaffs.SingleOrDefault(a => a.ApplicationUserId == user);
+                return RedirectToAction("Edit", "AdministrativeStaff", new { area = "Admin", id = admin.Id });
+            }
+            if (User.IsInRole(RoleName.ServiceProvider))
+            {
+                var newuser = db.AspNetUsers.Find(user);
+                if (newuser != null && newuser.UserSelection == ServiceProviderTypeName.SpIndividual)
+                {
+                    var spi = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user);
+                    return RedirectToAction("Edit", "ServiceProvidersIndividual", new { area = "", id = spi.Id });
+                }
+                if (newuser != null && newuser.UserSelection == ServiceProviderTypeName.SpCooperate)
+                {
+                    var spc = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user);
+                    return RedirectToAction("Edit", "ServiceProvidersCooperate", new { area = "", id = spc.Id });
+                }
+            }
+            if ((User.IsInRole(RoleName.Customer)))
+            {
+
+                    var spc = db.Customers.SingleOrDefault(s => s.ApplicationUserId == user);
+                    return RedirectToAction("Edit", "Customers", new { area = "", id = spc.Id });
+            }
+            return HttpNotFound();
+
+        }
+
     }
 }

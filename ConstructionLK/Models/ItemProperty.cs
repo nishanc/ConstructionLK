@@ -10,6 +10,7 @@ namespace ConstructionLK.Models
     {
         [Key]
         [Column(Order = 0)]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Key]

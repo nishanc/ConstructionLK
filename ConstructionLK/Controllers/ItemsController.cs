@@ -142,13 +142,7 @@ namespace ConstructionLK.Controllers
             return RedirectToAction("Index");
         }
 
-
-        // buy method 
-        public ActionResult Buy(int id)
-        {
-            Item item = db.Items.Find(id);
-            return View("BuyProduct", item);// sent to add the quntity 
-        }
+ 
 
         protected override void Dispose(bool disposing)
         {
@@ -170,6 +164,15 @@ namespace ConstructionLK.Controllers
                 return View(items.ToList());
 
             return View("Index", items.ToList());
+        }
+        public ActionResult Buy(int id)
+        {
+            var price = db.PublishedItems.SingleOrDefault(p => p.ItemId == id);
+            var itemprice = price.Price;
+            Item item = db.Items.Find(id);
+            ViewBag.data = itemprice;
+            ViewBag.idata = item;
+            return View("BuyProduct");// sent to add the quntity 
         }
     }
 }

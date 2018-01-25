@@ -20,11 +20,13 @@ namespace ConstructionLK.Controllers
     {
        private Item it = new Item();
         private  int quantity;
+        //private float price;
 
         public Product(Item it, int quantity)
         {
             this.It = it;
             this.Quantity = quantity;
+            //this.Price = price;
         }
 
         public Item It
@@ -52,5 +54,18 @@ namespace ConstructionLK.Controllers
                 quantity = value;
             }
         }
+
+        //public float Price
+        //{
+        //    get
+        //    {
+        //        return price;
+        //    }
+
+        //    set
+        //    {
+        //        price = value;
+        //    }
+        //}
     }
 }
