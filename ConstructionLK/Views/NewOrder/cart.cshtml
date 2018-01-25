@@ -9,6 +9,7 @@
 <h2>cart</h2>
 <html>
 <head>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
     <meta name="viewport" content="width=device-width" />
     <title>ConfirmOrder1</title>
 </head>
@@ -63,7 +64,69 @@
 
     <br />
     @Html.ActionLink("Continue Shopping", "Index", "Items", new { id = 1 }, new { @class = "btn btn-warning" }) @Html.ActionLink("Confirm Order", "", "Items", new { }, new { @class = "btn btn-success" })
+    <br/>
+    <br />
+    @*PayPal Button*@
+    <div id="paypal-button"></div>
+    <script>
+           
+        paypal.Button.render({
 
+            env: 'sandbox', // Or 'sandbox'
+
+            client: {
+                // sandbox: 'Acx3MRaUyBpaOFYc_zrxHAEkf8y9Gf5bnctplaWgPzKzeBISlNoldNXbiO7awT_UoO7FrzB_MIyU8ki2',
+                sandbox: 'AUPqZNkiDZPp1yzAmCtquGGrfdaH-lNJCPp9mhYRI7LVuEBZ5dDY0H5RdrJtlWgEuwQWsZ1ST_n3x9wF', // nithu store
+                //production: 'xxxxxxxxx'
+            },
+
+            commit: true, // Show a 'Pay Now' button
+
+            style: {
+                size: 'medium',
+                color: 'gold',
+                shape: 'pill',
+                label: 'checkout'
+            },
+
+            payment: function (data, actions) {
+                return actions.payment.create({
+                    payment: {
+                        transactions: [
+                            {
+                                amount: { total: '@s', currency: 'USD' }
+                            }
+                        ]
+                    }
+                });
+            },
+
+            onAuthorize: function (data, actions) {
+                return actions.payment.execute().then(function (payment) {
+                   // toster.alert("Success");
+                    toastr.success("Successfully paid!");
+                    // The payment is complete!
+                    // You can now show a confirmation message to the customer
+                });
+            },
+
+            onCancel: function (data, actions) {
+                toastr.success("Payment was cancelled!");
+                /*
+                 * Buyer cancelled the payment
+                 */
+            },
+
+            onError: function (err) {
+               // alert(err);
+                toastr.success("An error occured!");
+                /*
+                 * An error occurred during the transaction
+                 */
+            }
+
+        }, '#paypal-button');
+    </script>
 </body>
 </html>
 
