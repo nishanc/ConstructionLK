@@ -663,6 +663,9 @@
     <Content Include="Resources\Nexus_5_Front_View.png" />
     <Content Include="Resources\spc-reg.jpg" />
     <Content Include="Resources\spi-reg.jpg" />
+    <Content Include="Resources\Testimonial\img-1.jpg" />
+    <Content Include="Resources\Testimonial\img-2.jpg" />
+    <Content Include="Resources\Testimonial\img-3.jpg" />
     <Content Include="Scripts\ai.0.22.9-build00167.js" />
     <Content Include="Scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="Scripts\bloodhound.js" />

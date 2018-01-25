@@ -1,14 +1,14 @@
 ﻿body {
-    padding-top: 50px;
-    padding-bottom: 20px;
+	padding-top: 50px;
+	padding-bottom: 20px;
 }
 
-    
+	
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+	padding-left: 15px;
+	padding-right: 15px;
 
 }
 
@@ -16,70 +16,75 @@
    will truncate terms that are too long to fit in the left column 
 */
 .dl-horizontal dt {
-    white-space: normal;
+	white-space: normal;
 }
 
 /* Set width on the form input elements since they're 100% wide by default */
 input,
 select,
 textarea {
-    max-width: 280px;
+	max-width: 280px;
 }
 .field-validation-error {
-    color: rgb(181, 137, 0);
+	color: rgb(181, 137, 0);
 }
 .field-validation-error :hover{
-    color: rgb(181, 137, 0);
+	color: rgb(181, 137, 0);
 }
 .input-validation-error {
-    border: 2px solid red;
+	border: 2px solid red;
 }
 .aligncenter {
-    align-content: center;
+	align-content: center;
 }
 .text-danger {
-    color: rgb(181, 137, 0);
+	color: rgb(181, 137, 0);
 }
 .form-control{
-    box-shadow: 2px 2px 5px rgb(181,137,0);
+	box-shadow: 2px 2px 5px rgb(181,137,0);
 }
 li.list-group-item:hover,
 button.list-group-item:hover,
 li.list-group-item:focus,
 button.list-group-item:focus {
-    text-decoration: none;
-    color: #ffffff;
-    background-color: #073642;
+	text-decoration: none;
+	color: #ffffff;
+	background-color: #073642;
 }
 
 .btn-outline-warning {
-    color: #CB4B16;
-    background-color: transparent;
-    background-image: none;
-    border-color: #CB4B16;
+	color: #CB4B16;
+	background-color: transparent;
+	background-image: none;
+	border-color: #CB4B16;
 }
 
 .btn-outline-warning:hover {
-    color: #fff;
-    background-color: #CB4B16;
-    border-color: #CB4B16;
+	color: #fff;
+	background-color: #CB4B16;
+	border-color: #CB4B16;
 }
 
 .btn-outline-warning:focus, .btn-outline-warning.focus {
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
 }
 
 .btn-outline-warning.disabled, .btn-outline-warning:disabled {
-    color: #CB4B16;
-    background-color: transparent;
+	color: #CB4B16;
+	background-color: transparent;
 }
 
 .btn-outline-warning:not([disabled]):not(.disabled):active, .btn-outline-warning:not([disabled]):not(.disabled).active,
 .show > .btn-outline-warning.dropdown-toggle {
-    color: #fff;
-    background-color: #CB4B16;
-    border-color: #CB4B16;
-    -webkit-box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
-    box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
+	color: #fff;
+	background-color: #CB4B16;
+	border-color: #CB4B16;
+	-webkit-box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
+	box-shadow: 0 0 0 0.2rem rgba(203, 75, 22, 0.5);
 }
+	.testimonial .post {
+	display: block;
+	font-size: 14px;
+	color: #fff;
+	}
