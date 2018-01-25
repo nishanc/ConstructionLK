@@ -146,8 +146,12 @@ namespace ConstructionLK.Controllers
         // buy method 
         public ActionResult Buy(int id)
         {
+            var price = db.PublishedItems.SingleOrDefault(p => p.ItemId == id);
+            var itemprice = price.Price;
             Item item = db.Items.Find(id);
-            return View("BuyProduct", item);// sent to add the quntity 
+            ViewBag.data = itemprice;
+            ViewBag.idata = item;
+            return View("BuyProduct");// sent to add the quntity 
         }
 
         protected override void Dispose(bool disposing)
