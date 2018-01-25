@@ -15,6 +15,7 @@ namespace ConstructionLK.Models
             Customers = new HashSet<Customer>();
             ServiceProviders = new HashSet<ServiceProvider>();
             Complains = new HashSet<Complain>();
+            Orders = new HashSet<Orders>();
         }
         [StringLength(128)]
         public string Id { get; set; }
@@ -57,5 +58,7 @@ namespace ConstructionLK.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Complain> Complains { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<Orders> Orders { get; set; }
     }
 }

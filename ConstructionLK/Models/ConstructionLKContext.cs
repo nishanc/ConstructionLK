@@ -50,6 +50,8 @@ namespace ConstructionLK.Models
         public virtual DbSet<ItemRequestStatus> ItemRequestStatuses { get; set; }
         public virtual DbSet<RequestProgress> RequestProgreses { get; set; }
         public virtual DbSet<MetaData>  MetaData { get; set; }
+        public virtual DbSet<Orders> Order { get; set; }
+        public virtual DbSet<OrderStatus> OrderStatus { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdministrativeStaff>()
@@ -170,6 +172,12 @@ namespace ConstructionLK.Models
             modelBuilder.Entity<Item>()
                 .HasMany(e => e.ItemComments)
                 .WithRequired(e => e.Item)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Item>()
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.Item)
+                .HasForeignKey(e=>e.ItemId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Item>()
@@ -299,10 +307,21 @@ namespace ConstructionLK.Models
                 .WithRequired(e => e.AspNetUser)
                 .HasForeignKey(e => e.ComplainedAbout);
 
+            modelBuilder.Entity<AspNetUser>()
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.AspNetUser)
+                .HasForeignKey(e => e.UserId)
+                .WillCascadeOnDelete(false);
+
             modelBuilder.Entity<ComplainAction>()
                 .HasMany(e => e.Complains)
                 .WithRequired(e => e.ComplainAction)
                 .HasForeignKey(e => e.ActionId);
+
+            modelBuilder.Entity<OrderStatus>()
+                .HasMany(e => e.Orders)
+                .WithRequired(e => e.OrderStatus)
+                .HasForeignKey(e => e.Status);
 
             modelBuilder.Entity<Status>()
                 .HasMany(e => e.Customers)
