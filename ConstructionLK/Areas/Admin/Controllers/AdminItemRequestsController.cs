@@ -38,7 +38,22 @@ namespace ConstructionLK.Areas.Admin.Controllers
             //var req = db.ItemRequests.SingleOrDefault(i => i.Id == id);
             ViewBag.latitude = itemRequest.Latitude;
             ViewBag.longitude = itemRequest.Longitude;
+            try
+            {
+                var result = db.RequestProgreses.GroupBy(x => x.ReqId)
+                          .Select(x => x.OrderByDescending(y => y.Id).FirstOrDefault());
+                var p = result.FirstOrDefault(i => i.ReqId == id).value;
+                if (p != 0)
+                    ViewBag.P = p;
+                
+            }
+            catch (Exception)
+            {
+
+                ViewBag.P = 0;
+            }
             return View(itemRequest);
+
         }
 
         // GET: Admin/AdminItemRequests/Create

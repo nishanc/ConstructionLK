@@ -291,6 +291,7 @@
     <Compile Include="Controllers\NewOrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />
+    <Compile Include="Controllers\RequestProgressesController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\ServiceProvidersCooperateController.cs" />
     <Compile Include="Controllers\ServiceProvidersIndividualController.cs" />
@@ -912,6 +913,12 @@
     <Content Include="Views\ItemLocations\Edit.cshtml" />
     <Content Include="Views\ItemLocations\Index.cshtml" />
     <Content Include="Views\Items\ReadOnlyDetails.cshtml" />
+    <Content Include="Views\Home\Pricing.cshtml" />
+    <Content Include="Views\RequestProgresses\Create.cshtml" />
+    <Content Include="Views\RequestProgresses\Delete.cshtml" />
+    <Content Include="Views\RequestProgresses\Details.cshtml" />
+    <Content Include="Views\RequestProgresses\Edit.cshtml" />
+    <Content Include="Views\RequestProgresses\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

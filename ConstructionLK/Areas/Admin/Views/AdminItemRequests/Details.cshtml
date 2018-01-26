@@ -111,10 +111,18 @@
         <dd>
             @Html.DisplayFor(model => model.Longitude)
         </dd>
+        <dt>
+            @Html.Raw("Progress")
+        </dt>
+
+        <dd>
+            @Html.Raw(ViewBag.P)%
+        </dd>
+
     </dl>
     <span class="label label-primary">Progress</span>
     <div class="progress progress-striped active">
-        <div class="progress-bar" style="width: 45%"></div>
+        <div class="progress-bar" style="width: @ViewBag.P%"></div>
     </div>
 </div>
 <div class="col-md-5">
