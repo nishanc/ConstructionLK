@@ -55,7 +55,7 @@ namespace ConstructionLK.Controllers
             if (User.IsInRole(RoleName.CanManageAll)|| User.IsInRole(RoleName.ServiceProvider))
                 return View(item);
 
-            return View("ReadOnlyIndex", item);
+            return View("ReadOnlyDetails", item);
 
         }
 

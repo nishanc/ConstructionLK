@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
+using System.Configuration;
+using System.Data.SqlClient;
 
 namespace ConstructionLK.Controllers
 {
@@ -15,12 +17,44 @@ namespace ConstructionLK.Controllers
         private ConstructionLKContext db = new ConstructionLKContext();
 
         // GET: ItemLocations
-        public ActionResult Index()
+        public ActionResult Index(int? iid)
         {
-            var itemLocations = db.ItemLocations.Include(i => i.Item);
-            return View(itemLocations.ToList());
-        }
+            var id = iid;
+            string markers = "[";
+            string conString = ConfigurationManager.ConnectionStrings["ConstructionLKContext"].ConnectionString;
+            SqlCommand cmd = new SqlCommand("SELECT * FROM ItemLocations WHERE ItemId="+id+"");
+            using (SqlConnection con = new SqlConnection(conString))
+            {
+                cmd.Connection = con;
+                con.Open();
+                using (SqlDataReader sdr = cmd.ExecuteReader())
+                {
+                    while (sdr.Read())
+                    {
+                        markers += "{";
+                        //markers += string.Format("'title': '{0}',", sdr["Name"]);
+                        markers += string.Format("'lat': '{0}',", sdr["Latitude"]);
+                        markers += string.Format("'lng': '{0}',", sdr["Longitude"]);
+                        markers += string.Format("'description': '{0}'", sdr["ItemId"]);
+                        markers += "},";
+                    }
+                }
+                con.Close();
+            }
 
+            markers += "];";
+            ViewBag.Markers = markers;
+            return View();
+            //ViewBag.ItemId = iid;
+            //var itemLocations = db.ItemLocations.Include(i => i.Item);
+            //return View(itemLocations.ToList());
+        }
+        //public JsonResult GetLocation()
+        //{
+        //    //var data = db.ItemLocations.Where(i => i.ItemId == id).ToList();
+        //    var data = db.ItemLocations.ToList();
+        //    return Json(data, JsonRequestBehavior.AllowGet);
+        //}
         // GET: ItemLocations/Details/5
         public ActionResult Details(int? id)
         {

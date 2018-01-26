@@ -234,6 +234,7 @@
 </div>
 
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }, new { @class = "btn btn-outline-warning btn-sm" }) |
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-outline-warning btn-sm" })|
+    @Html.ActionLink("Add Progress", "Create", "RequestProgresses", new { id = Model.Id }, new { @class = "btn btn-outline-warning btn-sm" })
 </p>
