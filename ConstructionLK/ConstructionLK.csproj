@@ -283,6 +283,7 @@
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemLocationsController.cs" />
+    <Compile Include="Controllers\ItemPaymentsController.cs" />
     <Compile Include="Controllers\ItemPropertiesController.cs" />
     <Compile Include="Controllers\ItemRequestsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -933,6 +934,11 @@
     <Content Include="Views\RequestProgresses\Edit.cshtml" />
     <Content Include="Views\RequestProgresses\Index.cshtml" />
     <Content Include="Views\Customers\Blacklisted.cshtml" />
+    <Content Include="Views\ItemPayments\Create.cshtml" />
+    <Content Include="Views\ItemPayments\Delete.cshtml" />
+    <Content Include="Views\ItemPayments\Details.cshtml" />
+    <Content Include="Views\ItemPayments\Edit.cshtml" />
+    <Content Include="Views\ItemPayments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
