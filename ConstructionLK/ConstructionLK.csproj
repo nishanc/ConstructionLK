@@ -282,6 +282,7 @@
     <Compile Include="Controllers\ComplainsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemLocationsController.cs" />
     <Compile Include="Controllers\ItemPropertiesController.cs" />
     <Compile Include="Controllers\ItemRequestsController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
@@ -905,6 +906,12 @@
     <Content Include="Views\PublishedItems\Index.cshtml" />
     <Content Include="Views\Items\BuyProduct.cshtml" />
     <Content Include="Views\NewOrder\cart.cshtml" />
+    <Content Include="Views\ItemLocations\Create.cshtml" />
+    <Content Include="Views\ItemLocations\Delete.cshtml" />
+    <Content Include="Views\ItemLocations\Details.cshtml" />
+    <Content Include="Views\ItemLocations\Edit.cshtml" />
+    <Content Include="Views\ItemLocations\Index.cshtml" />
+    <Content Include="Views\Items\ReadOnlyDetails.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
