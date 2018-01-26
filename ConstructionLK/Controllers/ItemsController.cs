@@ -15,17 +15,29 @@ namespace ConstructionLK.Controllers
         private ConstructionLKContext db = new ConstructionLKContext();
         [AllowAnonymous]
         // GET: Items
-        public ActionResult Index(int id)
+        public ActionResult Index(int? id)
         {
             //var items = db.Items.Include(i => i.ItemStatus).Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
-            
-            var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i=>i.ItemStatus).Include(i=>i.PublishedItems).Where(i=>i.TypeId==id);
-            //var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
-
-            if (User.IsInRole(RoleName.CanManageAll))
-                return View(items.ToList());
+            if (!(id == null))
+            {
+                var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i => i.ItemStatus).Include(i => i.PublishedItems).Where(i => i.TypeId == id);
+                if (User.IsInRole(RoleName.CanManageAll))
+                    return View(items.ToList());
 
                 return View("ReadOnlyIndex", items.ToList());
+            }
+            else
+            {
+                var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider).Include(i => i.ItemStatus).Include(i => i.PublishedItems);
+                if (User.IsInRole(RoleName.CanManageAll))
+                    return View(items.ToList());
+
+                return View("ReadOnlyIndex", items.ToList());
+            }
+
+            //var items = db.Items.Include(i => i.ItemSubCategory).Include(i => i.ItemType).Include(i => i.ServiceProvider);
+
+
         }
 
         // GET: Items/Details/5
@@ -40,7 +52,11 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
-            return View(item);
+            if (User.IsInRole(RoleName.CanManageAll)|| User.IsInRole(RoleName.ServiceProvider))
+                return View(item);
+
+            return View("ReadOnlyIndex", item);
+
         }
 
         // GET: Items/Create
