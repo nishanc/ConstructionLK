@@ -9,7 +9,8 @@ using System.Web.Mvc;
 using System.Web.Security;
 using ConstructionLK.Models;
 using Microsoft.AspNet.Identity;
-
+using Microsoft.Owin.Host.SystemWeb;
+using Microsoft.Owin.Security;
 namespace ConstructionLK.Controllers
 {
     public class CustomersController : Controller
@@ -125,7 +126,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,Password,FirstName,LastName,DateOfBirth,Telephone,Gender,Address,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate")] Customer customer)
+        public ActionResult Edit([Bind(Include = "Id,Username,Password,FirstName,LastName,DateOfBirth,Telephone,Gender,Address,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,ApplicationUserId")] Customer customer)
         {
             if (ModelState.IsValid)
             {
@@ -199,5 +200,11 @@ namespace ConstructionLK.Controllers
         //        new Customer { Id = 2, FirstName = "Mary Williams" }
         //    };
         //}
+        [AllowAnonymous]
+        public ActionResult Blacklisted()
+        {
+            //return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+            return View();
+        }
     }
 }

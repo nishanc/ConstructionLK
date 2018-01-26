@@ -932,6 +932,7 @@
     <Content Include="Views\RequestProgresses\Details.cshtml" />
     <Content Include="Views\RequestProgresses\Edit.cshtml" />
     <Content Include="Views\RequestProgresses\Index.cshtml" />
+    <Content Include="Views\Customers\Blacklisted.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

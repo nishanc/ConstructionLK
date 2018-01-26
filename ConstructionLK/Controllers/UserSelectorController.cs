@@ -39,6 +39,7 @@ namespace ConstructionLK.Controllers
             if (!(User.IsInRole(RoleName.Customer) || User.IsInRole(RoleName.ServiceProvider)))
             {
                 var user = db.AspNetUsers.Find(userId);
+
                 if (user != null && user.UserSelection == ServiceProviderTypeName.SpIndividual)
                 {
                     return RedirectToAction("Create", "ServiceProvidersIndividual");
@@ -63,18 +64,33 @@ namespace ConstructionLK.Controllers
             //var type = db.ServiceProviders.Find(User.Identity.GetUserId());
             if (User.IsInRole(RoleName.Customer))
             {
-            
+                var customerStatus = db.Customers.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+                if (customerStatus == 3)
+                {
+                    return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+
+                }
                 return RedirectToAction("MyProfile", "Customers", new { id = userId });
             }
 
             if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpIndividual))
             {
+                var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+                if (spStatus == 3)
+                {
+                    return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
+                }
                 return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { id = userId });
             }
             if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpCooperate))
             {
+                var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+                if (spStatus == 3)
+                {
+                    return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
+                }
                 return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = userId });
             }
 

@@ -584,7 +584,14 @@ namespace ConstructionLK.Controllers
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
             return RedirectToAction("Index", "Home");
         }
-
+        [AllowAnonymous]
+        public ActionResult LogOutBlacklist(int? id)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            if (id == 1)
+                return RedirectToAction("Blacklisted", "Customers");
+            return RedirectToAction("Index", "Home");
+        }
         //
         // GET: /Account/ExternalLoginFailure
         [AllowAnonymous]
