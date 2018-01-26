@@ -33,6 +33,8 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.latitude = itemRequest.Latitude;
+            ViewBag.longitude = itemRequest.Longitude;
             return View(itemRequest);
         }
         public ActionResult MyRequests(int? id)
@@ -41,12 +43,12 @@ namespace ConstructionLK.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ItemRequest itemRequests = db.ItemRequests.FirstOrDefault(i=>i.ServiceProviderId == id);
+            var itemRequests = db.ItemRequests.Where(i=>i.ServiceProviderId == id).ToList();
             if (itemRequests == null)
             {
                 return HttpNotFound();
             }
-            return View();
+            return View(itemRequests);
         }
         // GET: ItemRequests/Create
         public ActionResult Create(int? id,string user,int? provider)
