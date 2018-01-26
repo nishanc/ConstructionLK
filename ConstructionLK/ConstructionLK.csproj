@@ -487,6 +487,18 @@
     <Compile Include="Migrations\ConstructionLKContext\201801251653211_OrderStatusTable.Designer.cs">
       <DependentUpon>201801251653211_OrderStatusTable.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801261029507_CustomerIdToLocationTable.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801261029507_CustomerIdToLocationTable.Designer.cs">
+      <DependentUpon>201801261029507_CustomerIdToLocationTable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801261046145_CustomerCurrentLocation.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801261046145_CustomerCurrentLocation.Designer.cs">
+      <DependentUpon>201801261046145_CustomerCurrentLocation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801261053417_LocationIdRemovedfromRequests.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801261053417_LocationIdRemovedfromRequests.Designer.cs">
+      <DependentUpon>201801261053417_LocationIdRemovedfromRequests.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -502,6 +514,7 @@
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\ContactType.cs" />
     <Compile Include="Models\Customer.cs" />
+    <Compile Include="Models\CustomerCurrentLocation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Item.cs" />
     <Compile Include="Models\ItemCategoryIcon.cs" />
@@ -1065,6 +1078,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201801251653211_OrderStatusTable.resx">
       <DependentUpon>201801251653211_OrderStatusTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801261029507_CustomerIdToLocationTable.resx">
+      <DependentUpon>201801261029507_CustomerIdToLocationTable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801261046145_CustomerCurrentLocation.resx">
+      <DependentUpon>201801261046145_CustomerCurrentLocation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801261053417_LocationIdRemovedfromRequests.resx">
+      <DependentUpon>201801261053417_LocationIdRemovedfromRequests.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

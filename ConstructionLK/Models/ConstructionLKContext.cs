@@ -9,9 +9,9 @@ namespace ConstructionLK.Models
     public partial class ConstructionLKContext : DbContext 
     {
         public ConstructionLKContext()
-        : base("name=ConstructionLKContext")
+        //: base("name=ConstructionLKContext")
         //: base("name=Techwire")
-        //: base("name=Azure")
+        : base("name=Azure")
         //: base("name=MRTVS")
         {
         }
@@ -52,6 +52,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<MetaData>  MetaData { get; set; }
         public virtual DbSet<Orders> Order { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
+        public virtual DbSet<CustomerCurrentLocation> CustomerCurrentLocation { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<AdministrativeStaff>()
@@ -104,6 +105,12 @@ namespace ConstructionLK.Models
                 .HasMany(e => e.ItemComments)
                 .WithRequired(e => e.Customer)
                 .HasForeignKey(e => e.UserId)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<Customer>()
+                .HasMany(e => e.CustomerCurrentLocations)
+                .WithRequired(e => e.Customer)
+                .HasForeignKey(e => e.CustomerId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Customer>()
@@ -221,9 +228,6 @@ namespace ConstructionLK.Models
                 .HasForeignKey(e => e.TypeId)
                 .WillCascadeOnDelete(false);
 
-            modelBuilder.Entity<Location>()
-                .Property(e => e.Type)
-                .IsFixedLength();
 
             modelBuilder.Entity<Location>()
                 .HasMany(e => e.ItemRequests)

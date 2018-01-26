@@ -18,7 +18,7 @@ namespace ConstructionLK.Areas.Admin.Controllers
         public ActionResult Index(int? id)
         {
 
-                var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.ItemRequestStatus).Include(i => i.Location).Include(i => i.ServiceProvider).Where(i=>i.StatusId==id);
+                var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.ItemRequestStatus).Include(i => i.ServiceProvider).Where(i=>i.StatusId==id);
                 return View(itemRequests.ToList());
 
         }
@@ -84,7 +84,6 @@ namespace ConstructionLK.Areas.Admin.Controllers
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
-            ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
             return View(itemRequest);
         }
@@ -104,7 +103,6 @@ namespace ConstructionLK.Areas.Admin.Controllers
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
-            ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
             return View(itemRequest);
         }
@@ -125,7 +123,6 @@ namespace ConstructionLK.Areas.Admin.Controllers
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
-            ViewBag.LocationId = new SelectList(db.Locations, "Id", "Type", itemRequest.LocationId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
             return View(itemRequest);
         }

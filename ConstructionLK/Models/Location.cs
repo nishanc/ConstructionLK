@@ -13,8 +13,9 @@ namespace ConstructionLK.Models
         {
             ItemRequests = new HashSet<ItemRequest>();
         }
-
         public int Id { get; set; }
+        //public Customer Customer { get; set; }
+        //public int CustomerId { get; set; }
 
         public float Latitude { get; set; }
 

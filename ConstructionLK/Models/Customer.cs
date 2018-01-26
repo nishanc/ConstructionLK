@@ -14,6 +14,7 @@ namespace ConstructionLK.Models
             BlogPostComments = new HashSet<BlogPostComment>();
             ItemComments = new HashSet<ItemComment>();
             ItemRequests = new HashSet<ItemRequest>();
+            CustomerCurrentLocations = new HashSet<CustomerCurrentLocation>();
             RatingsCustomers = new HashSet<RatingsCustomer>();
             RatingsServiceProviders = new HashSet<RatingsServiceProvider>();
         }
@@ -90,5 +91,8 @@ namespace ConstructionLK.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<RatingsServiceProvider> RatingsServiceProviders { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CustomerCurrentLocation> CustomerCurrentLocations { get; set; }
     }
 }
