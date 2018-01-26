@@ -63,69 +63,92 @@
     </table>
 
     <br />
-    @Html.ActionLink("Continue Shopping", "Index", "Items", new { id = 1 }, new { @class = "btn btn-warning" }) @Html.ActionLink("Confirm Order", "", "Items", new { }, new { @class = "btn btn-success" })
+    @Html.ActionLink("Continue Shopping", "Index", "Items", new { id = 1 }, new { @class = "btn btn-warning" }) <button  class="btn btn-success" onclick="GetData(@s)"> Confirm Order</button> 
     <br/>
     <br />
     @*PayPal Button*@
     <div id="paypal-button"></div>
     <script>
-           
-        paypal.Button.render({
 
-            env: 'sandbox', // Or 'sandbox'
+        function callpaypal(value){
+            paypal.Button.render({
 
-            client: {
-                // sandbox: 'Acx3MRaUyBpaOFYc_zrxHAEkf8y9Gf5bnctplaWgPzKzeBISlNoldNXbiO7awT_UoO7FrzB_MIyU8ki2',
-                sandbox: 'AUPqZNkiDZPp1yzAmCtquGGrfdaH-lNJCPp9mhYRI7LVuEBZ5dDY0H5RdrJtlWgEuwQWsZ1ST_n3x9wF', // nithu store
-                //production: 'xxxxxxxxx'
-            },
+                env: 'sandbox', // Or 'sandbox'
 
-            commit: true, // Show a 'Pay Now' button
+                client: {
+                    // sandbox: 'Acx3MRaUyBpaOFYc_zrxHAEkf8y9Gf5bnctplaWgPzKzeBISlNoldNXbiO7awT_UoO7FrzB_MIyU8ki2',
+                    sandbox: 'AUPqZNkiDZPp1yzAmCtquGGrfdaH-lNJCPp9mhYRI7LVuEBZ5dDY0H5RdrJtlWgEuwQWsZ1ST_n3x9wF',
+                    //production: 'xxxxxxxxx'
+                },
 
-            style: {
-                size: 'medium',
-                color: 'gold',
-                shape: 'pill',
-                label: 'checkout'
-            },
+                commit: true, // Show a 'Pay Now' button
 
-            payment: function (data, actions) {
-                return actions.payment.create({
-                    payment: {
-                        transactions: [
-                            {
-                                amount: { total: '@s', currency: 'USD' }
-                            }
-                        ]
-                    }
-                });
-            },
+                style: {
+                    size: 'medium',
+                    color: 'gold',
+                    shape: 'pill',
+                    label: 'checkout'
+                },
 
-            onAuthorize: function (data, actions) {
-                return actions.payment.execute().then(function (payment) {
-                   // toster.alert("Success");
-                    toastr.success("Successfully paid!");
-                    // The payment is complete!
-                    // You can now show a confirmation message to the customer
-                });
-            },
+                payment: function (data, actions) {
+                    return actions.payment.create({
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: { total: value, currency: 'USD' }
+                                }
+                            ]
+                        }
+                    });
+                },
 
-            onCancel: function (data, actions) {
-                toastr.success("Payment was cancelled!");
-                /*
-                 * Buyer cancelled the payment
-                 */
-            },
+                onAuthorize: function (data, actions) {
+                    return actions.payment.execute().then(function (payment) {
+                        toastr.success("payment was Successfull!")
+                        // The payment is complete!
+                        // You can now show a confirmation message to the customer
+                    });
+                },
 
-            onError: function (err) {
-               // alert(err);
-                toastr.success("An error occured!");
-                /*
-                 * An error occurred during the transaction
-                 */
-            }
+                onCancel: function (data, actions) {
+                    toastr.warning("Payment was canceled!")
+                },
 
-        }, '#paypal-button');
+                onError: function (err) {
+                    toastr.warning("Something went wrong!")
+                    /*
+                     * An error occurred during the transaction
+                     */
+                }
+
+            }, '#paypal-button');
+
+        }
+
+        function GetData(a) {
+           // alert("Called")
+            $.ajax({
+                type: 'GET',
+                url: "https://apilayer.net/api/live?access_key=b7702aa5f4fc438e52bc53c6258faa24&currencies=LKR&source=USD&format=1",
+                success: function (data) {
+                    
+                    var rest = a/150;
+                    var rest2 = rest.toFixed(2);
+                    var rest3 = rest2.toString();
+                    //alert(typeof rest3);
+                  
+                    callpaypal(rest3);
+                },
+                error: function (a, jqXHR, exception) { alert("error in GetData") }
+
+
+            });
+
+
+
+        }
+
+
     </script>
 </body>
 </html>
