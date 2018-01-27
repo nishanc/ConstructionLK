@@ -21,5 +21,6 @@ namespace ConstructionLK.Models
         public string Image { get; set; }
 
         public virtual Item Item { get; set; }
+        public byte[] ImageData { get; set; }
     }
 }
