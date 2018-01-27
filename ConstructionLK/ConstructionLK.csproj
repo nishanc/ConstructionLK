@@ -266,9 +266,11 @@
     <Compile Include="Areas\Admin\Controllers\AdminItemRequestsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\CustomerChartController.cs" />
+    <Compile Include="Areas\Admin\Controllers\RequestChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\ServiceProviderChartController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserCountChartController.cs" />
     <Compile Include="Areas\Admin\Models\RegChart.cs" />
+    <Compile Include="Areas\Admin\Models\RequestChart.cs" />
     <Compile Include="Areas\Admin\Models\UserCount.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\API\AdministrativeStaffController.cs" />
@@ -282,6 +284,7 @@
     <Compile Include="Controllers\ComplainsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemImagesController.cs" />
     <Compile Include="Controllers\ItemLocationsController.cs" />
     <Compile Include="Controllers\ItemPaymentsController.cs" />
     <Compile Include="Controllers\ItemPropertiesController.cs" />
@@ -500,6 +503,10 @@
     <Compile Include="Migrations\ConstructionLKContext\201801261053417_LocationIdRemovedfromRequests.Designer.cs">
       <DependentUpon>201801261053417_LocationIdRemovedfromRequests.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.Designer.cs">
+      <DependentUpon>201801270338448_ImageDatatoItemImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -549,6 +556,7 @@
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ItemImageViewModel.cs" />
     <Compile Include="ViewModels\NewServiceProviderViewModel.cs" />
     <Compile Include="ViewModels\RandomItemViewModel.cs" />
   </ItemGroup>
@@ -721,6 +729,7 @@
     <Content Include="Areas\Admin\Views\AdminItemRequests\Details.cshtml" />
     <Content Include="Areas\Admin\Views\AdminItemRequests\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\AdminItemRequests\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\RequestChart.cshtml" />
     <None Include="Properties\PublishProfiles\constructionlk - FTP.pubxml" />
     <None Include="Properties\PublishProfiles\constructionlk - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\VirtualMachine.pubxml" />
@@ -941,11 +950,14 @@
     <Content Include="Views\ItemPayments\Index.cshtml" />
     <Content Include="Views\ItemRequests\Confirming.cshtml" />
     <Content Include="Views\ItemPayments\UserPaymentDetails.cshtml" />
+    <Content Include="Views\ItemImages\Gallery.cshtml" />
+    <Content Include="Views\ItemImages\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Views\Chart\" />
     <Folder Include="Areas\Admin\Views\CustomerChart\" />
+    <Folder Include="Areas\Admin\Views\RequestChart\" />
     <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Areas\Admin\Views\UserCountChart\" />
     <Folder Include="Views\Sms\" />
@@ -1096,6 +1108,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201801261053417_LocationIdRemovedfromRequests.resx">
       <DependentUpon>201801261053417_LocationIdRemovedfromRequests.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.resx">
+      <DependentUpon>201801270338448_ImageDatatoItemImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

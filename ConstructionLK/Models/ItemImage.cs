@@ -5,11 +5,13 @@ namespace ConstructionLK.Models
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
+    using System.Web;
 
     public partial class ItemImage
     {
         [Key]
         [Column(Order = 0)]
+        [DatabaseGeneratedAttribute(DatabaseGeneratedOption.Identity)]
         public int Id { get; set; }
 
         [Key]
@@ -21,5 +23,6 @@ namespace ConstructionLK.Models
         public string Image { get; set; }
 
         public virtual Item Item { get; set; }
+        public byte[] ImageData { get; set; }
     }
 }

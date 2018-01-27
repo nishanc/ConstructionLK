@@ -1,0 +1,74 @@
+﻿@{
+    ViewBag.Title = "Requests Status";
+    Layout = "~/Views/Shared/_LayoutNoFooter.cshtml";
+}
+<h4>Requests Status</h4>
+            <div class="row" >
+                <canvas id="reqChart" width="100"></canvas>
+            </div>
+
+    @section scripts
+{
+        <script type="text/javascript">
+            $(function () {
+                $.ajax({
+                    url: '/Admin/RequestChart/RequestSummary',
+                    dataType: "json",
+                    type: "GET",
+                    contentType: 'application/json; charset=utf-8',
+                    async: false,
+                    processData: false,
+                    cache: false,
+                    delay: 15,
+                    success: function (data) {
+                        toastr.success("Successfully Loaded!");
+                        var labels = [], points = [], coloR = [];
+                        var dynamicColors = function () {
+                            var r = Math.floor(Math.random() * 255);
+                            var g = Math.floor(Math.random() * 255);
+                            var b = Math.floor(Math.random() * 255);
+                            return "rgb(" + r + "," + g + "," + b + ")";
+                        };
+                        for (var i = 0; i < data.length ; i++) {
+                            labels.push(data[i].Item);
+                            points.push(data[i].Value);
+                            coloR.push(dynamicColors());
+                            console.log("result");
+                        }
+                        var ctx = document.getElementById("reqChart").getContext("2d");
+                        ctx.canvas.width = 300;
+                        ctx.canvas.height = 300;
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            data: {
+                                labels: labels,
+                                datasets: [
+                                    {
+                                        label: '# of Requests',
+                                        backgroundColor: coloR,
+                                        data: points
+                                    }
+                                ]
+                            },
+                            options: {
+                                responsive: true,
+                                maintainAspectRatio: false,
+                                fill: false,
+                                backgroundColor: coloR,
+                                legend: {
+                                    display: true,
+                                    labels: {
+                                        fontColor: 'rgb(255, 255, 255)'
+                                    }
+                                }
+
+                            }
+                        });
+                    },
+                    error: function (xhr) {
+                        alert('error');
+                    }
+                });
+            });
+        </script>
+    }
