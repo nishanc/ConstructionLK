@@ -8,7 +8,7 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="well"><h2>@Html.DisplayFor(model => model.CompanyName)</h2></div>
-<div class="alert alert-dismissible alert-success">
+<div class="alert alert-dismissible alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
     <h4>New Requests!</h4><strong>Access them now. @Html.ActionLink("Click Here", "MyRequests","ItemRequests",new { id = Model.Id },null)</strong>
 </div>
@@ -20,163 +20,66 @@
     </span>
         <hr />
     @Html.ActionLink("Make Complaint", "Create", "Complains", new { user = Model.AspNetUser.Id }, new { @class = "btn btn-primary btn-xs" })
-    <dl class="dl-horizontal">
-        @*<dt>
-            @Html.DisplayNameFor(model => model.MembershipType.Name)
-        </dt>
+    <div class="col-md-3">
+        <ul class="list-group">
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.Username)
+                </strong>
+                    |@Html.DisplayFor(model => model.Username)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.BasedCity)
+                </strong>
+                    |@Html.DisplayFor(model => model.BasedCity)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.MailingAddress)
+                </strong>
+                    |@Html.DisplayFor(model => model.MailingAddress)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.Bio)
+                </strong>
 
-        <dd>
-            @Html.DisplayFor(model => model.MembershipType.Name)
-        </dd>*@
+                   |@Html.DisplayFor(model => model.Bio)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.Telephone)
+                </strong>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ServiceProviderType.Type)
-        </dt>
+                    |@Html.DisplayFor(model => model.Telephone)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.CompanyName)
+                </strong>
 
-        <dd>
-            @Html.DisplayFor(model => model.ServiceProviderType.Type)
-        </dd>
+                |@Html.DisplayFor(model => model.CompanyName)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.CompanyRegNo)
+                </strong>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
+                |@Html.DisplayFor(model => model.CompanyRegNo)
+            </li>
+            <li class="list-group-item">
+                <strong>
+                    @Html.DisplayNameFor(model => model.StartedDate)
+                </strong>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
-
-
-        <dt>
-            @Html.DisplayNameFor(model => model.BasedCity)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.BasedCity)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.MailingAddress)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.MailingAddress)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bio)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bio)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.DateOfBirth)
-        </dd>
-            *@
-        <dt>
-            @Html.DisplayNameFor(model => model.Telephone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Telephone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CompanyName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CompanyName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CompanyRegNo)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CompanyRegNo)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.StartedDate)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.StartedDate)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Avatar)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Avatar)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Status)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Status.Name)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>*@
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.CreatedDate)*@
-            Joined on
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
-
-        @*<dt>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>*@
-
-        <dt>
-            @*@Html.DisplayNameFor(model => model.ModifiedDate)*@
-            Last Modified on
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
-
-    </dl>
+                |@Html.DisplayFor(model => model.StartedDate)
+            </li>
+            <li class="list-group-item">
+                Last Modified On | @Html.LabelFor(model => model.ModifiedDate))
+            </li>
+        </ul>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |

@@ -1,6 +1,7 @@
 ﻿ @model IEnumerable<ConstructionLK.Models.Item>
 @using Microsoft.AspNet.Identity
 @using Microsoft.AspNet.Identity.EntityFramework
+@using ConstructionLK.Models
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -26,9 +27,14 @@
         }
 </style>
 <h2>Items</h2>
-<p>
-    @Html.ActionLink("Create New", "Create", new { user = User.Identity.GetUserId() }, new { @class = "btn btn-success" })
-</p>
+<div id="new-search-area" align="center"></div>
+@if (!User.IsInRole(RoleName.Customer))
+{
+    <p>
+        @Html.ActionLink("Create New", "Create", new { user = User.Identity.GetUserId() }, new { @class = "btn btn-success" })
+    </p>
+}
+
 @if (!Model.Any())
 {
     <p>We don't have any items yet.</p>
@@ -80,7 +86,11 @@ else
 @section scripts{
     <script>
         $(document).ready(function () {
-            var table = $("#item").DataTable();
+            var table = $("#item").DataTable({
+                initComplete: function () {
+                    $("#item_filter").detach().appendTo('#new-search-area');
+                }
+            });
             $("#item").on("click", ".js-delete", function () {
                 var button = $(this);
 

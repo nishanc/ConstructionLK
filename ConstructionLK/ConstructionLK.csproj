@@ -952,6 +952,8 @@
     <Content Include="Views\ItemPayments\UserPaymentDetails.cshtml" />
     <Content Include="Views\ItemImages\Gallery.cshtml" />
     <Content Include="Views\ItemImages\Upload.cshtml" />
+    <Content Include="Views\ServiceProvidersCooperate\ProfileOut.cshtml" />
+    <Content Include="Views\ItemRequests\UserIndex.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
