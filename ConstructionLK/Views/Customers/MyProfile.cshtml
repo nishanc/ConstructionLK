@@ -11,6 +11,10 @@
     <span class="label label-warning">Customer</span>
     <span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
     <hr />
+    @Html.Raw(User.Identity.GetUserId());
+I    @Html.ActionLink("See My Requests","Index", "ItemRequests", new { id = Model.Id }, null)
+    <br/>
+    <br/>
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Username)

@@ -21,6 +21,10 @@ namespace ConstructionLK.Controllers
             return View(itemRequests.ToList());
         }
 
+        // index for customer
+       
+
+
         // GET: ItemRequests/Details/5
         public ActionResult Details(int? id)
         {
