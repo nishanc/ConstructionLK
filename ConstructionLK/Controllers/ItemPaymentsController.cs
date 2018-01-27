@@ -33,13 +33,20 @@ namespace ConstructionLK.Controllers
             {
                 return HttpNotFound();
             }
+            // details for user
+            if (User.IsInRole(RoleName.Customer)) {
+                return View("UserPaymentDetails",itemPayment);
+
+            }
             return View(itemPayment);
         }
 
         // GET: ItemPayments/Create
-        public ActionResult Create()
+        public ActionResult Create(int id)
         {
-            ViewBag.RequestId = new SelectList(db.ItemRequests, "Id", "Message");
+           // ViewBag.RequestId = new SelectList(db.ItemRequests, "Id", "Message");
+            //ViewBag.RequestId = new SelectList(db.ItemRequests, "Id", "Id");
+            ViewBag.RequestId = id;
             return View();
         }
 
@@ -54,7 +61,7 @@ namespace ConstructionLK.Controllers
             {
                 db.ItemPayments.Add(itemPayment);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", "ItemPayments", new {id = itemPayment.Id });
             }
 
             ViewBag.RequestId = new SelectList(db.ItemRequests, "Id", "Message", itemPayment.RequestId);
