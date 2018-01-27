@@ -7,7 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
-
+using System.Collections.Specialized;
+using System.Configuration;
 namespace ConstructionLK.Controllers
 {
     public class ItemsController : Controller
@@ -83,6 +84,7 @@ namespace ConstructionLK.Controllers
                 db.Items.Add(item);
                 
                 db.SaveChanges();
+
                 return RedirectToAction("Create", "PublishedItems",new { id = item.Id,user = item.UserId});
             }
             ViewBag.StatusId = new SelectList(db.ItemStatus, "Id", "Name",item.StatusId);

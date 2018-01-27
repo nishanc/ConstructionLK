@@ -13,7 +13,7 @@
     }
 </style>
 <p>
-    @Html.ActionLink("Upload New", "Upload",new {id= ViewBag.ItemId })
+    @Html.ActionLink("Upload New", "Upload",new {id= ViewBag.ItemId },new { @class = "btn btn-sm btn-danger" })
 </p>
 <table class="table row" width="1050">
     @{
@@ -26,7 +26,7 @@
                 {
                     
                     <td>
-                        <img src="data:image/png;base64,@Convert.ToBase64String(Model[j].ImageData,0,Model[j].ImageData.Length)" style="display: block;max-width:230px;max-height:95px;width: auto;height: auto;"/>
+                        <img src="data:image/png;base64,@Convert.ToBase64String(Model[j].ImageData,0,Model[j].ImageData.Length)" style="display: block;max-width:350px;max-height:145px;width: auto;height: auto;"/>
                     </td>
                     j++;
                 }

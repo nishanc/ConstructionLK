@@ -6,25 +6,35 @@
 }
 
 <h2>Upload</h2>
-@using(Html.BeginForm("Upload","ItemImages",FormMethod.Post,new { enctype = "multipart/form-data" }))
-{
-    @Html.ValidationSummary(true)
-    <table>
-        <tr>
-            <td>Select File:</td>
-            <td>
-                @Html.TextBoxFor(model => model.File,new { type="file"})
-                @Html.ValidationMessage("CustomError")
-            </td>
-            @*@Html.Hidden("uname", Model.ItemId);*@
-            @Html.HiddenFor(model=>model.ItemId ,new { id = ViewBag.ItemId })
-            <td>
-                <input type="submit" value="Upload"/>
-            </td>
-        </tr>
-    </table>
-}
+<div class="col-md-4">
+    <div class="panel panel-success">
+        <div class="panel-heading">
+            <h2 class="panel-title">Upload images for this item</h2>
+        </div>
+        <div class="panel-body">
+        @using (Html.BeginForm("Upload", "ItemImages", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.ValidationSummary(true)
+            <table>
+                <tr>
+                    <td>
+                        @Html.TextBoxFor(model => model.File, new { type = "file" })
+                        @Html.ValidationMessage("CustomError")
+                    </td>
+                    @*@Html.Hidden("uname", Model.ItemId);*@
+                    @Html.HiddenFor(model => model.ItemId, new { id = ViewBag.ItemId })
+                    <td>
+                        <input type="submit" value="Upload" class="btn btn-sm btn-danger" />
+                    </td>
+                </tr>
+            </table>
+        }
+        </div>
+    </div>
+</div>
+
 @section Scripts{
+    
     @Scripts.Render("~/bundles/jqueryval")
     
-    }
+}

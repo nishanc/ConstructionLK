@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
+using System.Collections.Specialized;
+using System.Configuration;
 
 namespace ConstructionLK.Controllers
 {
@@ -46,7 +48,6 @@ namespace ConstructionLK.Controllers
             }
             catch (Exception)
             {
-
                 ViewBag.P = 0;
             }
             return View(itemRequest);
@@ -91,7 +92,26 @@ namespace ConstructionLK.Controllers
                 db.ItemRequests.Add(itemRequest);
                 db.SaveChanges();
                 //return RedirectToAction("Index");
-                 return RedirectToAction("Create", "ItemPayments", new {id= itemRequest.Id });
+                if(itemRequest.Message != null)
+                {
+                    String message = HttpUtility.UrlEncode(itemRequest.Message);
+                    var sp = db.ServiceProviders.SingleOrDefault(i => i.Id == itemRequest.ServiceProviderId);
+                    String number = sp.Telephone;
+                    using (var wb = new WebClient())
+                    {
+                        byte[] response = wb.UploadValues("https://api.txtlocal.com/send/", new NameValueCollection()
+                        {
+                            {"apikey" , "EXfapgBZ+4M-qSpQCEdOLhG6ZEc0y7esVVeTi6rL41"},
+                            {"numbers" , "+94"+number},
+                            {"message" , message},
+                            {"sender" , "CLK Alert"}
+                        });
+                        string result = System.Text.Encoding.UTF8.GetString(response);
+                        //return Content(result);
+                    }
+                }
+                
+                return RedirectToAction("Create", "ItemPayments", new {id= itemRequest.Id });
                 // return View("Views/ItemPayments/Create.cshtml");
 
                // return RedirectToAction("Confirming");
