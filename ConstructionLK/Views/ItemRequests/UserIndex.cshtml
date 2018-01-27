@@ -1,25 +1,22 @@
 ﻿@model IEnumerable<ConstructionLK.Models.ItemRequest>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "UserIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Your Services</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @*@Html.ActionLink("Create New", "Create")*@
 </p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Id)
+    <tr class="info">
 
-        </th>
-        <th>
-            @*@Html.DisplayNameFor(model => model.Customer.Username)*@
-            Customer
-        </th>
+        @*<th>
+                @Html.DisplayNameFor(model => model.Customer.Username)
+                Customer
+            </th>*@
         <th>
             @Html.DisplayNameFor(model => model.Item.ItemName)
         </th>
@@ -30,9 +27,9 @@
             @*@Html.DisplayNameFor(model => model.ServiceProvider.Username)*@
             Service Provider
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Message)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CreatedDate)
         </th>
@@ -45,27 +42,27 @@
         <th>
             @Html.DisplayNameFor(model => model.CompletedDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.StatusId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Latitude)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Longitude)
-        </th>
+        </th>*@
+        @*<th>
+                @Html.DisplayNameFor(model => model.Latitude)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Longitude)
+            </th>*@
         <th></th>
     </tr>
 
     @foreach (var item in Model)
     {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id) @*remove this *@
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Customer.Username)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Customer.Username)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.Item.ItemName)
             </td>
@@ -73,11 +70,11 @@
                 @Html.DisplayFor(modelItem => item.Location.Type)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ServiceProvider.Username)
+                @Html.DisplayFor(modelItem => item.ServiceProvider.FirstName) @Html.DisplayFor(modelItem => item.ServiceProvider.FirstName)
             </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Message)
-            </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem => item.Message)
+                </td>*@
             <td>
                 @Html.DisplayFor(modelItem => item.CreatedDate)
             </td>
@@ -90,19 +87,22 @@
             <td>
                 @Html.DisplayFor(modelItem => item.CompletedDate)
             </td>
+            @*<td>
+                    @Html.DisplayFor(modelItem =>  item.StatusId )
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Latitude)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Longitude)
+                </td>*@
+            @*<td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>*@
             <td>
-                @Html.DisplayFor(modelItem => item.StatusId)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Latitude)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Longitude)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                @*@Html.ActionLink("Rate this service"," Create", new { @class = "btn btn-primary btn-sm" })*@
             </td>
         </tr>
     }

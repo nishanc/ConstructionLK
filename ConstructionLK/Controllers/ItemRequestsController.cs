@@ -24,10 +24,11 @@ namespace ConstructionLK.Controllers
         }
 
         // index for customer
-        public ActionResult UserIndex()
+        public ActionResult UserIndex(int? id)
         {
             var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.ServiceProvider).Include(i => i.ItemRequestStatus);
-            return View(itemRequests.ToList());
+            var citemrequest = db.ItemRequests.Where(i => i.CustomerId == id);
+            return View(citemrequest.ToList());
         }
 
 

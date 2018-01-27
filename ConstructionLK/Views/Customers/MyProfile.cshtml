@@ -8,9 +8,15 @@
 }
 <div class="well"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
 <div class="col-md-3">
-    <span class="label label-warning">Customer</span>
-    <span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
+    <p>
+        <span class="label label-warning">Customer</span>
+        <span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
+        @Html.ActionLink("My requests", "UserIndex", "ItemRequests", new { id = Model.Id }, new { @class = "btn btn-primary btn-xs" })
+    </p>
     <hr />
+    
+
+
     <ul class="list-group">
         <li class="list-group-item">
             <strong>
