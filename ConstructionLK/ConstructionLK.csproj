@@ -948,6 +948,8 @@
     <Content Include="Views\ItemPayments\Details.cshtml" />
     <Content Include="Views\ItemPayments\Edit.cshtml" />
     <Content Include="Views\ItemPayments\Index.cshtml" />
+    <Content Include="Views\ItemRequests\Confirming.cshtml" />
+    <Content Include="Views\ItemPayments\UserPaymentDetails.cshtml" />
     <Content Include="Views\ItemImages\Gallery.cshtml" />
     <Content Include="Views\ItemImages\Upload.cshtml" />
   </ItemGroup>

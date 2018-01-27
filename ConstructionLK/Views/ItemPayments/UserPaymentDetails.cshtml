@@ -1,0 +1,172 @@
+﻿@model ConstructionLK.Models.ItemPayment
+
+@{
+    ViewBag.Title = "UserPaymentDetails";
+}
+<html>
+<head>
+    <script src="https://www.paypalobjects.com/api/checkout.js"></script>
+</head>
+<body>
+
+    <h2>User Payment Details</h2>
+
+    <div>
+        <h4>Your Request </h4>
+        <hr />
+        <dl class="dl-horizontal">
+            @*<dt>
+                    @Html.DisplayNameFor(model => model.ItemRequest.Message)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ItemRequest.Message)
+                </dd>*@
+           
+            <dt>
+                @Html.DisplayNameFor(model => model.DateAndTime)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.DateAndTime)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+
+        </dl>
+    </div>
+    <button class="btn btn-success" onclick="GetData(100)"> Pay Now</button>
+    <br />
+    <br />
+    <div id="paypal-button"></div>
+    <script>
+
+        function callpaypal(value) {
+            paypal.Button.render({
+
+                env: 'sandbox', // Or 'sandbox'
+
+                client: {
+                    // sandbox: 'Acx3MRaUyBpaOFYc_zrxHAEkf8y9Gf5bnctplaWgPzKzeBISlNoldNXbiO7awT_UoO7FrzB_MIyU8ki2',
+                    sandbox: 'AUPqZNkiDZPp1yzAmCtquGGrfdaH-lNJCPp9mhYRI7LVuEBZ5dDY0H5RdrJtlWgEuwQWsZ1ST_n3x9wF',
+                    //production: 'xxxxxxxxx'
+                },
+
+                commit: true, // Show a 'Pay Now' button
+
+                style: {
+                    size: 'medium',
+                    color: 'gold',
+                    shape: 'pill',
+                    label: 'checkout'
+                },
+
+                payment: function (data, actions) {
+                    return actions.payment.create({
+                        payment: {
+                            transactions: [
+                                {
+                                    amount: { total: value, currency: 'USD' }
+                                }
+                            ]
+                        }
+                    });
+                },
+
+                onAuthorize: function (data, actions) {
+                    return actions.payment.execute().then(function (payment) {
+                        toastr.success("payment was Successfull!")
+                        // The payment is complete!
+                        // You can now show a confirmation message to the customer
+                    });
+                },
+
+                onCancel: function (data, actions) {
+                    toastr.warning("Payment was canceled!")
+                },
+
+                onError: function (err) {
+                    toastr.warning("Something went wrong!")
+                    /*
+                     * An error occurred during the transaction
+                     */
+                }
+
+            }, '#paypal-button');
+
+        }
+
+        function GetData(a) {
+            // alert("Called")
+            $.ajax({
+                type: 'GET',
+                url: "https://apilayer.net/api/live?access_key=b7702aa5f4fc438e52bc53c6258faa24&currencies=LKR&source=USD&format=1",
+                success: function (data) {
+
+                    var rest = a / 150;
+                    var rest2 = rest.toFixed(2);
+                    var rest3 = rest2.toString();
+                    //alert(typeof rest3);
+
+                    callpaypal(rest3);
+                },
+                error: function (a, jqXHR, exception) { alert("error in GetData") }
+
+
+            });
+
+
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>
+
+
+                @*<h2>UserPaymentDetails</h2>
+
+                <div>
+                    <h4>Your Request </h4>
+                    <hr />
+                    <dl class="dl-horizontal">
+                        @*<dt>
+                                @Html.DisplayNameFor(model => model.ItemRequest.Message)
+                            </dt>
+
+                            <dd>
+                                @Html.DisplayFor(model => model.ItemRequest.Message)
+                            </dd>*@
+
+            @*<dt>
+                            @Html.DisplayNameFor(model => model.DateAndTime)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.DateAndTime)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.Amount)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.Amount)
+                        </dd>
+
+                    </dl>
+                </div>
+                <p>
+                   @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+                        @Html.ActionLink("Back to List", "Index")
+                </p>*@

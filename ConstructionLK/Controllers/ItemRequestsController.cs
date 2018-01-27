@@ -90,7 +90,11 @@ namespace ConstructionLK.Controllers
             {
                 db.ItemRequests.Add(itemRequest);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                //return RedirectToAction("Index");
+                 return RedirectToAction("Create", "ItemPayments", new {id= itemRequest.Id });
+                // return View("Views/ItemPayments/Create.cshtml");
+
+               // return RedirectToAction("Confirming");
             }
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name",itemRequest.StatusId);
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
