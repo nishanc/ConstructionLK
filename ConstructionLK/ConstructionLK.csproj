@@ -284,6 +284,7 @@
     <Compile Include="Controllers\ComplainsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ItemImagesController.cs" />
     <Compile Include="Controllers\ItemLocationsController.cs" />
     <Compile Include="Controllers\ItemPaymentsController.cs" />
     <Compile Include="Controllers\ItemPropertiesController.cs" />
@@ -555,6 +556,7 @@
     <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
+    <Compile Include="ViewModels\ItemImageViewModel.cs" />
     <Compile Include="ViewModels\NewServiceProviderViewModel.cs" />
     <Compile Include="ViewModels\RandomItemViewModel.cs" />
   </ItemGroup>
@@ -946,6 +948,8 @@
     <Content Include="Views\ItemPayments\Details.cshtml" />
     <Content Include="Views\ItemPayments\Edit.cshtml" />
     <Content Include="Views\ItemPayments\Index.cshtml" />
+    <Content Include="Views\ItemImages\Gallery.cshtml" />
+    <Content Include="Views\ItemImages\Upload.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

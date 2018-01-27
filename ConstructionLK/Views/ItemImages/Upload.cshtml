@@ -1,0 +1,30 @@
+﻿@model ConstructionLK.ViewModels.ItemImageViewModel
+
+@{
+    ViewBag.Title = "Upload";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Upload</h2>
+@using(Html.BeginForm("Upload","ItemImages",FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+    <table>
+        <tr>
+            <td>Select File:</td>
+            <td>
+                @Html.TextBoxFor(model => model.File,new { type="file"})
+                @Html.ValidationMessage("CustomError")
+            </td>
+            @*@Html.Hidden("uname", Model.ItemId);*@
+            @Html.HiddenFor(model=>model.ItemId ,new { id = ViewBag.ItemId })
+            <td>
+                <input type="submit" value="Upload"/>
+            </td>
+        </tr>
+    </table>
+}
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    
+    }
