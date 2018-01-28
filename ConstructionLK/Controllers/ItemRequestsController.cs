@@ -23,6 +23,15 @@ namespace ConstructionLK.Controllers
             return View(itemRequests.ToList());
         }
 
+        // index for customer
+        public ActionResult UserIndex(int? id)
+        {
+            var itemRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.ServiceProvider).Include(i => i.ItemRequestStatus);
+            var citemrequest = db.ItemRequests.Where(i => i.CustomerId == id);
+            return View(citemrequest.ToList());
+        }
+
+
         // GET: ItemRequests/Details/5
         public ActionResult Details(int? id)
         {
@@ -92,7 +101,7 @@ namespace ConstructionLK.Controllers
                 db.ItemRequests.Add(itemRequest);
                 db.SaveChanges();
                 //return RedirectToAction("Index");
-                if(itemRequest.Message != null)
+                if (itemRequest.Message != null)
                 {
                     String message = HttpUtility.UrlEncode(itemRequest.Message);
                     var sp = db.ServiceProviders.SingleOrDefault(i => i.Id == itemRequest.ServiceProviderId);
@@ -110,13 +119,13 @@ namespace ConstructionLK.Controllers
                         //return Content(result);
                     }
                 }
-                
-                return RedirectToAction("Create", "ItemPayments", new {id= itemRequest.Id });
+
+                return RedirectToAction("Create", "ItemPayments", new { id = itemRequest.Id });
                 // return View("Views/ItemPayments/Create.cshtml");
 
-               // return RedirectToAction("Confirming");
+                // return RedirectToAction("Confirming");
             }
-            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name",itemRequest.StatusId);
+            ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
             ViewBag.CustomerId = new SelectList(db.Customers, "Id", "Username", itemRequest.CustomerId);
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemRequest.ItemId);
             ViewBag.ServiceProviderId = new SelectList(db.ServiceProviders, "Id", "Username", itemRequest.ServiceProviderId);
