@@ -182,12 +182,6 @@ namespace ConstructionLK.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Item>()
-                .HasMany(e => e.Orders)
-                .WithRequired(e => e.Item)
-                .HasForeignKey(e=>e.ItemId)
-                .WillCascadeOnDelete(false);
-
-            modelBuilder.Entity<Item>()
                 .HasMany(e => e.ItemImages)
                 .WithRequired(e => e.Item)
                 .WillCascadeOnDelete(false);
