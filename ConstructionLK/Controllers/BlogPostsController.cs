@@ -17,8 +17,9 @@ namespace ConstructionLK.Controllers
         // GET: BlogPosts
         public ActionResult Index()
         {
-            var blogPosts = db.BlogPosts.Include(b => b.BlogCategory).Include(b => b.ServiceProvider);
-            return View(blogPosts.ToList());
+
+            var blogPosts = db.BlogPosts.Include(b => b.ServiceProvider).Include(b => b.BlogCategory).Where(b => b.Status == 1);
+            return View("Index", blogPosts.ToList());
         }
 
         // GET: BlogPosts/Details/5
@@ -37,10 +38,15 @@ namespace ConstructionLK.Controllers
         }
 
         // GET: BlogPosts/Create
-        public ActionResult Create()
+        public ActionResult Create(string user)
         {
+            ViewBag.userid = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user).Id;
             ViewBag.CategoryId = new SelectList(db.BlogCategories, "Id", "Category");
-            ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username");
+            ViewBag.providerid = user;
+            return View();
+        }
+        public ActionResult Posted()
+        {
             return View();
         }
 
@@ -49,17 +55,18 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,PostContent,Status,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,UserId,CategoryId")] BlogPost blogPost)
+        public ActionResult Create(BlogPost blogPost)
         {
             if (ModelState.IsValid)
             {
                 db.BlogPosts.Add(blogPost);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Posted");
             }
 
             ViewBag.CategoryId = new SelectList(db.BlogCategories, "Id", "Category", blogPost.CategoryId);
             ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", blogPost.UserId);
+
             return View(blogPost);
         }
 
@@ -76,7 +83,7 @@ namespace ConstructionLK.Controllers
                 return HttpNotFound();
             }
             ViewBag.CategoryId = new SelectList(db.BlogCategories, "Id", "Category", blogPost.CategoryId);
-            ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", blogPost.UserId);
+            //ViewBag.UserId = new SelectList(db.ServiceProviders, "Id", "Username", blogPost.UserId);
             return View(blogPost);
         }
 

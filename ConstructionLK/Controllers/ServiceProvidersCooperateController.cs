@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
 using Microsoft.AspNet.Identity;
+using System.IO;
 
 namespace ConstructionLK.Controllers
 {
@@ -64,8 +65,8 @@ namespace ConstructionLK.Controllers
             return View(serviceProvider);
         }
 
-    // GET: ServiceProvidersCooperate/Create
-    public ActionResult Create()
+        // GET: ServiceProvidersCooperate/Create
+        public ActionResult Create()
         {
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name");
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type");
@@ -77,30 +78,91 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Username,MembershipTypeId,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,ApplicationUserId")] ServiceProvider serviceProvider)
+        public ActionResult Create(ServiceProvider serviceProvider, HttpPostedFileBase file)
         {
-            Console.WriteLine(">>>>>>>>>>>>>Create");
-            if (ModelState.IsValid)
+            //Console.WriteLine(">>>>>>>>>>>>>Create");
+            //if (ModelState.IsValid)
+            //{
+            //    Console.WriteLine(">>>>>>>>>>>>>Valid");
+            //    db.ServiceProviders.Add(serviceProvider);
+            //    try
+            //    {
+            //        Console.WriteLine(">>>>>>>>>>>>>Save");
+            //        db.SaveChanges();
+            //    }
+            //    catch (Exception e)
+            //    {
+            //        Console.WriteLine(e);
+            //        throw;
+            //    }
+            //    return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
+            //    //return RedirectToAction("Index");
+            //}
+
+            //ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name", serviceProvider.MembershipTypeId);
+            ////ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
+            //return View(serviceProvider);
+            if (!(file == null))
             {
-                Console.WriteLine(">>>>>>>>>>>>>Valid");
-                db.ServiceProviders.Add(serviceProvider);
-                try
+                if (ModelState.IsValid)
                 {
-                    Console.WriteLine(">>>>>>>>>>>>>Save");
+
+                    file.SaveAs(Path.Combine(Server.MapPath("~/Resources/ProfilePicturesSP/"), Path.GetFileName(file.FileName)));
+                    db.ServiceProviders.Add(new ServiceProvider
+                    {
+                        Id = serviceProvider.Id,
+                        Username = serviceProvider.Username,
+                        MembershipTypeId = serviceProvider.MembershipTypeId,
+                        BasedCity = serviceProvider.BasedCity,
+                        MailingAddress = serviceProvider.MailingAddress,
+                        Bio = serviceProvider.Bio,
+                        FirstName = serviceProvider.FirstName,
+                        LastName = serviceProvider.LastName,
+                        DateOfBirth = serviceProvider.DateOfBirth,
+                        Telephone = serviceProvider.Telephone,
+                        StartedDate = serviceProvider.StartedDate,
+                        Avatar = "~/Resources/ProfilePicturesSP/" + Path.GetFileName(file.FileName),
+                        StatusId = serviceProvider.StatusId,
+                        CreatedBy = serviceProvider.CreatedBy,
+                        CreatedDate = serviceProvider.CreatedDate,
+                        ModifiedBy = serviceProvider.ModifiedBy,
+                        ModifiedDate = serviceProvider.ModifiedDate,
+                        TypeId = serviceProvider.TypeId,
+                        CompanyName=serviceProvider.CompanyName,
+                        CompanyRegNo=serviceProvider.CompanyRegNo,
+                        ApplicationUserId = serviceProvider.ApplicationUserId
+                    });
                     db.SaveChanges();
+                    return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
                 }
-                catch (Exception e)
+            }
+            else
+            {
+                if (ModelState.IsValid)
                 {
-                    Console.WriteLine(e);
-                    throw;
+
+                    db.ServiceProviders.Add(serviceProvider);
+                    try
+                    {
+
+                        db.SaveChanges();
+                    }
+                    catch (Exception e)
+                    {
+                        Console.WriteLine(e);
+                        throw;
+                    }
+                    return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
+                    //return RedirectToAction("Index");
                 }
-                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
-                //return RedirectToAction("Index");
             }
 
+
+
             ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name", serviceProvider.MembershipTypeId);
-            ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
+            //ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
             return View(serviceProvider);
+            //}
         }
 
         // GET: ServiceProvidersCooperate/Edit/5
@@ -132,7 +194,7 @@ namespace ConstructionLK.Controllers
             {
                 db.Entry(serviceProvider).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                            return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
             }
             ViewBag.StatusId = new SelectList(db.Statuses, "Id", "Name", serviceProvider.StatusId);
 
@@ -140,6 +202,67 @@ namespace ConstructionLK.Controllers
             ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
             return View(serviceProvider);
         }
+        //public ActionResult Edit(ServiceProvider serviceProvider, HttpPostedFileBase file)
+        //{
+        //    if (!(file == null))
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+
+        //            file.SaveAs(Path.Combine(Server.MapPath("~/Resources/ProfilePicturesSP/"), Path.GetFileName(file.FileName)));
+        //            db.ServiceProviders.Add(new ServiceProvider
+        //            {
+        //                Id = serviceProvider.Id,
+        //                Username = serviceProvider.Username,
+        //                MembershipTypeId = serviceProvider.MembershipTypeId,
+        //                BasedCity = serviceProvider.BasedCity,
+        //                MailingAddress = serviceProvider.MailingAddress,
+        //                Bio = serviceProvider.Bio,
+        //                FirstName = serviceProvider.FirstName,
+        //                LastName = serviceProvider.LastName,
+        //                DateOfBirth = serviceProvider.DateOfBirth,
+        //                Telephone = serviceProvider.Telephone,
+        //                StartedDate = serviceProvider.StartedDate,
+        //                Avatar = "~/Resources/ProfilePicturesSP/" + Path.GetFileName(file.FileName),
+        //                StatusId = serviceProvider.StatusId,
+        //                CreatedBy = serviceProvider.CreatedBy,
+        //                CreatedDate = serviceProvider.CreatedDate,
+        //                ModifiedBy = serviceProvider.ModifiedBy,
+        //                ModifiedDate = serviceProvider.ModifiedDate,
+        //                TypeId = serviceProvider.TypeId,
+        //                ApplicationUserId = serviceProvider.ApplicationUserId
+        //            });
+        //            db.SaveChanges();
+        //            return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
+        //        }
+        //    }
+        //    else
+        //    {
+        //        if (ModelState.IsValid)
+        //        {
+
+        //            db.ServiceProviders.Add(serviceProvider);
+        //            try
+        //            {
+
+        //                db.SaveChanges();
+        //            }
+        //            catch (Exception e)
+        //            {
+        //                Console.WriteLine(e);
+        //                throw;
+        //            }
+        //            return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = User.Identity.GetUserId() });
+        //            //return RedirectToAction("Index");
+        //        }
+        //    }
+
+
+
+        //ViewBag.MembershipTypeId = new SelectList(db.MembershipTypes, "Id", "Name", serviceProvider.MembershipTypeId);
+        //    //ViewBag.TypeId = new SelectList(db.ServiceProviderTypes, "Id", "Type", serviceProvider.TypeId);
+        //    return View(serviceProvider);
+        //}
 
         // GET: ServiceProvidersCooperate/Delete/5
         public ActionResult Delete(int? id)

@@ -280,6 +280,7 @@
     <Compile Include="Controllers\API\LocationsController.cs" />
     <Compile Include="Controllers\API\ServiceProvidersAPIController.cs" />
     <Compile Include="Controllers\API\ServiceProvidersController.cs" />
+    <Compile Include="Controllers\BlogPostCommentsController.cs" />
     <Compile Include="Controllers\BlogPostsController.cs" />
     <Compile Include="Controllers\ComplainsController.cs" />
     <Compile Include="Controllers\CustomersController.cs" />
@@ -974,6 +975,12 @@
     <Content Include="Views\RatingsServiceProviders\Edit.cshtml" />
     <Content Include="Views\RatingsServiceProviders\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutProfile.cshtml" />
+    <Content Include="Views\BlogPosts\Posted.cshtml" />
+    <Content Include="Views\BlogPostComments\Create.cshtml" />
+    <Content Include="Views\BlogPostComments\Delete.cshtml" />
+    <Content Include="Views\BlogPostComments\Details.cshtml" />
+    <Content Include="Views\BlogPostComments\Edit.cshtml" />
+    <Content Include="Views\BlogPostComments\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
