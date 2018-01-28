@@ -74,6 +74,7 @@ namespace ConstructionLK.Models
         [Column(TypeName = "date")]
         [DataType(DataType.Date)]
         //[DisplayFormat(DataFormatString = "{0:y}")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         [Display(Name = "Started Date of the Company")]
         public DateTime StartedDate { get; set; }
 
