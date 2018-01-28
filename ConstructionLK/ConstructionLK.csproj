@@ -295,6 +295,7 @@
     <Compile Include="Controllers\NewOrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />
+    <Compile Include="Controllers\RatingsServiceProvidersController.cs" />
     <Compile Include="Controllers\RequestProgressesController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\ServiceProvidersCooperateController.cs" />
@@ -506,14 +507,6 @@
     <Compile Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.cs" />
     <Compile Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.Designer.cs">
       <DependentUpon>201801270338448_ImageDatatoItemImage.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ConstructionLKContext\201801280702119_RemovedQuantityFromOrders.cs" />
-    <Compile Include="Migrations\ConstructionLKContext\201801280702119_RemovedQuantityFromOrders.Designer.cs">
-      <DependentUpon>201801280702119_RemovedQuantityFromOrders.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\ConstructionLKContext\201801280712021_RemovedItemIdFromOrders.cs" />
-    <Compile Include="Migrations\ConstructionLKContext\201801280712021_RemovedItemIdFromOrders.Designer.cs">
-      <DependentUpon>201801280712021_RemovedItemIdFromOrders.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -962,6 +955,12 @@
     <Content Include="Views\ItemImages\Upload.cshtml" />
     <Content Include="Views\ServiceProvidersCooperate\ProfileOut.cshtml" />
     <Content Include="Views\ItemRequests\UserIndex.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Create.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Delete.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Details.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Edit.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1121,12 +1120,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.resx">
       <DependentUpon>201801270338448_ImageDatatoItemImage.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801280702119_RemovedQuantityFromOrders.resx">
-      <DependentUpon>201801280702119_RemovedQuantityFromOrders.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801280712021_RemovedItemIdFromOrders.resx">
-      <DependentUpon>201801280712021_RemovedItemIdFromOrders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
