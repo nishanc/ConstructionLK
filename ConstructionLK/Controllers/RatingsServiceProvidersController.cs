@@ -132,6 +132,14 @@ namespace ConstructionLK.Controllers
             return RedirectToAction("Index");
         }
 
+        //showing ratings in profile
+        public ActionResult showRatings(int? id)
+        {
+            var avgRatings = db.RatingsServiceProviders.Where(c => c.Id == id).Average(c => c.Rate);
+            ViewBag.AvgRatings = avgRatings;
+            return View("RatingsForProfileView", "Shared");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
