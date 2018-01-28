@@ -82,13 +82,15 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Latitude,Longitude,ItemId")] ItemLocations itemLocations)
+        public ActionResult Create(ItemLocations itemLocations)
         {
+            var item = db.Items.SingleOrDefault(i => i.Id == itemLocations.ItemId);
             if (ModelState.IsValid)
             {
                 db.ItemLocations.Add(itemLocations);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "ItemLocations", new { iid = item.Id });
+                //return RedirectToAction("Index");
             }
 
             ViewBag.ItemId = new SelectList(db.Items, "Id", "ItemName", itemLocations.ItemId);

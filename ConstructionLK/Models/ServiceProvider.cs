@@ -17,6 +17,7 @@ namespace ConstructionLK.Models
             Items = new HashSet<Item>();
             PublishedItems = new HashSet<PublishedItem>();
             RatingsCustomers = new HashSet<RatingsCustomer>();
+            UserAvatars = new HashSet<UserAvatar>();
             RatingsServiceProviders = new HashSet<RatingsServiceProvider>();
         }
         public int Id { get; set; }
@@ -122,5 +123,7 @@ namespace ConstructionLK.Models
         public virtual ICollection<RatingsServiceProvider> RatingsServiceProviders { get; set; }
         [Display(Name = "Service Provider Type")]
         public virtual ServiceProviderType ServiceProviderType { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<UserAvatar> UserAvatars { get; set; }
     }
 }

@@ -103,7 +103,7 @@
                 </td>*@
             <td>
                 @*@Html.ActionLink("Rate this service", "Create", "RatingsServiceProviders", new { @class = "btn btn-outline-warning btn-sm" })*@
-                @Html.ActionLink("Rate this service", "Create", "RatingsServiceProviders", new {id = item.Id, receivedUser = item.ServiceProviderId, postauser = User.Identity.GetUserId()}, new { @class = "btn btn-outline-warning btn-sm" })
+                @Html.ActionLink("Rate this service", "Create", "RatingsServiceProviders", new {id = item.Id, receivedUser = item.ServiceProviderId, postUser = User.Identity.GetUserId()}, new { @class = "btn btn-outline-warning btn-sm" })
             </td>
         </tr>
     }

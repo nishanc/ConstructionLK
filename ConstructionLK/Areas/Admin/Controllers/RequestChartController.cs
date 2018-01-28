@@ -21,7 +21,7 @@ namespace ConstructionLK.Areas.Admin.Controllers
                 "SELECT count(*) AS Number, MONTH(CreatedDate) Month FROM ItemRequests GROUP BY MONTH(CreatedDate)";
             SqlConnection con = new SqlConnection();
             con.ConnectionString = System.Configuration.ConfigurationManager
-                .ConnectionStrings["ConstructionLKContext"].ConnectionString;
+                .ConnectionStrings["Azure"].ConnectionString;
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
             cmd.Connection = con;

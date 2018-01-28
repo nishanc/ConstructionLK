@@ -9,9 +9,9 @@ namespace ConstructionLK.Models
     public partial class ConstructionLKContext : DbContext 
     {
         public ConstructionLKContext()
-        //: base("name=ConstructionLKContext")
+        : base("name=ConstructionLKContext")
         //: base("name=Techwire")
-        : base("name=Azure")
+        //: base("name=Azure")
         //: base("name=MRTVS")
         {
         }
@@ -52,6 +52,7 @@ namespace ConstructionLK.Models
         public virtual DbSet<MetaData>  MetaData { get; set; }
         public virtual DbSet<Orders> Order { get; set; }
         public virtual DbSet<OrderStatus> OrderStatus { get; set; }
+        public virtual DbSet<UserAvatar> UserAvatar { get; set; }
         public virtual DbSet<CustomerCurrentLocation> CustomerCurrentLocation { get; set; }
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -184,6 +185,12 @@ namespace ConstructionLK.Models
             modelBuilder.Entity<Item>()
                 .HasMany(e => e.ItemImages)
                 .WithRequired(e => e.Item)
+                .WillCascadeOnDelete(false);
+
+            modelBuilder.Entity<ServiceProvider>()
+                .HasMany(e => e.UserAvatars)
+                .WithRequired(e => e.ServiceProvider)
+                .HasForeignKey(e=>e.UserId)
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<Item>()
