@@ -19,7 +19,7 @@ namespace ConstructionLK.Areas.Admin.Controllers
                 "SELECT 'Customers' AS Users, Count(*) AS Val FROM Customers UNION SELECT 'Service Providers' AS Users, Count(*) AS Val FROM ServiceProviders";
             SqlConnection con = new SqlConnection();
             con.ConnectionString = System.Configuration.ConfigurationManager
-                .ConnectionStrings["ConstructionLKContext"].ConnectionString;
+                .ConnectionStrings["Azure"].ConnectionString;
             SqlCommand cmd = new SqlCommand();
             cmd.CommandText = query;
             cmd.Connection = con;
