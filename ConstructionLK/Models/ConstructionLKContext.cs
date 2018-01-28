@@ -9,9 +9,9 @@ namespace ConstructionLK.Models
     public partial class ConstructionLKContext : DbContext 
     {
         public ConstructionLKContext()
-        //: base("name=ConstructionLKContext")
+        : base("name=ConstructionLKContext")
         //: base("name=Techwire")
-        : base("name=Azure")
+        //: base("name=Azure")
         //: base("name=MRTVS")
         {
         }
