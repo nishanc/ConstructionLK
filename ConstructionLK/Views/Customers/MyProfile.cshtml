@@ -11,9 +11,8 @@
     <p>
         <span class="label label-warning">Customer</span>
         <span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
-        @Html.ActionLink("My requests", "UserIndex", "ItemRequests", new { id = Model.Id }, new { @class = "btn btn-primary btn-xs" })
     </p>
-    <hr />
+
     
 
 
@@ -41,4 +40,5 @@
         </li>
     </ul>
 </div>
-
+<div class="col-md-9">@Html.ActionLink("My requests", "UserIndex", "ItemRequests", new { id = Model.Id }, new { @class = "btn btn-primary btn-xs" })
+<hr /></div>

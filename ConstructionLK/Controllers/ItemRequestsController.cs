@@ -103,6 +103,7 @@ namespace ConstructionLK.Controllers
                 //return RedirectToAction("Index");
                 if (itemRequest.Message != null)
                 {
+                    //QxF+O9qg6fk-a9dYLek4plJk8JARdZ2081qRlIWKtz
                     String message = HttpUtility.UrlEncode(itemRequest.Message);
                     var sp = db.ServiceProviders.SingleOrDefault(i => i.Id == itemRequest.ServiceProviderId);
                     String number = sp.Telephone;
