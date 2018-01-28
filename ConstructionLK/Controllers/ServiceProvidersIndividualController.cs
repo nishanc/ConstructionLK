@@ -15,17 +15,17 @@ namespace ConstructionLK.Controllers
     public class ServiceProvidersIndividualController : Controller
     {
         private ConstructionLKContext db = new ConstructionLKContext();
-        public ActionResult MyProfile(string id)
+        public ActionResult MyProfile(string user)
         {
             //using (ConstructionLKContext db = new ConstructionLKContext())
             //{
-            if (id == null)
+            if (user == null)
             {
                 //return RedirectToAction("MyProfile", "Customers", new { id = customer.Id });
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             //Customer customer = db.Customers.Find(id);
-            ServiceProvider serviceProvider = db.ServiceProviders.SingleOrDefault(sp => sp.ApplicationUserId == id);
+            ServiceProvider serviceProvider = db.ServiceProviders.SingleOrDefault(sp => sp.ApplicationUserId == user);
             if (serviceProvider == null)
             {
                 return HttpNotFound();

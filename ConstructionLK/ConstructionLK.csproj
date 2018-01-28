@@ -710,6 +710,7 @@
     <Content Include="Resources\Logo.jpg" />
     <Content Include="Resources\background-header-v2.mp4" />
     <Content Include="Resources\Nexus_5_Front_View.png" />
+    <Content Include="Resources\ProfilePicturesSP\Default.png" />
     <Content Include="Resources\spc-reg.jpg" />
     <Content Include="Resources\spi-reg.jpg" />
     <Content Include="Resources\Testimonial\img-1.jpg" />
