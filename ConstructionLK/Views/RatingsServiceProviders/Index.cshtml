@@ -12,13 +12,15 @@
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Customer.Username)
+            @*@Html.DisplayNameFor(model => model.Customer.Username)*@
+            Customer
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ItemRequest.Message)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ServiceProvider.Username)
+            @*@Html.DisplayNameFor(model => model.ServiceProvider.Username)*@
+            Sevice provider
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Rate)
@@ -41,9 +43,9 @@
             @Html.DisplayFor(modelItem => item.Rate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
             @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }

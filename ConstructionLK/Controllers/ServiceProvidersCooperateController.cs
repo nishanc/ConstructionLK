@@ -38,7 +38,9 @@ namespace ConstructionLK.Controllers
             //    //no role
             //    RedirectToAction("Index", "UserSelector");
             //}
-
+            
+            ////var userid = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == id);
+            ////ViewBag.id = userid;
             return View("MyProfile", serviceProvider);
             //return View();
         }
