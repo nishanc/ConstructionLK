@@ -1,75 +1,40 @@
-﻿@using ConstructionLK.Controllers;
-@using Microsoft.Ajax.Utilities
-@using Microsoft.AspNet.Identity
-@model ConstructionLK.Models.Customer
+﻿@model ConstructionLK.Models.Orders
 @{
-    ViewBag.Title = "cart";
+    ViewBag.Title = "payment";
 }
-
-<h2>cart</h2>
+@using ConstructionLK.Models
 <html>
 <head>
     <script src="https://www.paypalobjects.com/api/checkout.js"></script>
-    <meta name="viewport" content="width=device-width" />
-    <title>ConfirmOrder1</title>
 </head>
 <body>
-
-
-    <table class="table table-bordered table-hover ">
-        <tr class="success">
-            <th>Product</th>
-            <th>unit Price</th>
-            <th>Quantity</th>
-            <th>Sub total</th>
-        </tr>
-
-        @{ 
-                float s = 0;
-                
-            }
-
-            @foreach (Product product in (List<Product>)Session["cart"])
-            {
-
-
-
+    <h2> Make your payment</h2>
+    <div class="panel panel-warning">
+        <div class="panel-heading">
+            <h3 class="panel-title">Panel primary</h3>
+        </div>
+        <div class="panel-body">
+            <table align="center">
+                <tr><td ><h3>Order Id</h3></td><td><h3>@Html.Raw(ViewBag.orderNumber)</h3></td></tr>
+                <tr><td><h3>Amount</h3></td><td><h3>@Html.Raw(ViewBag.price)</h3></td></tr>
+            </table>
            
-            <tr>
-                <td>@product.It.ItemName</td>
-                <td>
-                    @foreach (var price in @product.It.PublishedItems)
-                    {
-                        @price.Price
-                        ViewBag.p = @price.Price;
-                    }
-                </td>
-                <td>@product.Quantity</td>
-
-                <td>@(ViewBag.p*product.Quantity)</td>
-                <td> @Html.ActionLink("Cancel order", "cancelOrder", "NewOrder", new { id = @product.It.Id }, null )</td>
-            </tr>
-                s = s + ViewBag.p * product.Quantity;
-                
+            @{
+                float s = ViewBag.price;
             }
-        @*ViewBag.total = @s;*@
+               
+              <button style="align-items:center;" class ="btn btn-success" onclick="GetData(@s)"> Pay</button>
+                
+            <br/>
+            <br/>
+            <div id="paypal-button"></div>
 
-        <tr>
-            <td></td>
-            <td></td>
-            <td>Total</td>
-            <td>@s</td>
-        </tr>
+        </div>
+    </div>
+    
 
-    </table>
 
-    <br />
-    @Html.ActionLink("Continue Shopping", "Index", "Items", new { id = 1 }, new { @class = "btn btn-warning" }) @Html.ActionLink("Confirm Order", "Create", "Orders", new {totprice = @s, user = User.Identity.GetUserId()  }, new { @class = "btn btn-warning" })
-    @*<button  class="btn btn-success" onclick="GetData(@s)"> Confirm Order</button>*@ 
-    <br/>
-    <br />
-    @*PayPal Button*@
-    <div id="paypal-button"></div>
+    
     <script>
 
         function callpaypal(value){
@@ -133,12 +98,12 @@
                 type: 'GET',
                 url: "https://apilayer.net/api/live?access_key=b7702aa5f4fc438e52bc53c6258faa24&currencies=LKR&source=USD&format=1",
                 success: function (data) {
-                    
+
                     var rest = a/150;
                     var rest2 = rest.toFixed(2);
                     var rest3 = rest2.toString();
                     //alert(typeof rest3);
-                  
+
                     callpaypal(rest3);
                 },
                 error: function (a, jqXHR, exception) { alert("error in GetData") }
@@ -154,7 +119,3 @@
     </script>
 </body>
 </html>
-
-
-
-

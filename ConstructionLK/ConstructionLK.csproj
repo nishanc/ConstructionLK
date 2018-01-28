@@ -293,6 +293,7 @@
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewOrderController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />
     <Compile Include="Controllers\RatingsServiceProvidersController.cs" />
@@ -736,7 +737,7 @@
     <Content Include="Areas\Admin\Views\AdministrativeStaff\AdminPanel.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <Content Include="Areas\Admin\Views\Shared\RegCharts.cshtml" />
+    <Content Include="Content\RegCharts.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\UserCountChart.cshtml" />
     <Content Include="Areas\Admin\Views\AdminItemRequests\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminItemRequests\Delete.cshtml" />
@@ -974,6 +975,13 @@
     <Content Include="Views\RatingsServiceProviders\Edit.cshtml" />
     <Content Include="Views\RatingsServiceProviders\Index.cshtml" />
     <Content Include="Views\Shared\_LayoutProfile.cshtml" />
+    <Content Include="Views\Orders\Create.cshtml" />
+    <Content Include="Views\Orders\Delete.cshtml" />
+    <Content Include="Views\Orders\Details.cshtml" />
+    <Content Include="Views\Orders\Edit.cshtml" />
+    <Content Include="Views\Orders\Index.cshtml" />
+    <Content Include="Views\NewOrder\ContinuePayment.cshtml" />
+    <Content Include="Views\Orders\payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

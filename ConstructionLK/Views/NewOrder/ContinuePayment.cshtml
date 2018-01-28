@@ -1,0 +1,20 @@
+﻿
+@{
+    ViewBag.Title = "ContinuePayment";
+}
+
+<h2>ContinuePayment</h2>
+<html>
+<head>
+<script src="https://www.paypalobjects.com/api/checkout.js"></script>
+</head>
+<body>
+
+    <p> Dear @Html.Raw(ViewBag.User.FirsName),</p>
+    <p>You are required to pay  an amount of Rs@Html.Raw(ViewBag.totprice).00 for your purchases.</p>
+      
+        
+
+</body>
+</html>
+
