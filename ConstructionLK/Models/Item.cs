@@ -17,7 +17,7 @@ namespace ConstructionLK.Models
             ItemProperties = new HashSet<ItemProperty>();
             ItemRequests = new HashSet<ItemRequest>();
             PublishedItems = new HashSet<PublishedItem>();
-            Orders = new HashSet<Orders>();
+            
         }
 
         public int Id { get; set; }
@@ -70,8 +70,6 @@ namespace ConstructionLK.Models
         public virtual ICollection<PublishedItem> PublishedItems { get; set; }
 
         public virtual ICollection<ItemLocations> ItemLocations { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Orders> Orders { get; set; }
         //[Required]
         //public float Price { get; set; }
         //public float? Tax { get; set; }

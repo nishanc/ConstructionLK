@@ -507,6 +507,14 @@
     <Compile Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.Designer.cs">
       <DependentUpon>201801270338448_ImageDatatoItemImage.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801280702119_RemovedQuantityFromOrders.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801280702119_RemovedQuantityFromOrders.Designer.cs">
+      <DependentUpon>201801280702119_RemovedQuantityFromOrders.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\ConstructionLKContext\201801280712021_RemovedItemIdFromOrders.cs" />
+    <Compile Include="Migrations\ConstructionLKContext\201801280712021_RemovedItemIdFromOrders.Designer.cs">
+      <DependentUpon>201801280712021_RemovedItemIdFromOrders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\ConstructionLKContext\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\AdministrativeStaff.cs" />
@@ -1113,6 +1121,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\ConstructionLKContext\201801270338448_ImageDatatoItemImage.resx">
       <DependentUpon>201801270338448_ImageDatatoItemImage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801280702119_RemovedQuantityFromOrders.resx">
+      <DependentUpon>201801280702119_RemovedQuantityFromOrders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\ConstructionLKContext\201801280712021_RemovedItemIdFromOrders.resx">
+      <DependentUpon>201801280712021_RemovedItemIdFromOrders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -9,178 +9,157 @@
 }
 
 <div class="well well-sm" align="center"><h2>@Html.DisplayFor(model => model.FirstName) @Html.DisplayFor(model => model.LastName)</h2></div>
-
-
 <span class="label label-success">Administrator</span>
-<span class="label label-info" >Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
+<span class="label label-info">Member since @Html.Label(Model.CreatedDate.ToString("Y"))</span>
 <hr />
 <div class="alert alert-dismissible alert-warning">
     <button type="button" class="close" data-dismiss="alert">&times;</button>
-    <h4>New Requests!</h4><strong>Access them now. @Html.ActionLink("Click here", "Index", "AdminItemRequests", new { area = "Admin", id = 1 }, null)
-</strong>
+    <h4>New Requests!</h4><strong>
+        Access them now. @Html.ActionLink("Click here", "Index", "AdminItemRequests", new { area = "Admin", id = 1 }, null)
+    </strong>
 </div>
 @*@Html.Partial("_Index")*@
 <div class="col-md-3">
     <ul class="list-group">
 
-        @Html.ActionLink("Edit Your Details", "Edit", new {id = Model.Id}, new {@class = "list-group-item"})
-        <li class="list-group-item" >
+        @Html.ActionLink("Edit Your Details", "Edit", new { id = Model.Id }, new { @class = "list-group-item" })
+        <li class="list-group-item">
             <span class="badge">@ViewBag.CountA</span>
             @Html.ActionLink("Administrators ", "Index")
-        </li>        <li class="list-group-item">
+        </li>
+        <li class="list-group-item">
             <span class="badge">@ViewBag.CountC</span>
-            @Html.ActionLink("Customers", "Index", "Customers", new {area = ""},null)
-        </li>        <li class="list-group-item">
+            @Html.ActionLink("Customers", "Index", "Customers", new { area = "" }, null)
+        </li>
+        <li class="list-group-item">
             <span class="badge">@ViewBag.CountCSP</span>
-            @Html.ActionLink("Cooperate Service Providers", "Index", "ServiceProvidersCooperate", new {area = ""}, null)
+            @Html.ActionLink("Cooperate Service Providers", "Index", "ServiceProvidersCooperate", new { area = "" }, null)
 
-        </li>        <li class="list-group-item">
+        </li>
+        <li class="list-group-item">
             <span class="badge">@ViewBag.CountISP</span>
-            @Html.ActionLink("Freelancer Service Providers", "Index", "ServiceProvidersIndividual", new {area = ""}, null)
+            @Html.ActionLink("Freelancer Service Providers", "Index", "ServiceProvidersIndividual", new { area = "" }, null)
         </li>
         <li class="list-group-item">
             <span class="badge">@ViewBag.countcomplains</span>
             @Html.ActionLink("View Complains", "Index", "Complains", new { area = "" }, null)
         </li>
-        <ul class="nav nav-pills nav-stacked">
-            <li class="dropdown">
-                <a class="dropdown-toggle list-group-item" data-toggle="dropdown" href="#" aria-expanded="false">
-                    Service Requests <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu">
-                    <li class="list-group-item">
-                        @*<span class="badge">@ViewBag.CountISP</span>*@
-                        @Html.ActionLink("All Jobs", "Index", "ItemRequests", new { area = "" }, null)
-                    </li>
-                    <li class="divider"></li>
-                    <li class="list-group-item">
-                        @*<span class="badge">@ViewBag.CountISP</span>*@
-                        @Html.ActionLink("Pending", "Index", "AdminItemRequests", new { area = "Admin", id = 1 }, null)
-                    </li>
-                    <li class="divider"></li>
-                    <li class="list-group-item">
-                        @*<span class="badge">@ViewBag.CountISP</span>*@
-                        @Html.ActionLink("Completed", "Index", "AdminItemRequests", new { area = "Admin", id = 3 }, null)
-                    </li>
-                    <li class="divider"></li>
-                    <li class="list-group-item">
-                        @*<span class="badge">@ViewBag.CountISP</span>*@
-                        @Html.ActionLink("Accepted", "Index", "AdminItemRequests", new { area = "Admin", id = 2}, null)
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </ul>       
-    <ul class="nav nav-pills nav-stacked">
-        <li class="active">@Html.ActionLink("Home", "Index", "Home", new { area = "" }, null)</li>
-        <li class="dropdown">
-            <a class="dropdown-toggle list-group-item" data-toggle="dropdown" href="#" aria-expanded="false">
-                External <span class="caret"></span>
-            </a>
-            <ul class="dropdown-menu">
-                <li><a href="./">Server Login</a></li><li class="divider"></li>
-                <li><a href="#">Play Store</a></li><li class="divider"></li>
-                <li><a href="#">App Store</a></li>
+        <li class="list-group-item">
+            @*<span class="badge">@ViewBag.CountISP</span>*@
+            @Html.ActionLink("All Jobs", "Index", "ItemRequests", new { area = "" }, null)
+        </li>
 
-            </ul>
+        <li class="list-group-item">
+            @*<span class="badge">@ViewBag.CountISP</span>*@
+            @Html.ActionLink("Pending", "Index", "AdminItemRequests", new { area = "Admin", id = 1 }, null)
+        </li>
+        <li class="list-group-item">
+            @*<span class="badge">@ViewBag.CountISP</span>*@
+            @Html.ActionLink("Completed", "Index", "AdminItemRequests", new { area = "Admin", id = 3 }, null)
+        </li>
+        <li class="list-group-item">
+            @*<span class="badge">@ViewBag.CountISP</span>*@
+            @Html.ActionLink("Accepted", "Index", "AdminItemRequests", new { area = "Admin", id = 2 }, null)
         </li>
     </ul>
 </div>
 <div class="well well-sm col-md-9" align="center">
     <h4>
         Registration Status
-        
+
     </h4>
 </div>
 @Html.Partial("RegCharts")
 @Html.Partial("RequestChart")
 <div class="well well-sm col-md-12" align="center">
-        <h4>User Status</h4>
+    <h4>User Status</h4>
 </div>
 @Html.Partial("UserCountChart")
-<div class ="row">
+<div class="row">
     <div class="col-md-12">
         <div class="well well-sm aligncenter">
             <b>@Html.DisplayNameFor(model => model.Username)</b> | @Html.DisplayFor(model => model.Username)
             &nbsp;&nbsp;
             Last Modified On | @Html.Label(Model.ModifiedDate.ToString("Y"))
             &nbsp;&nbsp;
-            @Html.ActionLink("Add New Administrator", "Create", "AdministrativeStaff", new { @class = "btn btn-outline-primary btn-sm"})
+            @Html.ActionLink("Add New Administrator", "Create", "AdministrativeStaff", new { @class = "btn btn-outline-primary btn-sm" })
 
         </div>
         @*<dl class="dl-horizontal">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AspNetUser.Email)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.AspNetUser.Email)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AspNetUser.Email)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.AspNetUser.Email)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Username)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Username)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Username)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Username)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.FirstName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.FirstName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.FirstName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LastName)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LastName)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.LastName)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedBy)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedBy)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedBy)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedBy)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.CreatedDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.CreatedDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.CreatedDate)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedBy)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedBy)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedBy)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedBy)
+                </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ModifiedDate)
-        </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.ModifiedDate)
+                </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ModifiedDate)
-        </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.ModifiedDate)
+                </dd>
 
-    </dl>*@
+            </dl>*@
     </div>
 
 
 </div>
-<div class="row"><p>
-    @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
-    @*@Html.ActionLink("Back to List", "Index")*@
+<div class="row">
+    <p>
+        @*@Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |*@
+        @*@Html.ActionLink("Back to List", "Index")*@
 
-</p></div>
+    </p>
+</div>
