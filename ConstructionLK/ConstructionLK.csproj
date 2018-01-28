@@ -295,6 +295,7 @@
     <Compile Include="Controllers\NewOrderController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />
+    <Compile Include="Controllers\RatingsServiceProvidersController.cs" />
     <Compile Include="Controllers\RequestProgressesController.cs" />
     <Compile Include="Controllers\ServiceProvidersController.cs" />
     <Compile Include="Controllers\ServiceProvidersCooperateController.cs" />
@@ -954,6 +955,12 @@
     <Content Include="Views\ItemImages\Upload.cshtml" />
     <Content Include="Views\ServiceProvidersCooperate\ProfileOut.cshtml" />
     <Content Include="Views\ItemRequests\UserIndex.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Create.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Delete.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Details.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Edit.cshtml" />
+    <Content Include="Views\RatingsServiceProviders\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
