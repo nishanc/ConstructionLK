@@ -989,6 +989,7 @@
     <Folder Include="Areas\Admin\Views\RequestChart\" />
     <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Areas\Admin\Views\UserCountChart\" />
+    <Folder Include="Resources\ProfilePicturesSP\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
