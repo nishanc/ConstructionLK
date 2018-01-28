@@ -61,18 +61,9 @@ namespace ConstructionLK.Controllers
             }
             return View(itemRequest);
         }
-        public ActionResult MyRequests(int? id)
+        // GET: MyItemRequests/Index
+        public ActionResult MyRequests(string user)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //var itemRequests = db.ItemRequests.Where(i=>i.ServiceProviderId == id).ToList();
-            //if (itemRequests == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(itemRequests);
             var appuser = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user).Id;
             // var customer=db.Customers.SingleOrDefault(c => c.ApplicationUserId == user).Username;
             var itemsRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Where(i => i.ServiceProviderId == appuser).Where(i => i.StatusId == 1);
@@ -93,7 +84,7 @@ namespace ConstructionLK.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ItemRequest itemRequest = db.ItemRequestsStatus.Find(id);
+            ItemRequest itemRequest = db.ItemRequests.Find(id);
             if (itemRequest == null)
             {
                 return HttpNotFound();
@@ -115,7 +106,7 @@ namespace ConstructionLK.Controllers
         // POST: RespondMyRequests/Respond
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Respond([Bind(Include = "AcceptedDate,StatusId")]ItemRequestStatus itemRequest)
+        public ActionResult Respond([Bind(Include = "AcceptedDate,StatusId")] ItemRequest itemRequest)
         {
             if (ModelState.IsValid)
             {
