@@ -70,7 +70,7 @@ namespace ConstructionLK.Controllers
                     return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
                 }
-                return RedirectToAction("MyProfile", "Customers", new { id = userId });
+                return RedirectToAction("MyProfile", "Customers", new { user = userId });
             }
 
             if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpIndividual))
@@ -81,7 +81,7 @@ namespace ConstructionLK.Controllers
                     return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
                 }
-                return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { id = userId });
+                return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { user = userId });
             }
             if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpCooperate))
             {
@@ -91,7 +91,7 @@ namespace ConstructionLK.Controllers
                     return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
                 }
-                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { id = userId });
+                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { user = userId });
             }
 
             return HttpNotFound();
