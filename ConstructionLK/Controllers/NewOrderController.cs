@@ -67,5 +67,16 @@ namespace ConstructionLK.Controllers
 
 
         }
+
+
+
+        // continue to payment
+        public ActionResult ContinuePayment( float totprice, string user)
+        {
+            var User= db.Customers.SingleOrDefault(c => c.ApplicationUserId == user);
+            ViewBag.User = User;
+            ViewBag.totprice = totprice;
+            return View();
+        }
     }
 }
