@@ -737,7 +737,7 @@
     <Content Include="Areas\Admin\Views\AdministrativeStaff\AdminPanel.cshtml" />
     <Content Include="Content\toastr.scss" />
     <Content Include="Content\toastr.less" />
-    <Content Include="Content\RegCharts.cshtml" />
+    <Content Include="Areas\Admin\Views\Shared\RegCharts.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\UserCountChart.cshtml" />
     <Content Include="Areas\Admin\Views\AdminItemRequests\Create.cshtml" />
     <Content Include="Areas\Admin\Views\AdminItemRequests\Delete.cshtml" />
