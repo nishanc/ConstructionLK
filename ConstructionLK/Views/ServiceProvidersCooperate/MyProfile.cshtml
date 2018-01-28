@@ -75,6 +75,14 @@
 
                 |@Html.DisplayFor(model => model.StartedDate)
             </li>
+            @*show ratings*@
+            @*<li class="list-group-item">
+                <strong>
+                    Ratings
+                </strong>
+                @Html.Partial("_LoginPartial")
+             
+            </li>*@
             <li class="list-group-item">
                 Last Modified On | @Html.LabelFor(model => model.ModifiedDate))
             </li>
@@ -85,3 +93,22 @@
     @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
     @Html.ActionLink("Back to List", "Index")
 </p>
+@*<script type="text/javascript">
+    var Userid = @Html.Raw(ViewBag.id.Id);
+
+        $(function () {
+            $.ajax({
+                url: '/RatingsServiceProviders/showRatings'+ UserId,
+                dataType: "json",
+                type: "GET",
+                contentType: 'application/json; charset=utf-8',
+                async: false,
+                processData: false,
+                cache: false,
+                delay: 15,
+                success: function (data) {
+                        
+    }
+
+
+</script>*@
