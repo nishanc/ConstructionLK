@@ -16,7 +16,7 @@
             <img src="~/Resources/ProfilePicturesSP/Default.png" alt="Profile Picture" height="200" width="200" align="right" />
         }
 
-        @if (!(Model.Avatar == null))
+        @if ((Model.Avatar != null))
         {
             <img src=@Url.Content(Model.Avatar) alt="Profile Picture" height="200" width="200" align="right" />
         }

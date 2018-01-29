@@ -31,38 +31,38 @@ namespace ConstructionLK.Controllers
                 return RedirectToAction("AdminPanel", "AdministrativeStaff", new { area = "Admin" , id = userId });
             }
             ////new
-            //if (User.IsInRole(RoleName.Customer))
-            //{
-            //    var customerStatus = db.Customers.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
-            //    if (customerStatus == 3)
-            //    {
-            //        return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+            if (User.IsInRole(RoleName.Customer))
+            {
+                var customerStatus = db.Customers.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+                if (customerStatus == 3)
+                {
+                    return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
-            //    }
-            //    return RedirectToAction("MyProfile", "Customers", new { user = userId });
-            //}
-            //ServiceProvider type = db.ServiceProviders.SingleOrDefault(user => user.ApplicationUserId == userId);
+                }
+                return RedirectToAction("MyProfile", "Customers", new { user = userId });
+            }
+            ServiceProvider type = db.ServiceProviders.SingleOrDefault(user => user.ApplicationUserId == userId);
 
-            //if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpIndividual))
-            //{
-            //    var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
-            //    if (spStatus == 3)
-            //    {
-            //        return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+            if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpIndividual))
+            {
+                var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+                if (spStatus == 3)
+                {
+                    return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
-            //    }
-            //    return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { user = userId });
-            //}
-            //if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpCooperate))
-            //{
-            //    var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
-            //    if (spStatus == 3)
-            //    {
-            //        return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+                }
+                return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { user = userId });
+            }
+            if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpCooperate))
+            {
+                var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+                if (spStatus == 3)
+                {
+                    return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
 
-            //    }
-            //    return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { user = userId });
-            //}
+                }
+                return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { user = userId });
+            }
             //end
 
             //AspNetUser email = db.AspNetUsers.SingleOrDefault(a => a.Id == userId);
@@ -94,7 +94,7 @@ namespace ConstructionLK.Controllers
                 return View("Index");//create
             }
             //var userId = User.Identity.GetUserId();
-            ServiceProvider type = db.ServiceProviders.SingleOrDefault(user => user.ApplicationUserId == userId);
+            //ServiceProvider type = db.ServiceProviders.SingleOrDefault(user => user.ApplicationUserId == userId);
             //var type = db.ServiceProviders.Find(User.Identity.GetUserId());
             if (User.IsInRole(RoleName.Customer))
             {

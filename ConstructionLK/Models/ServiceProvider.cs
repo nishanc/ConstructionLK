@@ -78,7 +78,7 @@ namespace ConstructionLK.Models
         [Display(Name = "Started Date of the Company")]
         public DateTime StartedDate { get; set; }
 
-        [RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg)$", ErrorMessage = "Not a valid Format")]
+        //[RegularExpression(@"([a-zA-Z0-9\s_\\.\-:])+(.png|.jpg|.jpeg)$", ErrorMessage = "Not a valid Format")]
         public string Avatar { get; set; }
 
         public int? StatusId { get; set; }
