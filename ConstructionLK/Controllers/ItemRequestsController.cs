@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -78,24 +78,7 @@ namespace ConstructionLK.Controllers
             return View("MyRequests", itemsRequests.ToList());
         }
 
-        // GET: MyItemRequests/Index
-        //public ActionResult MyAcceptedRequests(string user)
-        //{
-        //    var appuser = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user).Id;
-        //    // var customer=db.Customers.SingleOrDefault(c => c.ApplicationUserId == user).Username;
-        //    var itemsRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Where(i => i.ServiceProviderId == appuser).Where(i => i.StatusId == 1);
-
-        //    if (User.IsInRole(RoleName.CanManageAll))
-        //        return View(itemsRequests.ToList());
-        //    if (itemsRequests == null)
-        //    {
-        //        return View("NothingToShow");
-        //    }
-        //    return View("MyRequests", itemsRequests.ToList());
-        //}
-
-
-        //// GET: RespondMyRequests/Respond
+        // GET: RespondMyRequests/Respond
         //public ActionResult Respond(int? id)
         //{
         //    if (id == null)
@@ -121,7 +104,7 @@ namespace ConstructionLK.Controllers
         //    return View(itemRequest);
         //}
 
-        //// POST: RespondMyRequests/Respond
+        // POST: RespondMyRequests/Respond
         //[HttpPost]
         //[ValidateAntiForgeryToken]
         //public ActionResult Respond([Bind(Include = "AcceptedDate,StatusId")] ItemRequest itemRequest)
@@ -175,6 +158,7 @@ namespace ConstructionLK.Controllers
                 //return RedirectToAction("Index");
                 if (itemRequest.Message != null)
                 {
+                    //QxF+O9qg6fk-a9dYLek4plJk8JARdZ2081qRlIWKtz
                     String message = HttpUtility.UrlEncode(itemRequest.Message);
                     var sp = db.ServiceProviders.SingleOrDefault(i => i.Id == itemRequest.ServiceProviderId);
                     String number = sp.Telephone;
@@ -236,7 +220,7 @@ namespace ConstructionLK.Controllers
             {
                 db.Entry(itemRequest).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("MyRequests", new { user = User.Identity.GetUserId() });
+                return RedirectToAction("MyRequests", new { user=User.Identity.GetUserId()});
             }
             ViewBag.StatusId = new SelectList(db.ItemRequestStatuses, "Id", "Name", itemRequest.StatusId);
 

@@ -131,7 +131,7 @@ namespace ConstructionLK.Controllers
                     }/*serviceProvider*/);
                     db.SaveChanges();
                     //return RedirectToAction("Index");
-                    return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { id = User.Identity.GetUserId() });
+                    return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { user = User.Identity.GetUserId() });
                 }
             }
             else

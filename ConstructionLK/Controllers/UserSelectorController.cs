@@ -30,7 +30,41 @@ namespace ConstructionLK.Controllers
             {
                 return RedirectToAction("AdminPanel", "AdministrativeStaff", new { area = "Admin" , id = userId });
             }
-            
+            ////new
+            //if (User.IsInRole(RoleName.Customer))
+            //{
+            //    var customerStatus = db.Customers.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+            //    if (customerStatus == 3)
+            //    {
+            //        return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+
+            //    }
+            //    return RedirectToAction("MyProfile", "Customers", new { user = userId });
+            //}
+            //ServiceProvider type = db.ServiceProviders.SingleOrDefault(user => user.ApplicationUserId == userId);
+
+            //if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpIndividual))
+            //{
+            //    var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+            //    if (spStatus == 3)
+            //    {
+            //        return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+
+            //    }
+            //    return RedirectToAction("MyProfile", "ServiceProvidersIndividual", new { user = userId });
+            //}
+            //if (type != null && (User.IsInRole(RoleName.ServiceProvider) && type.TypeId == ServiceProviderTypeName.SpCooperate))
+            //{
+            //    var spStatus = db.ServiceProviders.SingleOrDefault(c => c.ApplicationUserId == userId).StatusId;
+            //    if (spStatus == 3)
+            //    {
+            //        return RedirectToAction("LogOutBlacklist", "Account", new { id = 1 });
+
+            //    }
+            //    return RedirectToAction("MyProfile", "ServiceProvidersCooperate", new { user = userId });
+            //}
+            //end
+
             //AspNetUser email = db.AspNetUsers.SingleOrDefault(a => a.Id == userId);
             //if(email != null && !email.EmailConfirmed)
             //{

@@ -294,6 +294,7 @@
     <Compile Include="Controllers\LocationsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\NewOrderController.cs" />
+    <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\PublishedItemsController.cs" />
     <Compile Include="Controllers\RatingsServiceProvidersController.cs" />
@@ -982,6 +983,12 @@
     <Content Include="Views\BlogPostComments\Details.cshtml" />
     <Content Include="Views\BlogPostComments\Edit.cshtml" />
     <Content Include="Views\BlogPostComments\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
+    <Content Include="Views\Order\payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -990,6 +997,7 @@
     <Folder Include="Areas\Admin\Views\RequestChart\" />
     <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Areas\Admin\Views\UserCountChart\" />
+    <Folder Include="Resources\ProfilePicturesSP\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
