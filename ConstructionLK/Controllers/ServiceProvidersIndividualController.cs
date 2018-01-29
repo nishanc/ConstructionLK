@@ -126,8 +126,8 @@ namespace ConstructionLK.Controllers
                         ModifiedBy = serviceProvider.ModifiedBy,
                         ModifiedDate = serviceProvider.ModifiedDate,
                         TypeId = serviceProvider.TypeId,
-                        CompanyName = serviceProvider.CompanyName,
-                        CompanyRegNo = serviceProvider.CompanyRegNo,
+                        //CompanyName = serviceProvider.CompanyName,
+                        //CompanyRegNo = serviceProvider.CompanyRegNo,
                         ApplicationUserId = serviceProvider.ApplicationUserId
                     }/*serviceProvider*/);
                     try
