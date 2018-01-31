@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
@@ -68,6 +68,22 @@ namespace ConstructionLK.Controllers
             var appuser = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user).Id;
             // var customer=db.Customers.SingleOrDefault(c => c.ApplicationUserId == user).Username;
             var itemsRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Where(i => i.ServiceProviderId == appuser).Where(i => i.StatusId == 1);
+
+            if (User.IsInRole(RoleName.CanManageAll))
+                return View(itemsRequests.ToList());
+            if (itemsRequests == null)
+            {
+                return View("NothingToShow");
+            }
+            return View("MyRequests", itemsRequests.ToList());
+        }
+
+        // GET: MyItemRequests/Index
+        public ActionResult MyAcceptedRequests(string user)
+        {
+            var appuser = db.ServiceProviders.SingleOrDefault(s => s.ApplicationUserId == user).Id;
+            // var customer=db.Customers.SingleOrDefault(c => c.ApplicationUserId == user).Username;
+            var itemsRequests = db.ItemRequests.Include(i => i.Customer).Include(i => i.Item).Include(i => i.Location).Where(i => i.ServiceProviderId == appuser).Where(i => i.StatusId == 2);
 
             if (User.IsInRole(RoleName.CanManageAll))
                 return View(itemsRequests.ToList());

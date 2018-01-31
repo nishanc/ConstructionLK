@@ -1,4 +1,6 @@
-﻿@model IEnumerable<ConstructionLK.Models.BlogPost>
+﻿@using Microsoft.AspNet.Identity
+@using Microsoft.AspNet.Identity.EntityFramework
+@model IEnumerable<ConstructionLK.Models.BlogPost>
 
 @{
     ViewBag.Title = "Index";
@@ -12,27 +14,27 @@
 </p>
 <table class="table">
     <tr>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.BlogCategory.Category)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.ServiceProvider.Username)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.PostContent)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.CreatedBy)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.CreatedDate)
         </th>
-        <th>
+        @*<th>
             @Html.DisplayNameFor(model => model.ModifiedBy)
-        </th>
+        </th>*@
         <th>
             @Html.DisplayNameFor(model => model.ModifiedDate)
         </th>
@@ -41,34 +43,34 @@
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.BlogCategory.Category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.ServiceProvider.Username)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.PostContent)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.Status)
-        </td>
-        <td>
+        </td>*@
+        @*<td>
             @Html.DisplayFor(modelItem => item.CreatedBy)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.CreatedDate)
         </td>
-        <td>
+        @*<td>
             @Html.DisplayFor(modelItem => item.ModifiedBy)
-        </td>
+        </td>*@
         <td>
             @Html.DisplayFor(modelItem => item.ModifiedDate)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
-            @Html.ActionLink("Comment", "Create","BlogPostComments" ,new { id=item.Id },null) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+            @*@Html.ActionLink("Edit", "Edit", new { id=item.Id }) |*@
+            @Html.ActionLink("Comment", "Create","BlogPostComments" ,new { id=item.Id, customerid=User.Identity.GetUserId() , @class="btn" },null)|
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.Id })*@
         </td>
     </tr>
 }

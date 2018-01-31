@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ConstructionLK.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ConstructionLK.Controllers
 {
@@ -37,10 +38,12 @@ namespace ConstructionLK.Controllers
         }
 
         // GET: BlogPostComments/Create
-        public ActionResult Create(int id)
+        public ActionResult Create(int id, string user)
         {
             ViewBag.PostId = id;
-//ViewBag.UserId = db.BlogPostComments.Include(b => b.BlogPost).Include(b => b.Customer.Id).SingleOrDefault(b => b.Customer.Id == BlogPostComment.UserId);
+            var cutomerId = db.Customers.SingleOrDefault(b => b.ApplicationUserId == user);
+            ViewBag.customerid = cutomerId;
+            //ViewBag.UserId = db.BlogPostComments.Include(b => b.BlogPost).Include(b => b.Customer.Id).SingleOrDefault(b => b.Customer.Id == BlogPostComment.UserId);
             //ViewBag.UserId = db.BlogPostComments.Include(b => b.BlogPost).Include(b => b.Customer).id;
             return View();
         }
@@ -60,7 +63,7 @@ namespace ConstructionLK.Controllers
             }
 
             ViewBag.PostId = new SelectList(db.BlogPosts, "Id", "PostContent", blogPostComment.PostId);
-            ViewBag.UserId = db.BlogPostComments.Include(b => b.BlogPost).Include(b => b.Customer.Id).SingleOrDefault(b=>b.Customer.Id==blogPostComment.UserId);
+            //ViewBag.UserId = db.BlogPostComments.SingleOrDefault(b => b.Customer ==User.Identity.GetUserId())
             //ViewBag.UserId = new SelectList(db.Customers, "Id", "Username", blogPostComment.UserId);
             return View(blogPostComment);
         }

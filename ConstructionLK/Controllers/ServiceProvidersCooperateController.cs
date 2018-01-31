@@ -190,7 +190,7 @@ namespace ConstructionLK.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Username,MembershipTypeId,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId")] ServiceProvider serviceProvider)
+        public ActionResult Edit([Bind(Include = "Id,Username,MembershipTypeId,Password,BasedCity,MailingAddress,Bio,FirstName,LastName,DateOfBirth,Telephone,CompanyName,CompanyRegNo,StartedDate,Avatar,StatusId,CreatedBy,CreatedDate,ModifiedBy,ModifiedDate,TypeId,ApplicationUserId")] ServiceProvider serviceProvider)
         {
             if (ModelState.IsValid)
             {

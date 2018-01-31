@@ -989,6 +989,7 @@
     <Content Include="Views\Order\Edit.cshtml" />
     <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Order\payment.cshtml" />
+    <Content Include="Views\ItemRequests\NothingToShow.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -997,7 +998,6 @@
     <Folder Include="Areas\Admin\Views\RequestChart\" />
     <Folder Include="Areas\Admin\Views\ServiceProviderChart\" />
     <Folder Include="Areas\Admin\Views\UserCountChart\" />
-    <Folder Include="Resources\ProfilePicturesSP\" />
     <Folder Include="Views\Sms\" />
   </ItemGroup>
   <ItemGroup>
